@@ -1,0 +1,12 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\db",
+    "\\model",
+    "\\templates",
+    "\\util",
+    "\\view"
+  ],
+  "SelectedNode": "\\view\\routes.py",
+  "PreviewInSolutionExplorer": false
+}

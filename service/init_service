@@ -1,0 +1,10 @@
+systemctl get-default
+systemctl daemon-reload
+systemctl enable /home/reports/GFSSRegistry/service/registry.service
+systemctl --now registry
+#systemctl stop reports
+systemctl start registry
+systemctl status -l registry
+
+firewall-cmd --add-port=8100/tcp --permanent
+firewall-cmd --reload

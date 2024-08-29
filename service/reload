@@ -1,0 +1,4 @@
+systemctl stop registry
+systemctl start registry
+sleep 3
+systemctl status -l registry
