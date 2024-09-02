@@ -15,33 +15,31 @@
 
 {% block body %}
 
-<form class="form_r" style="padding-left: 2%" method="POST">
-    <table style="width: 30%">
-        <tr>
-            <td>
-                <label for="date_out">{{ res_value('TIME_OUT') }}</label>
-            </td>
-            <td>
-                <input class="input_s" type="datetime-local" id="date_out" name="date_out">
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <label for="date_in">{{ res_value('TIME_IN') }}</label>
-            </td>
-            <td>
-                <input class="input_s" type="datetime-local" id="date_in" name="date_in">
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <label for="cause">{{ res_value('CAUSE') }}</label>
-            </td>
-            <td>
-                <input class="input_s" type="text" id="cause" name="cause" maxlength="512" minlength="4">
-            </td>
-        </tr>
-    </table>
+<form class="form_r" style="padding-left: 2%; width: 60%" method="POST">
+    <div class="field">
+        <label for="date_out">{{ res_value('TIME_OUT') }}</label>
+        <input class="input_s" type="datetime-local" id="date_out" name="date_out">
+    </div>
+    <div class="field">
+        <label for="date_in">{{ res_value('TIME_IN') }}</label>
+        <input class="input_s" type="datetime-local" id="date_in" name="date_in">
+    </div>
+    <div class="field">
+        <label for="cause">{{ res_value('CAUSE') }}</label>
+        <input class="input_s" type="text" id="cause" name="cause" maxlength="512" minlength="4">
+    </div>
+    <div class="field">
+        <label for="head_name">{{ res_value('HEAD_NAME') }}</label>
+        <select name="head_name" id="head_name">
+            {% for el in list_heads %}
+            {% if head_name==el.head_name %}
+            <option selected value="{{ el.head_name }}">{{ el.head_name }}</option>
+            {% else %}
+            <option value="{{ el.head_name }}">{{ el.head_name }}</option>
+            {% endif %}
+            {% endfor %}
+        </select>
+    </div>
     <br />
     <button class="bt_r" type="submit" name="edit_parms">{{ res_value('SAVE') }}</button>
 </form>

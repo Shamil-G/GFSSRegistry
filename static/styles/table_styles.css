@@ -53,3 +53,45 @@
     box-sizing: border-box;
 }
 
+div.field {
+    display: flex;
+    vertical-align: bottom;
+    align-items: center;
+    align-content: center;
+}
+
+div.field label {
+    height: 24px;
+    width: 195px;
+}
+.table_about, .table_common {
+    margin: 12px;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+.table_common th, .table_common tbody tr, .table_common tbody td {
+    padding: 3px 12px;
+    text-align: center;
+    border-radius: 5px;
+    border: 1px solid #ffe4b57a;
+}
+/* Подсвечиваем строки на котором стоит курсор*/
+.table_common tbody tr:hover {
+    background-color: rgba(239, 220, 112, 0.15);
+}
+/* Подкрашиваем кнопку Новый расчет и линки на отчеты*/
+.table_common {
+    text-decoration: none;
+}
+
+.table_common a[name='sum_column'] {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+.table_common > a {
+    background: #777;
+    color: wheat;
+    text-decoration: none;
+    border-radius: 4px;
+}

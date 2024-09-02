@@ -93,3 +93,15 @@
 .div_users_selected {
     margin: 10px;
 }
+
+select {
+    margin-top: 5px;
+    font-family: cursive, sans-serif;
+    outline: 0;
+    background: #444;
+    color: #ccc;
+    border: 1px solid #ffe4b57a;
+    padding: 5px;
+    border-radius: 5px;
+    width: 540px;
+}

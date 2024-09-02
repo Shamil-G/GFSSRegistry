@@ -153,12 +153,12 @@ def server_logout(id_user):
         return resp_json
 
 
-def add_time_off(date_out:str, date_in:str, employee:str, post:str, dep_name:str, cause:str):
+def add_time_off(date_out:str, date_in:str, employee:str, post:str, dep_name:str, cause:str, head_name:str):
     stmt = """
-        insert into register(time_out, time_in, employee, post, dep_name, cause)
+        insert into register(time_out, time_in, employee, post, dep_name, cause, head)
         values(to_date(:time_out,'YYYY-MM-DD HH24:MI'), 
                 to_date(:time_in,'YYYY-MM-DD HH24:MI'), 
-                :employee, :post, :dep_name, :cause
+                :employee, :post, :dep_name, :cause, :head_name
                 )
     """
     success = 0
@@ -169,9 +169,50 @@ def add_time_off(date_out:str, date_in:str, employee:str, post:str, dep_name:str
                                employee=employee,
                                post=post,
                                dep_name=dep_name,
-                               cause=cause)
+                               cause=cause, head_name=head_name)
                 cursor.execute('commit')
                 success = 1
             finally:
                 log.info('TIME_OFF. executed')
     return success
+
+def get_list_head():
+    list_head = []
+    stmt = """
+        select id_head, name from heads order by id_head
+    """
+    with get_connection() as connection:
+        with connection.cursor() as cursor:
+            try:
+                cursor.execute(stmt)
+                rows = cursor.fetchall()
+                for row in rows:
+                    res = { 'id_head': row[0], 'head_name': row[1]}
+                    list_head.append(res)
+            finally:
+                if debug_level > 2:
+                    log.info(f'LIST HEAD. {list_head}')
+    return list_head
+
+def add_head(head_name: str):
+    stmt = """
+        begin admin.add_head(:head_name); end;
+    """
+    with get_connection() as connection:
+        with connection.cursor() as cursor:
+            try:
+                cursor.execute(stmt, head_name=head_name)
+            finally:
+                log.info(f'ADD HEAD. {head_name}')
+    
+def del_head(head_name: str):
+    stmt = """
+        begin admin.del_head(:head_name); end;
+    """
+    with get_connection() as connection:
+        with connection.cursor() as cursor:
+            try:
+                cursor.execute(stmt, head_name=head_name)
+            finally:
+                log.info(f'DEL HEAD. {head_name}')
+    
