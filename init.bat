@@ -1,15 +1,14 @@
-set VIRTUAL_ENV=C:/Projects/GFSSRegistry/venv
-python -m venv venv
-rem call %VIRTUAL_ENV%/bin/activate
-call %VIRTUAL_ENV%/Scripts/activate.bat
+#python3 -m venv venv
+. $VENV_HOME/bin/activate
 
-python -m pip install --upgrade pip
-pip install oracledb
-pip install flask
-pip install flask_login
-pip install redis
-pip install flask_session
-pip install openpyxl
-pip install requests
-rem pip freeze > requirements.txt
-python main_app.py
+pip3 install --upgrade pip
+pip3 install oracledb
+pip3 install flask
+pip3 install flask_login
+pip3 install redis
+pip3 install flask_session
+pip3 install openpyxl
+pip3 install requests
+pip3 install gevent
+pip3 install gunicorn
+python3 main_app.py

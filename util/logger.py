@@ -10,7 +10,7 @@ def init_logger():
     logger = logging.getLogger('REPORTS-GFSS')
     # logging.getLogger('PDD').addHandler(logging.StreamHandler(sys.stdout))
     # Console
-    logging.getLogger('REPORTS-GFSS').addHandler(logging.StreamHandler())
+    logging.getLogger('GFSS-REGISTRY').addHandler(logging.StreamHandler())
     if debug_level>2:
         logger.setLevel(logging.DEBUG)
     else:
@@ -21,7 +21,7 @@ def init_logger():
     fh.setFormatter(formatter)
 
     logger.addHandler(fh)
-    logger.info('REPORTS-GFSS Logging started')
+    logger.info('GFSS-REGISTRY Logging started')
     return logger
 
 

@@ -1,5 +1,5 @@
 import multiprocessing
-from reports_gfss_parameter import app_name, BASE
+from gfss_parameter import app_name, BASE
 from app_config import port
 
 bind = f"localhost:{port}"
@@ -12,10 +12,10 @@ chdir = BASE
 wsgi_app = "wsgi:app"
 loglevel = 'info'
 access_log_format = '%({x-forwarded-for}i)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s"  "%(a)s"'
-accesslog = "logs/reports-gunicorn-access.log"
+accesslog = "logs/registry-access.log"
 
 error_log_format = '%({x-forwarded-for}i)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s"  "%(a)s"'
-errorlog = "logs/reports-gunicorn-error.log"
+errorlog = "logs/registry-error.log"
 proc_name = f'{app_name}'
 # Перезапуск после N кол-во запросов
 max_requests = 0

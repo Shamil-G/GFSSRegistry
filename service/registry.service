@@ -7,7 +7,7 @@ Type=simple
 User=registry
 Group=registry
 WorkingDirectory=/home/registry/GFSSRegistry
-Environment="LD_LIBRARY_PATH=/home/oracle/client/21.3/lib" "ORACLE_HOME=/home/oracle/client/21.3" "VENV_HOME=/home/reports/REPORTS_GFSS/venv/bin" "PATH=/home/registry/GFSSRegistry/venv/bin"
+Environment="LD_LIBRARY_PATH=/home/oracle/client/21.3/lib" "ORACLE_HOME=/home/oracle/client/21.3" "VENV_HOME=/home/registry/GFSSRegistry/venv" "PATH=/home/registry/GFSSRegistry/venv/bin"
 ExecStart=/home/registry/GFSSRegistry/venv/bin/gunicorn
 
 [Install] 
