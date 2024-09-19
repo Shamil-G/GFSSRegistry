@@ -32,9 +32,12 @@
             {% block navigate %}{% endblock %}
                 {% if g.user.is_active %}
                     <a class="title2" href="/time-off">{{ res_value('TIME_OFF') }}</a>
-                    <a class="title2" href="/check-doc">{{ res_value('CHECK_DOC') }}</a>
+                    <a class="title2" href="/list-time-off">{{ res_value('LIST_TIME_OFF') }}</a>
+<!--                    <a class="title2" href="/check-doc">{{ res_value('CHECK_DOC') }}</a>-->
+                    {% if 'admin' in session and session['admin']==1 %}
+                    <a class="title2" href="/all-list-time-off">{{ res_value('ALL_LIST_TIME_OFF') }}</a>
                     <a class="title2" href="/heads">{{ res_value('HEADS') }}</a>
-                    <a class="title2" href="/change-passwd">{{ res_value('CHANGE_PASSWORD') }}</a>
+                    {% endif %}
                     <a class="title2" href="/logout">{{ res_value('LOGOUT') }}</a>
                 {% else %}
                     <a class="title2" href="/login">{{ res_value('LOGIN') }}</a>

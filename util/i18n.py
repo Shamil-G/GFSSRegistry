@@ -17,8 +17,7 @@ class I18N:
         if platform == 'unix':
             file_name = f'{BASE}/i18nu.{lang}'
         n_objects = 0
-        # if cfg.debug:
-        #     log.debug(f"I18N. Lang: {lang}, resource_name: {resource_name}, file_name: {file_name}")
+        log.debug(f"I18N. Lang: {lang}, resource_name: {resource_name}, file_name: {file_name}")
 
         for f_name in self.file_names:
             if f_name == file_name:
@@ -27,7 +26,7 @@ class I18N:
             n_objects = n_objects + 1
 
         if file_object == '' and os.path.exists(file_name):
-            # log.debug(f"---------->  I18N. FILE EXIST : {file_name}")
+            log.debug(f"---------->  I18N. FILE EXIST : {file_name}")
             file = open(file_name, "r")
             if file is not None:
                 self.file_names.append(file_name)
@@ -45,8 +44,7 @@ class I18N:
         return return_value
 
     def close(self):
-        if debug_level>2:
-            log.debug("I18N. CLOSE")
+        log.debug("I18N. CLOSE")
         for file in self.files:
             file.close()
         self.file_names.clear()

@@ -7,7 +7,7 @@ from app_config import debug_level
 
 
 def init_logger():
-    logger = logging.getLogger('REPORTS-GFSS')
+    logger = logging.getLogger('GFSS-REGISTRY')
     # logging.getLogger('PDD').addHandler(logging.StreamHandler(sys.stdout))
     # Console
     logging.getLogger('GFSS-REGISTRY').addHandler(logging.StreamHandler())
@@ -15,7 +15,7 @@ def init_logger():
         logger.setLevel(logging.DEBUG)
     else:
         logger.setLevel(logging.INFO)
-    fh = logging.FileHandler(f"{cfg_app.LOG_PATH}/{cfg.app_name.lower()}.log", encoding="UTF-8")
+    fh = logging.FileHandler(f"{cfg_app.LOG_PATH}/gfss-registry.log", encoding="UTF-8")
     # fh = RotatingFileHandler(cfg.LOG_FILE, encoding="UTF-8", maxBytes=100000000, backupCount=5)
     formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
     fh.setFormatter(formatter)

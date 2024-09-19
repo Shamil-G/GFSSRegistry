@@ -1,12 +1,17 @@
 from gfss_parameter import BASE
 
 
-debug_level = 3
+debug_level = 2
 host = 'localhost'
 port=9000
 src_lang = 'file'
 language = 'ru'
-URL_LOGIN = 'http://192.168.1.34:8000'
 LOG_PATH = f"{BASE}/logs"
-REPORT_MODULE_PATH = f"reports"
 REPORT_PATH = f"{BASE}/spool"
+
+URL_LOGIN = 'http://192.168.1.34:8000'
+
+ldap_admins = ['Гусейнов Шамиль Аладдинович',]
+ldap_server = 'ldap://192.168.1.3:3268'
+ldap_user = 'cn=ldp,ou=admins,dc=gfss,dc=kz'
+ldap_password = 'hu89_fart7'

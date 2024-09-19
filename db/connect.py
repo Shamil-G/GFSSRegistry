@@ -142,7 +142,7 @@ def plsql_proc_s(f_name, proc_name, args):
 def plsql_func(cursor, f_name, func_name, args):
     ret = ''
     try:
-        ret = cursor.callfunc(func_name, args)
+        ret = cursor.callfunc(func_name, str, args)
     except oracledb.DatabaseError as e:
         error, = e.args
         log.error(f"ERROR -----plsql-func-----> FNAME: {f_name}\nargs: {args}\nerror: {error.code} : {error.message}")

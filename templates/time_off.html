@@ -3,11 +3,14 @@
 {% extends 'base.html' %}
 
 {% block title %}
-    {{ res_value('TIME_OFF') }}
+{{ res_value('TIME_OFF') }}
 {% endblock %}
 
 {% block main_title %}
-    {{ res_value('TIME_OFF') }}
+{{ res_value('TIME_OFF') }}
+    {% if message %}
+    &nbsp;&emsp;{{ message }}
+    {% endif %}
 {% endblock %}
 
 {% block navigate %}
