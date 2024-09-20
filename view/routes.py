@@ -58,9 +58,8 @@ def view_time_off():
             # else:
             employee = session['full_name']
         
-            if debug_level > 2:
-                log.info(f"VIEW_TIME-OFF. date_out: {date_out}, date_in: {date_in}, "
-                         f"\n\temployee: {employee}\n\tpost: {post}\n\tdep_name: {dep_name}\n\tcause: {cause}")
+            log.debug(f"VIEW_TIME-OFF. date_out: {date_out}, date_in: {date_in}, "
+                        f"\n\temployee: {employee}\n\tpost: {post}\n\tdep_name: {dep_name}\n\tcause: {cause}")
             message = add_time_off(date_out, date_in, employee, post, dep_name, cause, head_name)
     if message == 'Success':
         message = 'Регистрация завершена успешно'
@@ -102,7 +101,7 @@ def view_del_from_list_time_off(id_reg):
 @app.route('/heads', methods=['GET','POST'])
 @login_required
 def view_heads():
-    log.info(f'VIEW HEADS. username {session['username']}')
+    log.debug(f'VIEW HEADS. username {session['username']}')
     list_heads = get_list_head()
     if request.method == 'POST':
         head_name = request.form['head_name']
@@ -117,18 +116,18 @@ def view_heads():
 @app.route('/del-head/<string:head_name>', methods=['GET','POST'])
 @login_required
 def view_del_head(head_name):
-    log.info(f'VIEW HEADS. username {session['username']}')
+    log.debug(f'VIEW HEADS. username {session['username']}')
     del_head(head_name)
     return redirect(url_for('view_heads'))
 
 
 @app.route('/language/<string:lang>')
 def set_language(lang):
-    log.info(f"Set language. LANG: {lang}, предыдущий язык: {session['language']}")
+    log.debug(f"Set language. LANG: {lang}, предыдущий язык: {session['language']}")
     session['language'] = lang
     # Получим предыдущую страницу, чтобы на неё вернуться
     current_page = request.referrer
-    log.info(f"Set LANGUAGE. {current_page}")
+    log.debug(f"Set LANGUAGE. {current_page}")
     if current_page is not None:
         return redirect(current_page)
     else:

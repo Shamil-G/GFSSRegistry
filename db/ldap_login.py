@@ -1,6 +1,6 @@
 from ldap3 import Server, Connection, SUBTREE
 from flask import session
-from app_config import ldap_admins, ldap_server, ldap_user, ldap_password
+from app_config import ldap_admins, ldap_server, ldap_user, ldap_password, ignore_ou
 from util.ip_addr import ip_addr
 from util.logger import log
 
@@ -22,9 +22,9 @@ def find_value(src_string:str, key:str):
 def get_connect(username:str, password:str):
     try:
         server = Server(ldap_server)
-        log.error(f'CONNECTED to SERVER {ldap_server} SUCCESS')    
+        log.info(f'CONNECTED to SERVER {ldap_server} SUCCESS')    
         conn = Connection(server, user=username, password=password, auto_bind=True)
-        log.error(f'SUCCESS CONNECTED as user: {username}')    
+        log.info(f'SUCCESS CONNECTED as user: {username}')    
     except:
         log.error(f'MISTAKE connect as user: {username}, password: {password}')    
         return ''
@@ -39,9 +39,10 @@ def connect_ldap(username:str, password:str):
     
     log.debug(f'NOW search username: {username}')
     conn_src.search(search_base='dc=gfss,dc=kz', 
-                search_filter=f'(&(objectclass=person)(cn={username}*))', 
+                # search_filter=f'(&(objectclass=person)(cn=*))', 
+                search_filter=f'(&(objectclass=person)(|(cn={username}*)(displayname={username}*)))', 
                 # attributes=['distinguishedName', 'userPrincipalName', 'cn', 'sAMAccountName', 'description', 'memberof', '*'],
-                attributes=['distinguishedName', 'userPrincipalName', 'cn', 'description', 'memberof'],
+                attributes=['distinguishedName', 'userPrincipalName', 'cn', 'displayName', 'description', 'memberof'],
                 search_scope=SUBTREE,
                 paged_size=5)
     users = conn_src.entries
@@ -53,10 +54,13 @@ def connect_ldap(username:str, password:str):
         return 0,'',''
 
     log.debug(f'\nUSERS:\n{users}\n-----------------------')
+    #return 0,'',''    
+
     dn=''
     principalName=''
     full_name=''
     ou=''
+    conn_usr=''
     for user in users:
         dn = str(user['distinguishedName'])
         principalName = str(user['userPrincipalName'])
@@ -70,10 +74,12 @@ def connect_ldap(username:str, password:str):
         #     if ou:
         #         break
         ou = find_value(dn, 'OU')
-             
-        conn_usr = get_connect(principalName, password)
-        if conn_usr:
-            break
+        
+        if ou not in ignore_ou:
+            conn_usr = get_connect(principalName, password)
+            log.debug(f'GET CONNECT. OU: {ou}, principalName: {principalName}')
+            if conn_usr:
+                break
 
     if not conn_usr:
         log.info(f'USER NOT FOUND user: {principalName} : {password}.\nMISTAKE !!!\n---------------------------')
