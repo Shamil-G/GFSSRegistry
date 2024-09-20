@@ -9,6 +9,7 @@ import app_config as cfg
 from gfss_parameter import public_name
 from util.ip_addr import ip_addr
 import oracledb
+from os import environ
 
 
 login_manager = LoginManager(app)
@@ -56,6 +57,11 @@ def logout():
 
 @app.route('/login', methods=['GET', 'POST'])
 def login_page():
+    if "STYLE" in environ:
+        session['styles']=environ["STYLES"]
+    else:
+        session['styles']=cfg.styles
+    
     if '_flashes' in session:
          session['_flashes'].clear()
     

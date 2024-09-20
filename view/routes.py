@@ -9,7 +9,6 @@ from util.get_i18n import get_i18n_value
 from model.manage_user import add_time_off, add_head, del_head, get_list_head, get_list_time_off, get_all_list_time_off, del_time_off
 from model.rep_all_time_off import do_report
 
-#list_params = []
 
 @app.context_processor
 def utility_processor():
@@ -21,8 +20,7 @@ def utility_processor():
 @app.route('/home', methods=['POST', 'GET'])
 #@login_required
 def view_root():
-    # owners = get_owner_reports()
-    if 'admin' in session:
+    if 'admin' in session and 'username' in session:
         log.debug(f"VIEW_ROOT. USERNAME: {session['username']}, ADMIN: {session['admin']}")
     return render_template("index.html")
 
