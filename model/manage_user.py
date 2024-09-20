@@ -35,6 +35,30 @@ def get_list_time_off(employee: str):
     return list_time_off
 
 
+def get_list_absent():
+    list_absent = []
+    stmt = """
+        select event_date, time_out, time_in, employee, post, dep_name, cause, head, id 
+        from register r
+        where sysdate between time_out and time_in
+        order by event_date desc
+    """
+    with get_connection() as connection:
+        with connection.cursor() as cursor:
+            try:
+                cursor.execute(stmt)
+                rows = cursor.fetchall()
+                for row in rows:
+                    res = { 'event_date': row[0], 'time_out': row[1], 'time_in': row[2],
+                           'employee': row[3], 'post': row[4], 'dep_name': row[5],
+                           'cause': row[6], 'head': row[7], 'id': row[8]
+                           }
+                    list_absent.append(res)
+            finally:
+                log.debug(f'LIST ABSENT. {list_absent}')
+    return list_absent
+
+
 def get_all_list_time_off(mnth: str):
     list_time_off = []
     stmt = """
@@ -57,6 +81,32 @@ def get_all_list_time_off(mnth: str):
             finally:
                 log.debug(f'LIST HEAD. {list_time_off}')
     return list_time_off
+
+
+def get_list_to_approve(dep_name):
+    list_approve = []
+    stmt = """
+        select event_date, time_out, time_in, employee, post, dep_name, cause, head, id 
+        from register r
+        where trunc(event_date,'MM') = trunc(sysdate,'MM')
+        and   dep_name = :dep_name
+        order by event_date desc
+    """
+    with get_connection() as connection:
+        with connection.cursor() as cursor:
+            try:
+                log.debug(f'LIST APPROVE. dep_name: {dep_name} : {type(dep_name)}')
+                cursor.execute(stmt, dep_name=dep_name)
+                rows = cursor.fetchall()
+                for row in rows:
+                    res = { 'event_date': row[0], 'time_out': row[1], 'time_in': row[2],
+                           'employee': row[3], 'post': row[4], 'dep_name': row[5],
+                           'cause': row[6], 'head': row[7], 'id': row[8]
+                           }
+                    list_approve.append(res)
+            finally:
+                log.debug(f'LIST APPROVE. {list_approve}')
+    return list_approve
 
 
 def del_time_off(id_reg: int, employee: str):
@@ -88,6 +138,18 @@ def get_list_head():
                 if debug_level > 2:
                     log.info(f'LIST HEAD. {list_head}')
     return list_head
+
+
+def approve_time_off(id_reg: int, boss: str):
+    stmt = """
+        begin reg.approve_time_off(:id_reg, :boss); end;
+    """
+    with get_connection() as connection:
+        with connection.cursor() as cursor:
+            try:
+                cursor.execute(stmt, id_reg=id_reg, boss=boss)
+            finally:
+                log.info(f'DEL TIME_OFF. boss: {boss}, id_reg: {id_reg}')
 
 
 def add_head(head_name: str):

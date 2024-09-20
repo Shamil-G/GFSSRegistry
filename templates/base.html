@@ -37,7 +37,11 @@
 <!--                    <a class="title2" href="/check-doc">{{ res_value('CHECK_DOC') }}</a>-->
                     {% if 'admin' in session and session['admin']==1 %}
                     <a class="title2" href="/all-list-time-off">{{ res_value('ALL_LIST_TIME_OFF') }}</a>
-                    <a class="title2" href="/heads">{{ res_value('HEADS') }}</a>
+                    <a class="title2" href="/list-absent">{{ res_value('LIST_ABSENT') }}</a>
+                    <!--<a class="title2" href="/heads">{{ res_value('HEADS') }}</a>-->
+                    {% endif %}
+                    {% if 'boss' in session %}
+                        <a class="title2" href="/list-to-approve">{{ res_value('LIST_APPROVE') }}</a>
                     {% endif %}
                     <a class="title2" href="/logout">{{ res_value('LOGOUT') }}</a>
                 {% else %}

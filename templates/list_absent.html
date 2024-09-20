@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 
 {% block title %}
-{{ res_value('LIST_TIME_OFF') }}
+{{ res_value('LIST_ABSENT') }}
 {% endblock %}
 
 {% block main_title %}
-{{ res_value('LIST_TIME_OFF') }}
+{{ res_value('LIST_ABSENT') }}
 {% endblock %}
 
 {% block navigate %}
@@ -28,20 +28,21 @@
             <th style="font-size:16px;"><a>{{ res_value('REG_DATE') }}</a></th>
             <th style="font-size:16px;width: 8%"><a>{{ res_value('TIME_OUT') }}</a></th>
             <th style="font-size:16px;"><a>{{ res_value('TIME_IN') }}</a></th>
+            <th style="font-size:16px;"><a>{{ res_value('EMPLOYEE') }}</a></th>
             <th style="font-size:16px;"><a>{{ res_value('POST') }}</a></th>
             <th style="font-size:16px;"><a>{{ res_value('DEP_NAME') }}</a></th>
             <th style="font-size:16px;"><a>{{ res_value('CAUSE') }}</a></th>
             <th style="font-size:16px;"><a>{{ res_value('HEAD_NAME') }}</a></th>
-            <th style="font-size:16px;"><a>{{ res_value('ACTION') }}</a></th>
         </tr>
     </thead>
     <tfoot></tfoot>
     <tbody>
-        {% for el in list_time_off %}
+        {% for el in list_absent %}
         <tr>
             <td style="font-size:16px;"><a>{{ el.event_date }}</a></td>
             <td style="font-size:16px;"><a>{{ el.time_out }}</a></td>
             <td style="font-size: 16px;"><a>{{ el.time_in }}</a></td>
+            <td style="font-size: 16px;"><a>{{ el.employee }}</a></td>
             <td style="text-align: left; margin-left: 4px; font-size: 16px;"><a>{{ el.post }}</a></td>
             <td style="text-align: left; margin-left: 4px; font-size: 16px;"><a>{{ el.dep_name }}</a></td>
             <td style="text-align: left; margin-left: 4px; font-size: 16px;"><a>{{ el.cause }}</a></td>
@@ -50,7 +51,6 @@
             {% else %}
                 <td style="text-align: center; margin-left: 4px; font-size: 16px; color: hotpink;"><a>{{ res_value('NOT_APPROVED') }}</a></td>
             {% endif %}
-            <td style="font-size:16px;"><a class="bt_t" href="/del-from-list-time-off/{{ el.id }}">{{ res_value('REMOVE') }}</a></td>
         </tr>
         {% endfor %}
     <tbody>

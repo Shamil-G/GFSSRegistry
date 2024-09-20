@@ -6,7 +6,8 @@ from flask_login import  login_required
 import os
 from datetime import date
 from util.get_i18n import get_i18n_value
-from model.manage_user import add_time_off, add_head, del_head, get_list_head, get_list_time_off, get_all_list_time_off, del_time_off
+from model.manage_user import add_time_off, add_head, del_head, get_list_head, get_list_time_off
+from model.manage_user import get_all_list_time_off, del_time_off, get_list_absent, get_list_to_approve, approve_time_off
 from model.rep_all_time_off import do_report
 
 
@@ -76,6 +77,14 @@ def view_list_time_off():
     return render_template("list_time_off.html", list_time_off=list_time_off)
 
 
+@app.route('/list-absent')
+@login_required
+def view_list_absent():
+    log.debug(f'VIEW LIST ABSENT. username {session['full_name']}, admin: {session['admin']}')
+    list_absent = get_list_absent()
+    return render_template("list_absent.html", list_absent=list_absent)
+
+
 @app.route('/all-list-time-off', methods=['GET','POST'])
 @login_required
 def view_all_list_time_off():
@@ -88,6 +97,23 @@ def view_all_list_time_off():
         session['flt_month'] = flt_month
     list_time_off = get_all_list_time_off(f'{session['flt_month']}-01')
     return render_template("list_all_time_off.html", list_time_off=list_time_off, flt_month=session['flt_month'])
+
+
+@app.route('/list-to-approve', methods=['GET','POST'])
+@login_required
+def view_list_approve():
+    log.debug(f'VIEW LIST APPROVE. username {session['full_name']}, admin: {session['admin']}')
+    log.debug(f'VIEW LIST APPROVE. dep_name: {session['dep_name']} : {type(session['dep_name'])}')
+    list_approve = get_list_to_approve(session['dep_name'])
+    return render_template("list_approve.html", list_approve=list_approve)
+
+
+@app.route('/approve-time-off/<int:id_reg>', methods=['GET','POST'])
+@login_required
+def view_approve_time_off(id_reg):
+    log.debug(f'VIEW HEADS. username {session['username']}')
+    approve_time_off(id_reg, session['full_name'])
+    return redirect(url_for('view_list_approve'))
 
 
 @app.route('/del-from-list-time-off/<int:id_reg>')
