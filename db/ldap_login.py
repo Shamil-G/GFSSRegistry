@@ -64,7 +64,7 @@ def connect_ldap(username:str, password:str):
     for user in users:
         dn = str(user['distinguishedName'])
         principalName = str(user['userPrincipalName'])
-        full_name = str(user['CN'])
+        full_name = str(user['displayName'])
         session['post'] = str(user['description'])
         
         # acc_name = user['sAMAccountName']
