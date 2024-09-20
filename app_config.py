@@ -1,6 +1,6 @@
 from gfss_parameter import BASE
 
-
+styles = 'styles'
 debug_level = 2
 host = 'localhost'
 port=9000
