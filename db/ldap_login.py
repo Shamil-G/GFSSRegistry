@@ -1,6 +1,6 @@
 from ldap3 import Server, Connection, SUBTREE
 from flask import session
-from app_config import ldap_admins, ldap_server, ldap_user, ldap_password, ignore_ou
+from app_config import ldap_admins, ldap_server, ldap_user, ldap_password, ldap_ignore_ou, ldap_boss
 from util.ip_addr import ip_addr
 from util.logger import log
 
@@ -66,7 +66,11 @@ def connect_ldap(username:str, password:str):
         principalName = str(user['userPrincipalName'])
         full_name = str(user['displayName'])
         session['post'] = str(user['description'])
-        
+        if session['post'] in ldap_boss:
+            session['boss']=1
+        elif 'boss' in session:
+            session.pop('boss')
+            
         # acc_name = user['sAMAccountName']
         # members = user['memberOf']
         # for member in members:
@@ -75,7 +79,7 @@ def connect_ldap(username:str, password:str):
         #         break
         ou = find_value(dn, 'OU')
         
-        if ou not in ignore_ou:
+        if ou not in ldap_ignore_ou:
             conn_usr = get_connect(principalName, password)
             log.debug(f'GET CONNECT. OU: {ou}, principalName: {principalName}')
             if conn_usr:
@@ -102,7 +106,7 @@ def connect_ldap(username:str, password:str):
     for org in orgs:
         org_name = org['name']
         session['dep_name'] = str(org['description'])
-        log.debug(f'-------------------------\nORG_UNIT: {ou}, org_name: {org_name}, org_descr: {session['dep_name']}\n--------------------------------')
+        log.debug(f'---\n---\nORG_UNIT: {ou}, org_name: {org_name}, dep_name: {session['dep_name']} : {type(session['dep_name'])}\n---\n---')
 
     log.info(f'CONNECT LDAP. SUCCESS. {principalName} : {full_name} : {session['dep_name']}')
     return success, principalName, full_name

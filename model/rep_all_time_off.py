@@ -12,7 +12,7 @@ report_code = '01'
 
 
 stmt = """
-        select event_date, time_out, time_in, employee, post, dep_name, cause, head, id 
+        select event_date, time_out, time_in, employee, post, dep_name, cause, coalesce(head,'Не утверждено'), id 
         from register r
         where trunc(event_date,'MM') = trunc(to_date(:mnth,'YYYY-MM-DD'),'MM')
         order by dep_name, employee, event_date
