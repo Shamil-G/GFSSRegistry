@@ -1,27 +1,45 @@
 {% extends 'base.html' %}
 
 {% block title %}
-{{ res_value('SELECT_TASK') }}
+{{ res_value('NEAR_BIRTH_DATE') }}
 {% endblock %}
 
 {% block main_title %}
-{{ res_value('SELECT_TASK') }}
+{{ res_value('NEAR_BIRTH_DATE') }}
 {% endblock %}
 
 
 {% block navigate %}
-   <!--{% for el in owner_cursor %}
-            <a class="title2" href="/dep/{{el.dep_name}}">{{ el.dep_name }}</a>
-   {% endfor %}-->
 {% endblock %}
 
 {% block body %}
-<div class="forms_model_list">
-    <!--{% for el in cursor %}
-    <form class="form_model_list">
-        <p class="title2" href="/dep/{{el.dep_name}}">{{ el.dep_name }}</p>
-    </form>
-    {% endfor %}-->
+<img src="/static/img/background.png" />
+<table class="table_common" style="width: 98%">
+    <colgroup>
+        <col>
+        <col>
+        <col>
+        <col>
+    </colgroup>
+    <thead>
+        <tr>
+            <th style="font-size:16px;"><a>{{ res_value('BIRTH_DATE') }}</a></th>
+            <th style="font-size:16px;"><a>{{ res_value('EMPLOYEE') }}</a></th>
+            <th style="font-size:16px;"><a>{{ res_value('POST') }}</a></th>
+            <th style="font-size:16px;"><a>{{ res_value('DEP_NAME') }}</a></th>
 
-</div>
+        </tr>
+    </thead>
+    <tfoot></tfoot>
+    <tbody>
+        {% for el in list_bd %}
+        <tr>
+            <td style="font-size:16px;"><a>{{ el.birth_date }}</a></td>
+            <td style="text-align: left; margin-left: 4px; font-size: 16px;"><a>{{ el.employee }}</a></td>
+            <td style="text-align: left; margin-left: 4px; font-size: 16px;"><a>{{ el.post }}</a></td>
+            <td style="text-align: left; margin-left: 4px; font-size: 16px;"><a>{{ el.dep_name }}</a></td>
+        </tr>
+        {% endfor %}
+    <tbody>
+</table>
 {% endblock %}
