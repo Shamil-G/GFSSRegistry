@@ -9,6 +9,7 @@ from util.get_i18n import get_i18n_value
 from model.manage_user import add_time_off, add_head, del_head, get_list_head, get_list_time_off
 from model.manage_user import get_all_list_time_off, del_time_off, get_list_absent, get_list_to_approve, approve_time_off
 from model.rep_all_time_off import do_report
+from model.ldap_function import get_list_birthdate
 
 
 @app.context_processor
@@ -19,32 +20,34 @@ def utility_processor():
 
 @app.route('/')
 @app.route('/home', methods=['POST', 'GET'])
-@login_required
+#@login_required
 def view_root():
     if 'admin' in session and 'username' in session:
         log.debug(f"VIEW_ROOT. USERNAME: {session['username']}, ADMIN: {session['admin']}")
-    return render_template("index.html")
+    list_bd = get_list_birthdate()
+    return render_template("index.html", list_bd=list_bd)
 
 
 @app.route('/time-off', methods=['GET','POST'])
 @login_required
 def view_time_off():
     log.info(f'SET TIME_OFF for {session['username']}')
-    list_heads = get_list_head()
+    # list_heads = get_list_head()
     message = ''
     if request.method == 'POST':
         date_out = request.form['date_out'].replace('T',' ',1)
         date_in = request.form['date_in'].replace('T',' ',1)
         cause = request.form['cause']
-        head_name = request.form['head_name']
+        if 'head_name' in request.form:
+            head_name = request.form['head_name']
+            # if not head_name:
+            #     message = 'Не указан руководитель'
         if not date_out:
             message = 'Не указано время ухода'
         if not date_in:
             message = 'Не указано время прихода'
         if not cause:
             message = 'Не указана причина ухода'
-        if not head_name:
-            message = 'Не указан руководитель'
         
         if not message:
             dep_name=''
@@ -61,12 +64,14 @@ def view_time_off():
         
             log.debug(f"VIEW_TIME-OFF. date_out: {date_out}, date_in: {date_in}, "
                         f"\n\temployee: {employee}\n\tpost: {post}\n\tdep_name: {dep_name}\n\tcause: {cause}")
-            message = add_time_off(date_out, date_in, employee, post, dep_name, cause, head_name)
+            message = add_time_off(date_out, date_in, employee, post, dep_name, cause)
+            return redirect(url_for('view_list_time_off'))            
     if message == 'Success':
         message = 'Регистрация завершена успешно'
     elif message:
         log.error(f'VIEW_TIME_OFF. ERROR: {message}')
-    return render_template("time_off.html", message = message, list_heads=list_heads)
+    # return render_template("time_off.html", message = message, list_heads=list_heads)
+    return render_template("time_off.html", message = message)
 
 
 @app.route('/list-time-off')

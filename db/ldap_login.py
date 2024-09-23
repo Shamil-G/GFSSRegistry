@@ -4,13 +4,6 @@ from app_config import ldap_admins, ldap_server, ldap_user, ldap_password, ldap_
 from util.ip_addr import ip_addr
 from util.logger import log
 
-#from logger import log
-
-#ldap_server = 'ldap://192.168.1.3:3268'
-
-#ldap_user = 'cn=ldp,ou=admins,dc=gfss,dc=kz'
-#ldap_password = 'hu89_fart7'
-
 
 def find_value(src_string:str, key:str):
     elements = src_string.split(',')
@@ -18,6 +11,7 @@ def find_value(src_string:str, key:str):
         key_field, value = element.split('=')
         if key_field==key:
             return value
+
 
 def get_connect(username:str, password:str):
     try:
@@ -40,9 +34,9 @@ def connect_ldap(username:str, password:str):
     log.debug(f'NOW search username: {username}')
     conn_src.search(search_base='dc=gfss,dc=kz', 
                 # search_filter=f'(&(objectclass=person)(cn=*))', 
-                search_filter=f'(&(objectclass=person)(|(cn={username}*)(displayname={username}*)))', 
-                # attributes=['distinguishedName', 'userPrincipalName', 'cn', 'sAMAccountName', 'description', 'memberof', '*'],
-                attributes=['distinguishedName', 'userPrincipalName', 'cn', 'displayName', 'description', 'memberof'],
+                search_filter=f'(&(objectclass=person)(| (cn={username}*) (displayname={username}*) (telephoneNumber={username}*) ))', 
+                attributes=['distinguishedName', 'userPrincipalName', 'cn', 'sAMAccountName', 'description', 'memberof', 'telephoneNumber', '*'],
+                # attributes=['distinguishedName', 'userPrincipalName', 'cn', 'displayName', 'description', 'memberof', 'telephoneNumber'],
                 search_scope=SUBTREE,
                 paged_size=5)
     users = conn_src.entries
@@ -54,7 +48,6 @@ def connect_ldap(username:str, password:str):
         return 0,'',''
 
     log.debug(f'\nUSERS:\n{users}\n-----------------------')
-    #return 0,'',''    
 
     dn=''
     principalName=''
@@ -64,19 +57,15 @@ def connect_ldap(username:str, password:str):
     for user in users:
         dn = str(user['distinguishedName'])
         principalName = str(user['userPrincipalName'])
-        full_name = str(user['displayName'])
-        session['post'] = str(user['description'])
-        if session['post'] in ldap_boss:
-            session['boss']=1
-        elif 'boss' in session:
-            session.pop('boss')
+        if 'displayName' in user:
+            full_name = str(user['displayName'])
+        if 'description' in user:
+            session['post'] = str(user['description'])
+            if session['post'] in ldap_boss:
+                session['boss']=1
+            elif 'boss' in session:
+                session.pop('boss')
             
-        # acc_name = user['sAMAccountName']
-        # members = user['memberOf']
-        # for member in members:
-        #     ou = find_value(member, 'OU')
-        #     if ou:
-        #         break
         ou = find_value(dn, 'OU')
         
         if ou not in ldap_ignore_ou:
@@ -106,7 +95,7 @@ def connect_ldap(username:str, password:str):
     for org in orgs:
         org_name = org['name']
         session['dep_name'] = str(org['description'])
-        log.debug(f'---\n---\nORG_UNIT: {ou}, org_name: {org_name}, dep_name: {session['dep_name']} : {type(session['dep_name'])}\n---\n---')
+        log.debug(f'---\nORG_UNIT: {ou}, org_name: {org_name}, dep_name: {session['dep_name']}\n---')
 
     log.info(f'CONNECT LDAP. SUCCESS. {principalName} : {full_name} : {session['dep_name']}')
     return success, principalName, full_name

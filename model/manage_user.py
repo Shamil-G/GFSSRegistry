@@ -3,8 +3,8 @@ from main_app import log
 from db.connect import get_connection, plsql_func_s
 
 
-def add_time_off(date_out:str, date_in:str, employee:str, post:str, dep_name:str, cause:str, head_name:str):
-    args = [date_out, date_in, employee, post, dep_name, cause, head_name]
+def add_time_off(date_out:str, date_in:str, employee:str, post:str, dep_name:str, cause:str):
+    args = [date_out, date_in, employee, post, dep_name, cause]
     log.debug(f"ADD_TIME_OFF. args: {args}")    
     result = plsql_func_s('Регистрация времени отсутствия', 'reg.add_reg', args)    
     return result
