@@ -3,10 +3,13 @@
     "",
     "\\db",
     "\\model",
+    "\\service",
+    "\\static",
+    "\\static\\styles",
     "\\templates",
     "\\util",
     "\\view"
   ],
-  "SelectedNode": "\\view\\routes.py",
+  "SelectedNode": "\\app_config.py",
   "PreviewInSolutionExplorer": false
 }
