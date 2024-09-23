@@ -166,9 +166,9 @@ nav > a:hover, .header-r > a:hover {
     border-radius: 5px;
 }
 
-div.article {
+/*div.article {*/
     /*position: fixed;*/
-    top: -50%;
+    /*top: -50%;
     left: -50%;
     width: 200%;
     height: 200%;
@@ -181,7 +181,7 @@ img {
     right: 0;
     bottom: 0;
     margin: auto;
-    min-width: 73.5%;
+    min-width: 73.5%;*/
     /*min-height: 73%;*/
-    opacity:0.3
-}
+    /*opacity:0.3
+}*/
