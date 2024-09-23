@@ -35,7 +35,7 @@ def connect_ldap(username:str, password:str):
     conn_src.search(search_base='dc=gfss,dc=kz', 
                 # search_filter=f'(&(objectclass=person)(cn=*))', 
                 search_filter=f'(&(objectclass=person)(| (cn={username}*) (displayname={username}*) (telephoneNumber={username}*) ))', 
-                attributes=['distinguishedName', 'userPrincipalName', 'cn', 'sAMAccountName', 'description', 'memberof', 'telephoneNumber', '*'],
+                attributes=['distinguishedName', 'userPrincipalName', 'cn', 'sAMAccountName', 'description', 'memberof', 'telephoneNumber', 'employeeNumber', '*'],
                 # attributes=['distinguishedName', 'userPrincipalName', 'cn', 'displayName', 'description', 'memberof', 'telephoneNumber'],
                 search_scope=SUBTREE,
                 paged_size=5)
@@ -54,9 +54,12 @@ def connect_ldap(username:str, password:str):
     full_name=''
     ou=''
     conn_usr=''
+    employeeNumber=''
     for user in users:
         dn = str(user['distinguishedName'])
         principalName = str(user['userPrincipalName'])
+        if 'employeeNumber' in user:
+            employeeNumber = user['employeeNumber']
         if 'displayName' in user:
             full_name = str(user['displayName'])
         if 'description' in user:
@@ -79,7 +82,9 @@ def connect_ldap(username:str, password:str):
         return 0,'',''
        
     log.debug(f'\nDN: {dn}\n-----------------------')
-    log.debug(f'SUCCESS CONNECTED as user {principalName}. post: {session['post']}\nfull_name: {full_name},\nOU: {ou}\nNOW will be search ORGANIZATION UNIT')
+    log.debug(f'SUCCESS CONNECTED as user {principalName}. \n\tpost: {session['post']}'
+              f'\n\tfull_name: {full_name}\n\temployeeNumber: {employeeNumber}\n\tOU: {ou}'
+              '\nNOW will be search ORGANIZATION UNIT ...\n-----------------------')
     
     conn_usr.search(search_base=f'OU={ou},dc=gfss,dc=kz', 
                 search_filter=f'(objectClass=OrganizationalUnit)', 

@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="ru">
-<head class="intro-header"">
+<head class="intro-header">
     <link rel="stylesheet" type="text/css" href="/static/{{session['styles']}}/main.css">
         <meta charset="UTF-8">
         <meta name="viewport"
@@ -31,6 +31,7 @@
         <nav class="nav">
             {% block navigate %}{% endblock %}
             {% if g.user.is_active %}
+            <a class="title2" href="/">{{ res_value('NEAR_BIRTH_DATE') }}</a>
             <a class="title2" href="/time-off">{{ res_value('TIME_OFF') }}</a>
             <a class="title2" href="/list-time-off">{{ res_value('LIST_TIME_OFF') }}</a>
             <!--                    <a class="title2" href="/check-doc">{{ res_value('CHECK_DOC') }}</a>-->
@@ -42,6 +43,7 @@
             {% if 'boss' in session %}
             <a class="title2" href="/list-to-approve">{{ res_value('LIST_APPROVE') }}</a>
             {% endif %}
+            <a class="title2" href="/">{{ res_value('ORDER_SUPPORT') }}</a>
             <a class="title2" href="/logout">{{ res_value('LOGOUT') }}</a>
             {% else %}
             <a class="title2" href="/login">{{ res_value('LOGIN') }}</a>

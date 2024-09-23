@@ -20,7 +20,7 @@ def utility_processor():
 
 @app.route('/')
 @app.route('/home', methods=['POST', 'GET'])
-#@login_required
+@login_required
 def view_root():
     if 'admin' in session and 'username' in session:
         log.debug(f"VIEW_ROOT. USERNAME: {session['username']}, ADMIN: {session['admin']}")
