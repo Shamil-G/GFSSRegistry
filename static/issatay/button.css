@@ -24,7 +24,7 @@
 }
 
 .bt_r {
-    color: #ddd;
+    color: black;
     margin: 2px 4px;
     padding: 6px 34px 6px 34px;
     display: inline-block;
@@ -36,11 +36,12 @@
     border-radius: 5px;
     border: 1px solid rgba(180, 180, 180, 0.3);
     text-decoration: none;
-    background-color: #333;
+    /*background-color: #333;*/
+    background-color: #CCF2D3FF;
     transition: color .2s ease-in-out,background-color .2s ease-in-out, border-color .2s ease-in-out, box-shadow .2s ease-in-out;
 }
 .bt_t {
-    color:hotpink;
+    color: teal;
     padding: 4px 24px 4px 24px;
     font-size: 16px;
     display: inline-block;
@@ -52,7 +53,7 @@
     border-radius: 5px;
     border: 1px solid rgba(180, 180, 180, 0.3);
     text-decoration: none;
-    background-color: #333;
+    background-color: #CCF2D3FF;
     transition: color .2s ease-in-out,background-color .2s ease-in-out, border-color .2s ease-in-out, box-shadow .2s ease-in-out;
 }
 .bt {
@@ -81,7 +82,7 @@
 .bt:hover, .bt_s:hover, .bt_r:hover, .bt_t:hover {
     color: #3d3c3c;
     text-decoration: none;
-    background-color: #9dc59c;
+    background-color: #BBF2C3FF;
 }
 
 .bt.danger:hover {

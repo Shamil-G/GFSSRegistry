@@ -76,7 +76,7 @@ def get_list_birthdate():
             if bd_year_int > int(curr_year):
                 birth_date = f'{int(curr_centure)-1}{iin[:2]}.{iin[2:4]}.{iin[4:6]}'
             else:
-                birth_date = f'{int(curr_centure)-1}{iin[:2]}.{iin[2:4]}.{iin[4:6]}'
+                birth_date = f'{int(curr_centure)}{iin[:2]}.{iin[2:4]}.{iin[4:6]}'
             result_user = { 
                             'employee': str(user['displayName']),
                             'post': str(user['description']),
