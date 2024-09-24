@@ -1,6 +1,6 @@
 from gfss_parameter import BASE
 
-styles = 'styles'
+styles = 'issatay'
 
 debug_level = 2
 host = 'localhost'

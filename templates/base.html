@@ -12,7 +12,8 @@
 <body>
     <div class="common-container">
         <header class="header">
-            <div><a>{{ res_value('APP_NAME') }}</a></div>
+            <!--<div><a>{{ res_value('APP_NAME') }}</a></div>-->
+            <div><img src="/static/img/logo-g.ico" style="width: 24px; height: 24px"><a>{{ res_value('APP_NAME') }}</a> </div>
             <div><a></a></div>
             <div class="header-r">
                 {% if session['language'] == 'ru' %}
@@ -60,6 +61,7 @@
 
         <footer class="footer">
             <div class="footer-l">
+                <img src="/static/img/logo-g.ico" style="width: 24px; height: 24px">
                 <small>©2024</small>
             </div>
             <div class="footer-r">
