@@ -3,16 +3,36 @@
   "WorkspaceRootPath": "C:\\Projects\\GFSSRegistry\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Projects\\GFSSRegistry\\static\\styles\\main.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:static\\styles\\main.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Projects\\GFSSRegistry\\util\\i18n.py||{8B382828-6202-11D1-8870-0000F87579D2}|",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:util\\i18n.py||{8B382828-6202-11D1-8870-0000F87579D2}|"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Projects\\GFSSRegistry\\static\\styles\\forms.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:static\\styles\\forms.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Projects\\GFSSRegistry\\app_config.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:app_config.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Projects\\GFSSRegistry\\static\\issatay\\button.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:static\\issatay\\button.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|c:\\Projects\\GFSSRegistry\\model\\manage_user.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:model\\manage_user.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Projects\\GFSSRegistry\\model\\ldap_function.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:model\\ldap_function.py||{8B382828-6202-11D1-8870-0000F87579D2}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Projects\\GFSSRegistry\\templates\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:templates\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Projects\\GFSSRegistry\\templates\\base.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:templates\\base.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Projects\\GFSSRegistry\\static\\styles\\main.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:static\\styles\\main.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Projects\\GFSSRegistry\\view\\routes.py||{8B382828-6202-11D1-8870-0000F87579D2}|",
@@ -23,16 +43,32 @@
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:db\\user_login.py||{8B382828-6202-11D1-8870-0000F87579D2}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Projects\\GFSSRegistry\\templates\\base.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:templates\\base.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Projects\\GFSSRegistry\\i18n.ru||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:i18n.ru||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Projects\\GFSSRegistry\\i18nu.ru||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:i18nu.ru||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Projects\\GFSSRegistry\\db\\ldap_login.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:db\\ldap_login.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Projects\\GFSSRegistry\\db\\connect.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:db\\connect.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Projects\\GFSSRegistry\\templates\\login.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:templates\\login.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Projects\\GFSSRegistry\\static\\styles\\forms.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:static\\styles\\forms.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Projects\\GFSSRegistry\\templates\\time_off.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:templates\\time_off.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|c:\\Projects\\GFSSRegistry\\model\\manage_user.py||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:model\\manage_user.py||{8B382828-6202-11D1-8870-0000F87579D2}"
     }
   ],
   "DocumentGroupContainers": [
@@ -42,50 +78,149 @@
       "DocumentGroups": [
         {
           "DockedWidth": 208,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 2,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "i18n.py",
+              "DocumentMoniker": "C:\\Projects\\GFSSRegistry\\util\\i18n.py",
+              "RelativeDocumentMoniker": "util\\i18n.py",
+              "ToolTip": "C:\\Projects\\GFSSRegistry\\util\\i18n.py",
+              "RelativeToolTip": "util\\i18n.py",
+              "ViewState": "AQIAAA4AAAAAAAAAAAAMwCEAAAAeAAAA",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAEzSURBVDhPpZOxioNAGITHwzJlCpuABxYWKVLkAezFtxAs7a5NKQeBpEtjESGgb\u002BAD2AgWNoKChZZ2SWeKwN66eMGNEkjywYC7vzP4Dyh8578Eb1KpP0Af8JY67xd9\u002BAguoKoqpiiKYNs2uxNFEbquIwxD5HmOw\u002BGA\u002BXzOZh1cgCzLCIIARVFgv99D0zQ4joPT6YQ4juG6LtbrNQu9M\u002Bygg5qIqqqkbVtiWRY5n89kt9txu/9rsgPf95EkCS6XCzzPw/V6RdM0/XTMKGC73cIwDCwWC2Y\u002BHo8wTROr1QqKomCz2WA2m/VvUx5XoD1wnylJEknTlM06yrIkNIjNmHcY0JlpQffzUMvlkml4N\u002Bqgrmvcbrf\u002BxJNlGdMjow5ehQugK07qGVyAIAiTesbHK3z0OwPAH6D4xld\u002BSxLJAAAAAElFTkSuQmCC",
+              "WhenOpened": "2024-09-24T13:03:16.779Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "forms.css",
-              "DocumentMoniker": "C:\\Projects\\GFSSRegistry\\static\\styles\\forms.css",
-              "RelativeDocumentMoniker": "static\\styles\\forms.css",
-              "ToolTip": "C:\\Projects\\GFSSRegistry\\static\\styles\\forms.css",
-              "RelativeToolTip": "static\\styles\\forms.css",
-              "ViewState": "AQIAACQAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2024-09-23T11:34:15.141Z",
+              "Title": "app_config.py",
+              "DocumentMoniker": "C:\\Projects\\GFSSRegistry\\app_config.py",
+              "RelativeDocumentMoniker": "app_config.py",
+              "ToolTip": "C:\\Projects\\GFSSRegistry\\app_config.py",
+              "RelativeToolTip": "app_config.py",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAASAAAA",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAEzSURBVDhPpZOxioNAGITHwzJlCpuABxYWKVLkAezFtxAs7a5NKQeBpEtjESGgb\u002BAD2AgWNoKChZZ2SWeKwN66eMGNEkjywYC7vzP4Dyh8578Eb1KpP0Af8JY67xd9\u002BAguoKoqpiiKYNs2uxNFEbquIwxD5HmOw\u002BGA\u002BXzOZh1cgCzLCIIARVFgv99D0zQ4joPT6YQ4juG6LtbrNQu9M\u002Bygg5qIqqqkbVtiWRY5n89kt9txu/9rsgPf95EkCS6XCzzPw/V6RdM0/XTMKGC73cIwDCwWC2Y\u002BHo8wTROr1QqKomCz2WA2m/VvUx5XoD1wnylJEknTlM06yrIkNIjNmHcY0JlpQffzUMvlkml4N\u002Bqgrmvcbrf\u002BxJNlGdMjow5ehQugK07qGVyAIAiTesbHK3z0OwPAH6D4xld\u002BSxLJAAAAAElFTkSuQmCC",
+              "WhenOpened": "2024-09-24T11:32:16.651Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "index.html",
-              "DocumentMoniker": "C:\\Projects\\GFSSRegistry\\templates\\index.html",
-              "RelativeDocumentMoniker": "templates\\index.html",
-              "ToolTip": "C:\\Projects\\GFSSRegistry\\templates\\index.html",
-              "RelativeToolTip": "templates\\index.html",
-              "ViewState": "AQIAAAkAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
-              "WhenOpened": "2024-09-23T11:34:06.92Z",
+              "Title": "button.css",
+              "DocumentMoniker": "C:\\Projects\\GFSSRegistry\\static\\issatay\\button.css",
+              "RelativeDocumentMoniker": "static\\issatay\\button.css",
+              "ToolTip": "C:\\Projects\\GFSSRegistry\\static\\issatay\\button.css",
+              "RelativeToolTip": "static\\issatay\\button.css",
+              "ViewState": "AQIAAEsAAAAAAAAAAAAAAD8AAAAXAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2024-09-24T11:13:18.224Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
+              "Title": "base.html",
+              "DocumentMoniker": "C:\\Projects\\GFSSRegistry\\templates\\base.html",
+              "RelativeDocumentMoniker": "templates\\base.html",
+              "ToolTip": "C:\\Projects\\GFSSRegistry\\templates\\base.html",
+              "RelativeToolTip": "templates\\base.html",
+              "ViewState": "AQIAAB4AAAAAAAAAAAAAADoAAAAcAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2024-09-20T04:10:19.829Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "login.html",
+              "DocumentMoniker": "C:\\Projects\\GFSSRegistry\\templates\\login.html",
+              "RelativeDocumentMoniker": "templates\\login.html",
+              "ToolTip": "C:\\Projects\\GFSSRegistry\\templates\\login.html",
+              "RelativeToolTip": "templates\\login.html",
+              "ViewState": "AQIAAA8AAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2024-09-23T13:14:45.525Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "routes.py",
+              "DocumentMoniker": "C:\\Projects\\GFSSRegistry\\view\\routes.py",
+              "RelativeDocumentMoniker": "view\\routes.py",
+              "ToolTip": "C:\\Projects\\GFSSRegistry\\view\\routes.py",
+              "RelativeToolTip": "view\\routes.py",
+              "ViewState": "AQIAAB4AAAAAAAAAAAAAABcAAAANAAAA",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAEzSURBVDhPpZOxioNAGITHwzJlCpuABxYWKVLkAezFtxAs7a5NKQeBpEtjESGgb\u002BAD2AgWNoKChZZ2SWeKwN66eMGNEkjywYC7vzP4Dyh8578Eb1KpP0Af8JY67xd9\u002BAguoKoqpiiKYNs2uxNFEbquIwxD5HmOw\u002BGA\u002BXzOZh1cgCzLCIIARVFgv99D0zQ4joPT6YQ4juG6LtbrNQu9M\u002Bygg5qIqqqkbVtiWRY5n89kt9txu/9rsgPf95EkCS6XCzzPw/V6RdM0/XTMKGC73cIwDCwWC2Y\u002BHo8wTROr1QqKomCz2WA2m/VvUx5XoD1wnylJEknTlM06yrIkNIjNmHcY0JlpQffzUMvlkml4N\u002Bqgrmvcbrf\u002BxJNlGdMjow5ehQugK07qGVyAIAiTesbHK3z0OwPAH6D4xld\u002BSxLJAAAAAElFTkSuQmCC",
+              "WhenOpened": "2024-09-23T07:34:43.611Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "i18n.ru",
+              "DocumentMoniker": "C:\\Projects\\GFSSRegistry\\i18n.ru",
+              "RelativeDocumentMoniker": "i18n.ru",
+              "ToolTip": "C:\\Projects\\GFSSRegistry\\i18n.ru",
+              "RelativeToolTip": "i18n.ru",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAnAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-09-23T13:25:35.655Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
               "Title": "user_login.py",
               "DocumentMoniker": "C:\\Projects\\GFSSRegistry\\db\\user_login.py",
               "RelativeDocumentMoniker": "db\\user_login.py",
               "ToolTip": "C:\\Projects\\GFSSRegistry\\db\\user_login.py",
               "RelativeToolTip": "db\\user_login.py",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAAAAAA",
               "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAEzSURBVDhPpZOxioNAGITHwzJlCpuABxYWKVLkAezFtxAs7a5NKQeBpEtjESGgb\u002BAD2AgWNoKChZZ2SWeKwN66eMGNEkjywYC7vzP4Dyh8578Eb1KpP0Af8JY67xd9\u002BAguoKoqpiiKYNs2uxNFEbquIwxD5HmOw\u002BGA\u002BXzOZh1cgCzLCIIARVFgv99D0zQ4joPT6YQ4juG6LtbrNQu9M\u002Bygg5qIqqqkbVtiWRY5n89kt9txu/9rsgPf95EkCS6XCzzPw/V6RdM0/XTMKGC73cIwDCwWC2Y\u002BHo8wTROr1QqKomCz2WA2m/VvUx5XoD1wnylJEknTlM06yrIkNIjNmHcY0JlpQffzUMvlkml4N\u002Bqgrmvcbrf\u002BxJNlGdMjow5ehQugK07qGVyAIAiTesbHK3z0OwPAH6D4xld\u002BSxLJAAAAAElFTkSuQmCC",
               "WhenOpened": "2024-09-23T11:31:23.797Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 11,
+              "Title": "i18nu.ru",
+              "DocumentMoniker": "C:\\Projects\\GFSSRegistry\\i18nu.ru",
+              "RelativeDocumentMoniker": "i18nu.ru",
+              "ToolTip": "C:\\Projects\\GFSSRegistry\\i18nu.ru",
+              "RelativeToolTip": "i18nu.ru",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAnAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-09-23T13:24:41.701Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "index.html",
+              "DocumentMoniker": "C:\\Projects\\GFSSRegistry\\templates\\index.html",
+              "RelativeDocumentMoniker": "templates\\index.html",
+              "ToolTip": "C:\\Projects\\GFSSRegistry\\templates\\index.html",
+              "RelativeToolTip": "templates\\index.html",
+              "ViewState": "AQIAAA8AAAAAAAAAAAAAABoAAAADAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2024-09-23T11:34:06.92Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
               "Title": "time_off.html",
               "DocumentMoniker": "C:\\Projects\\GFSSRegistry\\templates\\time_off.html",
               "RelativeDocumentMoniker": "templates\\time_off.html",
@@ -99,54 +234,90 @@
             {
               "$type": "Document",
               "DocumentIndex": 7,
-              "Title": "manage_user.py",
-              "DocumentMoniker": "c:\\Projects\\GFSSRegistry\\model\\manage_user.py",
-              "RelativeDocumentMoniker": "model\\manage_user.py",
-              "ToolTip": "c:\\Projects\\GFSSRegistry\\model\\manage_user.py",
-              "RelativeToolTip": "model\\manage_user.py",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAA+AAAA",
-              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAEzSURBVDhPpZOxioNAGITHwzJlCpuABxYWKVLkAezFtxAs7a5NKQeBpEtjESGgb\u002BAD2AgWNoKChZZ2SWeKwN66eMGNEkjywYC7vzP4Dyh8578Eb1KpP0Af8JY67xd9\u002BAguoKoqpiiKYNs2uxNFEbquIwxD5HmOw\u002BGA\u002BXzOZh1cgCzLCIIARVFgv99D0zQ4joPT6YQ4juG6LtbrNQu9M\u002Bygg5qIqqqkbVtiWRY5n89kt9txu/9rsgPf95EkCS6XCzzPw/V6RdM0/XTMKGC73cIwDCwWC2Y\u002BHo8wTROr1QqKomCz2WA2m/VvUx5XoD1wnylJEknTlM06yrIkNIjNmHcY0JlpQffzUMvlkml4N\u002Bqgrmvcbrf\u002BxJNlGdMjow5ehQugK07qGVyAIAiTesbHK3z0OwPAH6D4xld\u002BSxLJAAAAAElFTkSuQmCC",
-              "WhenOpened": "2024-09-23T10:48:51.032Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
               "Title": "main.css",
               "DocumentMoniker": "C:\\Projects\\GFSSRegistry\\static\\styles\\main.css",
               "RelativeDocumentMoniker": "static\\styles\\main.css",
               "ToolTip": "C:\\Projects\\GFSSRegistry\\static\\styles\\main.css",
               "RelativeToolTip": "static\\styles\\main.css",
-              "ViewState": "AQIAAJ8AAAAAAAAAAAAAAKkAAAAYAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAKkAAAAYAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
               "WhenOpened": "2024-09-23T09:31:57.817Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "base.html",
-              "DocumentMoniker": "C:\\Projects\\GFSSRegistry\\templates\\base.html",
-              "RelativeDocumentMoniker": "templates\\base.html",
-              "ToolTip": "C:\\Projects\\GFSSRegistry\\templates\\base.html",
-              "RelativeToolTip": "templates\\base.html",
-              "ViewState": "AQIAAB4AAAAAAAAAAAAAADYAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
-              "WhenOpened": "2024-09-20T04:10:19.829Z",
+              "DocumentIndex": 3,
+              "Title": "manage_user.py",
+              "DocumentMoniker": "C:\\Projects\\GFSSRegistry\\model\\manage_user.py",
+              "RelativeDocumentMoniker": "model\\manage_user.py",
+              "ToolTip": "C:\\Projects\\GFSSRegistry\\model\\manage_user.py",
+              "RelativeToolTip": "model\\manage_user.py",
+              "ViewState": "AQIAABgAAAAAAAAAAAAAAHgAAAA6AAAA",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAEzSURBVDhPpZOxioNAGITHwzJlCpuABxYWKVLkAezFtxAs7a5NKQeBpEtjESGgb\u002BAD2AgWNoKChZZ2SWeKwN66eMGNEkjywYC7vzP4Dyh8578Eb1KpP0Af8JY67xd9\u002BAguoKoqpiiKYNs2uxNFEbquIwxD5HmOw\u002BGA\u002BXzOZh1cgCzLCIIARVFgv99D0zQ4joPT6YQ4juG6LtbrNQu9M\u002Bygg5qIqqqkbVtiWRY5n89kt9txu/9rsgPf95EkCS6XCzzPw/V6RdM0/XTMKGC73cIwDCwWC2Y\u002BHo8wTROr1QqKomCz2WA2m/VvUx5XoD1wnylJEknTlM06yrIkNIjNmHcY0JlpQffzUMvlkml4N\u002Bqgrmvcbrf\u002BxJNlGdMjow5ehQugK07qGVyAIAiTesbHK3z0OwPAH6D4xld\u002BSxLJAAAAAElFTkSuQmCC",
+              "WhenOpened": "2024-09-23T10:48:51.032Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "routes.py",
-              "DocumentMoniker": "C:\\Projects\\GFSSRegistry\\view\\routes.py",
-              "RelativeDocumentMoniker": "view\\routes.py",
-              "ToolTip": "C:\\Projects\\GFSSRegistry\\view\\routes.py",
-              "RelativeToolTip": "view\\routes.py",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAiwBYAAAAQAAAA",
+              "DocumentIndex": 12,
+              "Title": "ldap_login.py",
+              "DocumentMoniker": "C:\\Projects\\GFSSRegistry\\db\\ldap_login.py",
+              "RelativeDocumentMoniker": "db\\ldap_login.py",
+              "ToolTip": "C:\\Projects\\GFSSRegistry\\db\\ldap_login.py",
+              "RelativeToolTip": "db\\ldap_login.py",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAAAAAA",
               "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAEzSURBVDhPpZOxioNAGITHwzJlCpuABxYWKVLkAezFtxAs7a5NKQeBpEtjESGgb\u002BAD2AgWNoKChZZ2SWeKwN66eMGNEkjywYC7vzP4Dyh8578Eb1KpP0Af8JY67xd9\u002BAguoKoqpiiKYNs2uxNFEbquIwxD5HmOw\u002BGA\u002BXzOZh1cgCzLCIIARVFgv99D0zQ4joPT6YQ4juG6LtbrNQu9M\u002Bygg5qIqqqkbVtiWRY5n89kt9txu/9rsgPf95EkCS6XCzzPw/V6RdM0/XTMKGC73cIwDCwWC2Y\u002BHo8wTROr1QqKomCz2WA2m/VvUx5XoD1wnylJEknTlM06yrIkNIjNmHcY0JlpQffzUMvlkml4N\u002Bqgrmvcbrf\u002BxJNlGdMjow5ehQugK07qGVyAIAiTesbHK3z0OwPAH6D4xld\u002BSxLJAAAAAElFTkSuQmCC",
-              "WhenOpened": "2024-09-23T07:34:43.611Z",
+              "WhenOpened": "2024-09-23T12:31:41.369Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ldap_function.py",
+              "DocumentMoniker": "C:\\Projects\\GFSSRegistry\\model\\ldap_function.py",
+              "RelativeDocumentMoniker": "model\\ldap_function.py",
+              "ToolTip": "C:\\Projects\\GFSSRegistry\\model\\ldap_function.py",
+              "RelativeToolTip": "model\\ldap_function.py",
+              "ViewState": "AQIAADYAAAAAAAAAAAAAAE4AAAAxAAAA",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAEzSURBVDhPpZOxioNAGITHwzJlCpuABxYWKVLkAezFtxAs7a5NKQeBpEtjESGgb\u002BAD2AgWNoKChZZ2SWeKwN66eMGNEkjywYC7vzP4Dyh8578Eb1KpP0Af8JY67xd9\u002BAguoKoqpiiKYNs2uxNFEbquIwxD5HmOw\u002BGA\u002BXzOZh1cgCzLCIIARVFgv99D0zQ4joPT6YQ4juG6LtbrNQu9M\u002Bygg5qIqqqkbVtiWRY5n89kt9txu/9rsgPf95EkCS6XCzzPw/V6RdM0/XTMKGC73cIwDCwWC2Y\u002BHo8wTROr1QqKomCz2WA2m/VvUx5XoD1wnylJEknTlM06yrIkNIjNmHcY0JlpQffzUMvlkml4N\u002Bqgrmvcbrf\u002BxJNlGdMjow5ehQugK07qGVyAIAiTesbHK3z0OwPAH6D4xld\u002BSxLJAAAAAElFTkSuQmCC",
+              "WhenOpened": "2024-09-24T03:59:06.933Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "connect.py",
+              "DocumentMoniker": "C:\\Projects\\GFSSRegistry\\db\\connect.py",
+              "RelativeDocumentMoniker": "db\\connect.py",
+              "ToolTip": "C:\\Projects\\GFSSRegistry\\db\\connect.py",
+              "RelativeToolTip": "db\\connect.py",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAEzSURBVDhPpZOxioNAGITHwzJlCpuABxYWKVLkAezFtxAs7a5NKQeBpEtjESGgb\u002BAD2AgWNoKChZZ2SWeKwN66eMGNEkjywYC7vzP4Dyh8578Eb1KpP0Af8JY67xd9\u002BAguoKoqpiiKYNs2uxNFEbquIwxD5HmOw\u002BGA\u002BXzOZh1cgCzLCIIARVFgv99D0zQ4joPT6YQ4juG6LtbrNQu9M\u002Bygg5qIqqqkbVtiWRY5n89kt9txu/9rsgPf95EkCS6XCzzPw/V6RdM0/XTMKGC73cIwDCwWC2Y\u002BHo8wTROr1QqKomCz2WA2m/VvUx5XoD1wnylJEknTlM06yrIkNIjNmHcY0JlpQffzUMvlkml4N\u002Bqgrmvcbrf\u002BxJNlGdMjow5ehQugK07qGVyAIAiTesbHK3z0OwPAH6D4xld\u002BSxLJAAAAAElFTkSuQmCC",
+              "WhenOpened": "2024-09-23T13:16:01.539Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "forms.css",
+              "DocumentMoniker": "C:\\Projects\\GFSSRegistry\\static\\styles\\forms.css",
+              "RelativeDocumentMoniker": "static\\styles\\forms.css",
+              "ToolTip": "C:\\Projects\\GFSSRegistry\\static\\styles\\forms.css",
+              "RelativeToolTip": "static\\styles\\forms.css",
+              "ViewState": "AQIAACQAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2024-09-23T11:34:15.141Z",
+              "EditorCaption": ""
+            }
+          ]
+        },
+        {
+          "DockedWidth": 192,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
             }
           ]
         }
