@@ -1,5 +1,5 @@
 from gfss_parameter import platform
-from app_config import REPORT_PATH, debug_level
+from app_config import REPORT_PATH, debug_level, styles
 from main_app import app, log
 from flask import  session, flash, request, render_template, redirect, url_for, send_from_directory, g
 from flask_login import  login_required
@@ -10,19 +10,23 @@ from model.manage_user import add_time_off, add_head, del_head, get_list_head, g
 from model.manage_user import get_all_list_time_off, del_time_off, get_list_absent, get_list_to_approve, approve_time_off
 from model.rep_all_time_off import do_report
 from model.ldap_function import get_list_birthdate
+from os import environ
 
 
 @app.context_processor
 def utility_processor():
-    log.info(f"CP. {get_i18n_value('APP_NAME')}")
+    if 'styles' not in session:
+        if "STYLE" in environ:
+            session['styles']=environ["STYLES"]
+        else:
+            session['styles']=styles
+
+    log.debug(f"CP. {get_i18n_value('APP_NAME')}")
     return dict(res_value=get_i18n_value)
 
 
-@app.route('/', methods=['POST', 'GET'])
-#@login_required
+@app.route('/')
 def view_root():
-    if 'admin' in session and 'username' in session:
-        log.debug(f"VIEW_ROOT. USERNAME: {session['username']}, ADMIN: {session['admin']}")
     list_bd = get_list_birthdate()
     return render_template("index.html", list_bd=list_bd)
 
@@ -37,8 +41,8 @@ def view_time_off():
         date_out = request.form['date_out'].replace('T',' ',1)
         date_in = request.form['date_in'].replace('T',' ',1)
         cause = request.form['cause']
-        if 'head_name' in request.form:
-            head_name = request.form['head_name']
+        # if 'head_name' in request.form:
+        #     head_name = request.form['head_name']
             # if not head_name:
             #     message = 'Не указан руководитель'
         if not date_out:

@@ -8,7 +8,6 @@ from main_app import app, log
 import app_config as cfg
 from gfss_parameter import public_name
 from util.ip_addr import ip_addr
-import oracledb
 from os import environ
 
 
