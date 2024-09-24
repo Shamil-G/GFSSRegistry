@@ -1,5 +1,14 @@
 {% extends 'base.html' %}
 
+{% block set_style %}
+<style>
+    article {
+        background-image: url("/static/img/background-2.png");
+        width: 100%;
+    }
+</style>
+{% endblock %}
+
 {% block title %}
 {{ res_value('NEAR_BIRTH_DATE') }}
 {% endblock %}
