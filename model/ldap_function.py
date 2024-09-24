@@ -36,7 +36,7 @@ def get_list_birthdate():
     curr_month = str(date.today())[5:7]
     curr_month_int = int(curr_month)
     curr_day = int(str(date.today())[8:10])
-    if curr_day<23:
+    if curr_day<25:
         log.debug(f'GET_LIST_BIRTHDATE. curr_centure: {curr_centure}, curr_year: {curr_year}, curr_month: {curr_month}, curr_day: {curr_day}')
         src_filter = f'(&(objectclass=person)(| (telephoneNumber=*{curr_month}*) ))' 
     else:

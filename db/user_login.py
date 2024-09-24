@@ -52,7 +52,8 @@ def logout():
         session.pop('info')
     if '_flashes' in session:
         session['_flashes'].clear()
-    return redirect(url_for('login_page'))
+    return redirect(url_for('view_root'))
+    # return redirect(url_for('login_page'))
 
 
 @app.route('/login', methods=['GET', 'POST'])
