@@ -4,8 +4,9 @@
 @import url('button.css');
 /*@import url('elements.css');*/
 
-:root{
+:root {
     color: black;
+    font-size: 16px;
 }
 html, body {
     width: 99%;
@@ -102,14 +103,13 @@ article {
   background-color: #deefdf;
 }
 .article_title {
-  padding: 2px 16px;
-
-  display: flex; /*Для выравнивания заголовка по центру*/
-  align-items: center; /*Для выравнивания заголовка по центру*/
-  grid-area: article_title;  /* задаем имя элемента */
-  font-size: 20px;
-  color: black;
-  background-color: #cdf3d4;
+    padding: 2px 16px;
+    display: flex; /*Для выравнивания заголовка по центру*/
+    align-items: center; /*Для выравнивания заголовка по центру*/
+    grid-area: article_title; /* задаем имя элемента */
+    font-size: 20px;
+    color: black;
+    background-color: #cfefd5;
 }
 
 .article_title > a {
