@@ -13,6 +13,13 @@ def find_value(src_string:str, key:str):
         if key_field==key:
             return value
 
+def sortElementBD(element:dict):
+    sortElement=''
+    if 'birth_date' in element:
+        sortElement = element['birth_date'][5:]
+    log.debug(f'element: {element}, sortelement: {sortElement}')
+    return sortElement
+
 def get_connect(username:str, password:str):
     try:
         server = Server(ldap_server)
@@ -40,22 +47,19 @@ def get_list_birthdate():
         log.debug(f'GET_LIST_BIRTHDATE. curr_centure: {curr_centure}, curr_year: {curr_year}, curr_month: {curr_month}, curr_day: {curr_day}')
         src_filter = f'(&(objectclass=person)(| (telephoneNumber=*{curr_month}*) ))' 
     else:
-        log.debug(f'GET_LIST_BIRTHDATE. curr_centure: {curr_centure}, curr_year: {curr_year}, curr_month: {curr_month}, curr_day: {curr_day}')
         next_month_int = curr_month_int+1
         if next_month_int>12:
             next_month_int=1
         next_month = str(next_month_int).zfill(2)
+        log.debug(f'GET_LIST_BIRTHDATE. curr_centure: {curr_centure}, curr_year: {curr_year}, curr_month: {curr_month}, next_month: {next_month}, curr_day: {curr_day}')
         src_filter = f'(&(objectclass=person)(| (telephoneNumber=*{curr_month}*) (telephoneNumber=*{next_month}*) ))' 
-    
-    # src_filter = f'(&(objectclass=person)(| (telephoneNumber=*{curr_month}*) ))' 
-        
-    conn_src.search(search_base='dc=gfss,dc=kz', 
+        conn_src.search(search_base='dc=gfss,dc=kz', 
                 # search_filter=f'(&(objectclass=person)(cn=*))', 
                 search_filter=src_filter, 
                 attributes=['distinguishedName', 'userPrincipalName', 'cn', 'sAMAccountName', 'description', 'memberof', 'telephoneNumber', '*'],
                 # attributes=['distinguishedName', 'userPrincipalName', 'cn', 'displayName', 'description', 'memberof', 'telephoneNumber'],
                 search_scope=SUBTREE,
-                paged_size=5)
+                paged_size=250)
     users = conn_src.entries
     # Connection closed
     
@@ -63,12 +67,12 @@ def get_list_birthdate():
         log.debug(f'CONNECT_LDAP. FOUND USERS: {len(users)}\n{users}\n--------------------------------------------')
         return 0,'',''
 
-    log.debug(f'\nUSERS:\n{users}\n-----------------------')
-
     dn=''
     result_list=[]
     for user in users:
         iin = str(user['telephoneNumber'])
+        log.debug(f'-------------\nIIN:\n{iin}\n-------------')
+        
         if iin[2:4] == curr_month or iin[2:4] == next_month:
             dn = str(user['distinguishedName'])
             ou = find_value(dn, 'OU')
@@ -78,9 +82,9 @@ def get_list_birthdate():
             else:
                 birth_date = f'{int(curr_centure)}{iin[:2]}.{iin[2:4]}.{iin[4:6]}'
             result_user = { 
+                            'birth_date': birth_date,
                             'employee': str(user['displayName']),
-                            'post': str(user['description']),
-                            'birth_date': birth_date
+                            'post': str(user['description'])
                             }
             log.debug(f'\nDN: {dn}\n-----------------------')
     
@@ -97,6 +101,7 @@ def get_list_birthdate():
                 log.debug(f'---\nORG_UNIT: {ou}, dep_name: {str(org['description'])}\n---')
             result_user['dep_name'] = str(orgs[0]['description'])
             result_list.append(result_user)
+    result_list.sort(key=sortElementBD)
 
     conn_src.unbind()
 
