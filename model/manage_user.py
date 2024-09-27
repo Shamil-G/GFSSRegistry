@@ -14,7 +14,7 @@ def get_list_time_off(employee: str):
     list_time_off = []
     
     stmt = """
-        select event_date, time_out, time_in, employee, post, dep_name, cause, head, id 
+        select event_date, time_out, time_in, employee, post, dep_name, cause, head, status, time_fact, id 
         from register r
         where r.employee = :employee
         order by event_date desc
@@ -25,9 +25,10 @@ def get_list_time_off(employee: str):
                 cursor.execute(stmt, employee=employee)
                 rows = cursor.fetchall()
                 for row in rows:
-                    res = { 'event_date': row[0], 'time_out': row[1], 'time_in': row[2],
+                    res = {'event_date': row[0], 'time_out': row[1], 'time_in': row[2],
                            'employee': row[3], 'post': row[4], 'dep_name': row[5],
-                           'cause': row[6], 'head': row[7], 'id': row[8]
+                           'cause': row[6], 'head': row[7], 
+                           'status': row[8], 'time_fact': row[9], 'id': row[10]
                            }
                     list_time_off.append(res)
             finally:
@@ -121,6 +122,42 @@ def del_time_off(id_reg: int, employee: str):
                 log.info(f'DEL TIME_OFF. username: {employee}, id_reg: {id_reg}')
 
 
+def fact_time_off(id_reg: int, employee: str):
+    stmt = """
+        begin reg.fact_time_off(:id_reg); end;
+    """
+    with get_connection() as connection:
+        with connection.cursor() as cursor:
+            try:
+                cursor.execute(stmt, id_reg=id_reg)
+            finally:
+                log.info(f'FACT TIME_OFF. username: {employee}, id_reg: {id_reg}')
+
+
+def approve_time_off(id_reg: int, boss: str):
+    stmt = """
+        begin reg.approve_time_off(:id_reg, :boss); end;
+    """
+    with get_connection() as connection:
+        with connection.cursor() as cursor:
+            try:
+                cursor.execute(stmt, id_reg=id_reg, boss=boss)
+            finally:
+                log.info(f'DEL TIME_OFF. boss: {boss}, id_reg: {id_reg}')
+
+
+def refuse_time_off(id_reg: int, boss: str):
+    stmt = """
+        begin reg.refuse_time_off(:id_reg, :boss); end;
+    """
+    with get_connection() as connection:
+        with connection.cursor() as cursor:
+            try:
+                cursor.execute(stmt, id_reg=id_reg, boss=boss)
+            finally:
+                log.info(f'REFUSE TIME_OFF. boss: {boss}, id_reg: {id_reg}')
+
+
 def get_list_head():
     list_head = []
     stmt = """
@@ -138,18 +175,6 @@ def get_list_head():
                 if debug_level > 2:
                     log.info(f'LIST HEAD. {list_head}')
     return list_head
-
-
-def approve_time_off(id_reg: int, boss: str):
-    stmt = """
-        begin reg.approve_time_off(:id_reg, :boss); end;
-    """
-    with get_connection() as connection:
-        with connection.cursor() as cursor:
-            try:
-                cursor.execute(stmt, id_reg=id_reg, boss=boss)
-            finally:
-                log.info(f'DEL TIME_OFF. boss: {boss}, id_reg: {id_reg}')
 
 
 def add_head(head_name: str):
@@ -174,3 +199,42 @@ def del_head(head_name: str):
                 cursor.execute(stmt, head_name=head_name)
             finally:
                 log.info(f'DEL HEAD. {head_name}')
+
+
+def add_message(employee: str, dep_name: str,  mess: str):
+    stmt = """
+        begin reg.new_message(:employee, :dep_name, :message); end;
+    """
+    with get_connection() as connection:
+        with connection.cursor() as cursor:
+            try:
+                cursor.execute(stmt, employee=employee, dep_name=dep_name, message=mess)
+            finally:
+                log.info(f'ADD MESSAGE. employee: {employee}, dep_name: {dep_name}, message: {mess}')
+
+
+def get_all_message():
+    list_message = []
+    stmt = """
+        select id_mess, mess_date, author, dep_name, message 
+        from messages 
+        where mess_date > sysdate-10
+        order by mess_date desc
+    """
+    with get_connection() as connection:
+        with connection.cursor() as cursor:
+            try:
+                cursor.execute(stmt)
+                rows = cursor.fetchall()
+                for row in rows:
+                    split_name = row[2].split(' ')
+                    short_name = f'{split_name[1][0]}. {split_name[0]}'
+                    short_date = str(row[1])[0:16]
+                    
+                    res = { 'id_mess': row[0], 'mess_date': short_date, 'author': short_name, 'dep_name': row[3], 'message': row[4]}
+                    list_message.append(res)
+            finally:
+                if debug_level > 2:
+                    log.info(f'LIST MESSAGE. {list_message}')
+    return list_message
+

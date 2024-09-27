@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ res_value('NEW_MESSAGE') }}
+{% endblock %}
+
+{% block main_title %}
+{{ res_value('NEW_MESSAGE') }}
+{% endblock %}
+
+{% block navigate %}
+{% endblock %}
+
+{% block body %}
+<form class="form_r" style="padding-left: 2%" method="POST">
+    <h3 style="color: #555;">{{ res_value('ADD_MESSAGE') }}</h3>
+    <textarea name="new-message" rows="10" cols="80"></textarea>
+    <br />
+    <div><button class="bt_r" type="submit">{{ res_value('SAVE') }}</button></div>
+</form>
+{% endblock %}

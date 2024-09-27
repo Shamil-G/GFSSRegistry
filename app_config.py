@@ -18,5 +18,5 @@ ldap_server = 'ldap://192.168.1.3:3268'
 ldap_user = 'cn=ldp,ou=admins,dc=gfss,dc=kz'
 ldap_password = 'hu89_fart7'
 ldap_ignore_ou = ['UVOLEN',]
-#ldap_boss = ['Директор', 'Руководитель','Главный разработчик']
-ldap_boss = ['Директор', 'Руководитель']
+ldap_boss = ['Директор', 'Руководитель','Главный разработчик']
+#ldap_boss = ['Директор', 'Руководитель']

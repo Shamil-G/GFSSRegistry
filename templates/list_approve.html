@@ -26,7 +26,7 @@
     <thead>
         <tr>
             <th style="font-size:16px;"><a>{{ res_value('REG_DATE') }}</a></th>
-            <th style="font-size:16px;width: 8%"><a>{{ res_value('TIME_OUT') }}</a></th>
+            <th style="font-size:16px;"><a>{{ res_value('TIME_OUT') }}</a></th>
             <th style="font-size:16px;"><a>{{ res_value('TIME_IN') }}</a></th>
             <th style="font-size:16px;"><a>{{ res_value('EMPLOYEE') }}</a></th>
             <th style="font-size:16px;"><a>{{ res_value('POST') }}</a></th>
@@ -46,10 +46,21 @@
             <td style="text-align: left; margin-left: 4px; font-size: 16px;"><a>{{ el.post }}</a></td>
             <td style="text-align: left; margin-left: 4px; font-size: 16px;"><a>{{ el.dep_name }}</a></td>
             <td style="text-align: left; margin-left: 4px; font-size: 16px;"><a>{{ el.cause }}</a></td>
-            {% if el.head %}
-                <td style="text-align: left; margin-left: 4px; font-size: 16px;"><a>{{ el.head }}</a></td>
+            {% if not el.status %}
+            <td style="text-align: center;">
+                <div>
+                    <div>
+                        <img src="/static/img/cancel.png" style="width: 24px; height: 24px">
+                        <a class="bt_t" src="/static/img/cancel.png" href="/refuse-time-off/{{ el.id }}">{{ res_value('REFUSE_TIME_OFF') }}</a>
+                    </div>
+                    <div>
+                        <img src="/static/img/ok.png" style="width: 24px; height: 24px">
+                        <a class="bt_t" href="/approve-time-off/{{ el.id }}">{{ res_value('APPROVE_TIME_OFF') }}</a>
+                    </div>
+                </div>
+            </td>
             {% else %}
-                <td style="text-align: center;"><a class="bt_t" href="/approve-time-off/{{ el.id }}">{{ res_value('APPROVE_TIME_OFF') }}</a></td>
+                <td style="text-align: left; margin-left: 4px; font-size: 16px;"><a>{{ el.head }}</a></td>
             {% endif %}
         </tr>
         {% endfor %}

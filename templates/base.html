@@ -33,32 +33,56 @@
         <nav class="nav">
             {% block navigate %}{% endblock %}
             {% if g.user.is_active %}
-                <a class="title2" href="/time-off">{{ res_value('TIME_OFF') }}</a>
-                <a class="title2" href="/list-time-off">{{ res_value('LIST_TIME_OFF') }}</a>
+            <a class="title2" href="/time-off">{{ res_value('TIME_OFF') }}</a>
+            <a class="title2" href="/list-time-off">{{ res_value('LIST_TIME_OFF') }}</a>
             <!--                    <a class="title2" href="/check-doc">{{ res_value('CHECK_DOC') }}</a>-->
-                {% if 'admin' in session and session['admin']==1 %}
-                    <a class="title2" href="/all-list-time-off">{{ res_value('ALL_LIST_TIME_OFF') }}</a>
-                    <a class="title2" href="/list-absent">{{ res_value('LIST_ABSENT') }}</a>
-                <!--<a class="title2" href="/heads">{{ res_value('HEADS') }}</a>-->
-                {% endif %}
-                {% if 'boss' in session %}
-                    <a class="title2" href="/list-to-approve">{{ res_value('LIST_APPROVE') }}</a>
-                {% endif %}
-                <a class="title2" href="/">{{ res_value('ORDER_SUPPORT') }}</a>
-                <a class="title2" href="/">{{ res_value('NEAR_BIRTH_DATE') }}</a>
-                <a class="title2" href="/logout">{{ res_value('LOGOUT') }}</a>
+            {% if 'admin' in session and session['admin']==1 %}
+            <a class="title2" href="/all-list-time-off">{{ res_value('ALL_LIST_TIME_OFF') }}</a>
+            <a class="title2" href="/list-absent">{{ res_value('LIST_ABSENT') }}</a>
+            <!--<a class="title2" href="/heads">{{ res_value('HEADS') }}</a>-->
+            {% endif %}
+            {% if 'boss' in session %}
+            <a class="title2" href="/list-to-approve">{{ res_value('LIST_APPROVE') }}</a>
+            {% endif %}
+            <a class="title2" href="/new-message">{{ res_value('NEW_MESSAGE') }}</a>
+            <a class="title2" href="/">{{ res_value('ORDER_SUPPORT') }}</a>
+            <a class="title2" href="/">{{ res_value('NEAR_BIRTH_DATE') }}</a>
+            <a class="title2" href="/logout">{{ res_value('LOGOUT') }}</a>
             {% else %}
-                <a class="title2" href="/login">{{ res_value('LOGIN') }}</a>
+            <a class="title2" href="/login">{{ res_value('LOGIN') }}</a>
             {% endif %}
         </nav>
 
         <div class="article_title">
             {% block main_title %}{% endblock %}
         </div>
-        <article class="article">
-            {% block body %}{% endblock %}
+        <article>
+            <article_body class="article_body">
+                <div>
+                    {% block body %}{% endblock %}
+                </div>
+            </article_body>
+        <article_info class="article_info">
+            <div>
+                <h1 class="title2">{{ res_value('INFORMATION') }}</h1>
+                {% if all_mess %}
+                {% for el in all_mess %}
+                <div>
+                    <a style="margin-left:2px; font-size: 12px; font-weight:300">{{ el.mess_date }}</a>&nbsp;
+                    <a style="font-weight:600">{{ el.author }}</a>
+                    <br>
+                    <a style="margin-left: 2px; font-size: 14px; font-weight: 300; font-style: italic">{{ el.dep_name }}</a>
+                    <br>
+                    <a style="margin-left: 2px; font-weight: 500;">{{ el.message }}</a>
+                    <br>
+                </div>
+                <br>
+                {% endfor %}
+                {% endif %}
+            </div>
+            {% block info %}{% endblock %}
+        </article_info>
         </article>
-
         <footer class="footer">
             <div class="footer-l">
                 <img src="/static/img/logo-g.ico" style="width: 24px; height: 24px">

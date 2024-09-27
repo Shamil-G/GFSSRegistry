@@ -7,7 +7,8 @@ import os
 from datetime import date
 from util.get_i18n import get_i18n_value
 from model.manage_user import add_time_off, add_head, del_head, get_list_head, get_list_time_off
-from model.manage_user import get_all_list_time_off, del_time_off, get_list_absent, get_list_to_approve, approve_time_off
+from model.manage_user import get_all_list_time_off, del_time_off, get_list_absent, get_list_to_approve
+from model.manage_user import approve_time_off, fact_time_off, refuse_time_off, get_all_message, add_message
 from model.rep_all_time_off import do_report
 from model.ldap_function import get_list_birthdate
 from os import environ
@@ -28,7 +29,8 @@ def utility_processor():
 @app.route('/')
 def view_root():
     list_bd = get_list_birthdate()
-    return render_template("index.html", list_bd=list_bd)
+    all_mess = get_all_message()
+    return render_template("index.html", list_bd=list_bd, all_mess=all_mess)
 
 
 @app.route('/time-off', methods=['GET','POST'])
@@ -74,7 +76,8 @@ def view_time_off():
     elif message:
         log.error(f'VIEW_TIME_OFF. ERROR: {message}')
     # return render_template("time_off.html", message = message, list_heads=list_heads)
-    return render_template("time_off.html", message = message)
+    all_mess = get_all_message()
+    return render_template("time_off.html", message = message, all_mess=all_mess)
 
 
 @app.route('/list-time-off')
@@ -82,7 +85,8 @@ def view_time_off():
 def view_list_time_off():
     log.debug(f'VIEW LIST TIME OFF. username {session['full_name']}, admin: {session['admin']}')
     list_time_off = get_list_time_off(session['full_name'])
-    return render_template("list_time_off.html", list_time_off=list_time_off)
+    all_mess = get_all_message()
+    return render_template("list_time_off.html", list_time_off=list_time_off, all_mess=all_mess)
 
 
 @app.route('/list-absent')
@@ -90,7 +94,8 @@ def view_list_time_off():
 def view_list_absent():
     log.debug(f'VIEW LIST ABSENT. username {session['full_name']}, admin: {session['admin']}')
     list_absent = get_list_absent()
-    return render_template("list_absent.html", list_absent=list_absent)
+    all_mess = get_all_message()
+    return render_template("list_absent.html", list_absent=list_absent, all_mess=all_mess)
 
 
 @app.route('/all-list-time-off', methods=['GET','POST'])
@@ -104,7 +109,8 @@ def view_all_list_time_off():
         log.info(f' FLT_MONTH: {flt_month} : {type(flt_month)}')
         session['flt_month'] = flt_month
     list_time_off = get_all_list_time_off(f'{session['flt_month']}-01')
-    return render_template("list_all_time_off.html", list_time_off=list_time_off, flt_month=session['flt_month'])
+    all_mess = get_all_message()
+    return render_template("list_all_time_off.html", list_time_off=list_time_off, flt_month=session['flt_month'], all_mess=all_mess)
 
 
 @app.route('/list-to-approve', methods=['GET','POST'])
@@ -113,15 +119,32 @@ def view_list_approve():
     log.debug(f'VIEW LIST APPROVE. username {session['full_name']}, admin: {session['admin']}')
     log.debug(f'VIEW LIST APPROVE. dep_name: {session['dep_name']} : {type(session['dep_name'])}')
     list_approve = get_list_to_approve(session['dep_name'])
-    return render_template("list_approve.html", list_approve=list_approve)
+    all_mess = get_all_message()
+    return render_template("list_approve.html", list_approve=list_approve, all_mess=all_mess)
 
 
 @app.route('/approve-time-off/<int:id_reg>', methods=['GET','POST'])
 @login_required
 def view_approve_time_off(id_reg):
-    log.debug(f'VIEW HEADS. username {session['username']}')
+    log.debug(f'VIEW . username {session['username']}')
     approve_time_off(id_reg, session['full_name'])
     return redirect(url_for('view_list_approve'))
+
+
+@app.route('/refuse-time-off/<int:id_reg>', methods=['GET','POST'])
+@login_required
+def view_refuse_time_off(id_reg):
+    log.debug(f'VIEW HEADS. username {session['username']}')
+    refuse_time_off(id_reg, session['full_name'])
+    return redirect(url_for('view_list_approve'))
+
+
+@app.route('/fact-time-off/<int:id_reg>')
+@login_required
+def view_fact_time_off(id_reg):
+    log.debug(f'FACT TIME OFF. username {session['username']}')
+    fact_time_off(id_reg, session['full_name'])
+    return redirect(url_for('view_list_time_off'))
 
 
 @app.route('/del-from-list-time-off/<int:id_reg>')
@@ -130,6 +153,21 @@ def view_del_from_list_time_off(id_reg):
     log.debug(f'VIEW LIST TIME_OFF. username {session['username']}')
     del_time_off(id_reg, session['full_name'])
     return redirect(url_for('view_list_time_off'))
+
+
+@app.route('/new-message', methods=['GET','POST'])
+@login_required
+def view_new_message():
+    log.debug(f'VIEW NEW MESSAGE. username {session['username']}')
+    if request.method == 'POST':
+        mess = request.form['new-message']
+                
+        if debug_level > 2:
+            log.info(f"VIEW NEW MESSAGE. new_mess: {mess}")
+        add_message(session['full_name'], session['dep_name'], mess)
+        return redirect(url_for('view_root'))
+    all_mess = get_all_message()
+    return render_template("new_message.html", all_mess=all_mess)
 
 
 @app.route('/heads', methods=['GET','POST'])
