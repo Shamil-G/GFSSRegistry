@@ -213,3 +213,11 @@ def uploaded_file():
     log.debug(f"UPLOADED_FILE. REPORT_PATH: {REPORT_PATH} FILE_NAME: {file_name}")
     return send_from_directory(REPORT_PATH, file_name)
     # return redirect(url_for('view_running_reports'))
+
+@app.route('/phone')
+def uploaded_phone():
+    file_name = 'PhoneRefer.xlsx'
+    do_report(session['flt_month'], file_name)
+    log.debug(f"UPLOADED_FILE. REPORT_PATH: {REPORT_PATH} FILE_NAME: {file_name}")
+    return send_from_directory(REPORT_PATH, file_name)
+    # return redirect(url_for('view_running_reports'))
