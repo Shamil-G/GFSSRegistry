@@ -13,6 +13,7 @@ APPROVE_TIME_OFF = Согласовать
 REFUSE_TIME_OFF = Отказать
 STATUS = Статус согласования
 CHECK_DOC = Ознакомиться с ВНД
+PHONE_REFER = Телефонный справочник
 SAVE = Сохранить
 TIME_OUT = Время ухода
 TIME_IN = Время прихода

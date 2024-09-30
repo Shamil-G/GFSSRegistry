@@ -178,13 +178,18 @@ reports {
     color: #ddd;
     text-align: left; /*Центрируем текст по горизонтали*/
 }
-.article_title > a:hover, groups > a:hover, reports > a:hover,
-nav > a:hover, .header-r > a:hover {
-    background: #777;
-    color: wheat;
-    text-decoration: none;
-    border-radius: 4px;
-}
+    .article_title > a:hover, groups > a:hover, reports > a:hover,
+    nav > a:hover, .header-r > a:hover {
+        color: #cfefd5;
+        text-decoration: none;
+        /*background-color: #CCF2D3FF;*/
+        background-color: lightseagreen;
+
+        /*        color: wheat;
+        background: #777;
+        text-decoration: none;
+        border-radius: 4px;*/
+    }
 
 .image {
     display: flex;

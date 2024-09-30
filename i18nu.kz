@@ -13,6 +13,7 @@ APPROVE_TIME_OFF = Согласовать
 REFUSE_TIME_OFF = Отказать
 STATUS = Статус согласования
 CHECK_DOC = ЖҰӨ-мен танысу
+PHONE_REFER = Телефонный справочник
 SAVE = Сақтау
 TIME_OUT = Күтім уақыты
 TIME_IN = Келу уақыты
