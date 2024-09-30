@@ -21,16 +21,17 @@ def utility_processor():
             session['styles']=environ["STYLES"]
         else:
             session['styles']=styles
-
     log.debug(f"CP. {get_i18n_value('APP_NAME')}")
     return dict(res_value=get_i18n_value)
 
 
 @app.route('/')
 def view_root():
-    list_bd = get_list_birthdate()
+    if 'list_bd' not in session:
+        session['list_bd'] = get_list_birthdate()    
+        log.debug(f'VIEW ROOT. UPDATED LIST BIRTHDATES')
     all_mess = get_all_message()
-    return render_template("index.html", list_bd=list_bd, all_mess=all_mess)
+    return render_template("index.html", list_bd=session['list_bd'], all_mess=all_mess)
 
 
 @app.route('/time-off', methods=['GET','POST'])
