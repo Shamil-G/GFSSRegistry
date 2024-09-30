@@ -63,26 +63,43 @@
                     {% block body %}{% endblock %}
                 </div>
             </article_body>
-        <article_info class="article_info">
-            <div>
-                <h1 class="title2">{{ res_value('INFORMATION') }}</h1>
-                {% if all_mess %}
-                {% for el in all_mess %}
-                <div>
-                    <a style="margin-left:2px; font-size: 12px; font-weight:300">{{ el.mess_date }}</a>&nbsp;
-                    <a style="font-weight:600">{{ el.author }}</a>
-                    <br>
-                    <a style="margin-left: 2px; font-size: 14px; font-weight: 300; font-style: italic">{{ el.dep_name }}</a>
-                    <br>
-                    <a style="margin-left: 2px; font-weight: 500;">{{ el.message }}</a>
-                    <br>
+            <article_info class="article_info">
+                <div class="table-scroll">
+                    <table class="table-head">
+                        <thead>
+                            <tr>
+                                <th>
+                                    <a>{{ res_value('INFORMATION') }}</a>
+                                </th>
+                            <tr>
+                        </thead>
+                    </table>
+
+                    <div class="table-scroll-body">
+                        <table>
+                            <tbody>
+                                {% if all_mess %}
+                                <tr>
+                                    <td>
+                                        {% for el in all_mess %}
+                                        <a style="margin-left:2px; font-size: 12px; font-weight:300">{{ el.mess_date }}</a>&nbsp;
+                                        <a style="font-weight:600">{{ el.author }}</a>
+                                        <br>
+                                        <a style="margin-left: 2px; font-size: 14px; font-weight: 300; font-style: italic">{{ el.dep_name }}</a>
+                                        <br>
+                                        <a style="margin-left: 2px; font-weight: 500;">{{ el.message }}</a>
+                                        <br>
+                                        <br>
+                                        {% endfor %}
+                                    </td>
+                                </tr>
+                                {% endif %}
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-                <br>
-                {% endfor %}
-                {% endif %}
-            </div>
-            {% block info %}{% endblock %}
-        </article_info>
+                {% block info %}{% endblock %}
+            </article_info>
         </article>
         <footer class="footer">
             <div class="footer-l">
