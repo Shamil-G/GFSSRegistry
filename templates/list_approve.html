@@ -32,7 +32,7 @@
             <th style="font-size:16px;"><a>{{ res_value('POST') }}</a></th>
             <th style="font-size:16px;"><a>{{ res_value('DEP_NAME') }}</a></th>
             <th style="font-size:16px;"><a>{{ res_value('CAUSE') }}</a></th>
-            <th style="font-size:16px;"><a>{{ res_value('HEAD_NAME') }}</a></th>
+            <th style="font-size:16px;"><a>{{ res_value('STATUS') }}</a></th>
         </tr>
     </thead>
     <tfoot></tfoot>
@@ -49,18 +49,20 @@
             {% if not el.status %}
             <td style="text-align: center;">
                 <div>
-                    <div>
-                        <img src="/static/img/cancel.png" style="width: 24px; height: 24px">
-                        <a class="bt_t" src="/static/img/cancel.png" href="/refuse-time-off/{{ el.id }}">{{ res_value('REFUSE_TIME_OFF') }}</a>
-                    </div>
-                    <div>
-                        <img src="/static/img/ok.png" style="width: 24px; height: 24px">
-                        <a class="bt_t" href="/approve-time-off/{{ el.id }}">{{ res_value('APPROVE_TIME_OFF') }}</a>
-                    </div>
+                    <a class="img" href="/approve-time-off/{{ el.id }}">
+                        <img src="/static/img/ok.png" width="24" height="24">
+                    </a>
+                    <a class="img" href="/refuse-time-off/{{ el.id }}">
+                        <img src="/static/img/cancel.png" width="24" height="24">
+                    </a>
                 </div>
             </td>
             {% else %}
-                <td style="text-align: left; margin-left: 4px; font-size: 16px;"><a>{{ el.head }}</a></td>
+                {% if el.status==1 %}
+                    <td style="font-size: 18px; color:teal; font-weight: 600; "><a>{{ res_value('APPROVED') }}</a></td>
+                {% else %}
+                    <td style="font-size: 18px; color: hotpink; font-weight: 600; "><a>{{ res_value('REFUSED') }}</a></td>
+                {% endif %}
             {% endif %}
         </tr>
         {% endfor %}

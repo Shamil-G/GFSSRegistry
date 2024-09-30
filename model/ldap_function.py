@@ -42,8 +42,9 @@ def get_list_birthdate():
     curr_centure = str(date.today())[:2]
     curr_month = str(date.today())[5:7]
     curr_month_int = int(curr_month)
-    curr_day = int(str(date.today())[8:10])
-    if curr_day<25:
+    curr_day = str(date.today())[8:10]
+    curr_day_int = int(str(date.today())[8:10])
+    if curr_day_int<25:
         log.debug(f'GET_LIST_BIRTHDATE. curr_centure: {curr_centure}, curr_year: {curr_year}, curr_month: {curr_month}, curr_day: {curr_day}')
         src_filter = f'(&(objectclass=person)(| (telephoneNumber=*{curr_month}*) ))' 
     else:
@@ -73,7 +74,7 @@ def get_list_birthdate():
         iin = str(user['telephoneNumber'])
         log.debug(f'-------------\nIIN:\n{iin}\n-------------')
         
-        if iin[2:4] == curr_month or iin[2:4] == next_month:
+        if (iin[2:4] == curr_month and int(iin[4:6])>=curr_day_int and int(iin[4:6])<curr_day_int+10) or (iin[2:4] == next_month and int(iin[4:6])<10):
             dn = str(user['distinguishedName'])
             ou = find_value(dn, 'OU')
             bd_year_int = int(iin[:2])

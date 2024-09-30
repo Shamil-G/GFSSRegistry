@@ -36,12 +36,12 @@
     align-items: center;
 }
 
-    .name_system:hover {
-        color: wheat;
-        margin: 4px;
-        padding: 6px;
-        font-weight: bold;
-    }
+.name_system:hover {
+    color: wheat;
+    margin: 4px;
+    padding: 6px;
+    font-weight: bold;
+}
 
 .new_system {
     margin: 4px 4px 4px 4px;

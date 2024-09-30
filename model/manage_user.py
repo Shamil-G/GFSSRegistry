@@ -87,7 +87,7 @@ def get_all_list_time_off(mnth: str):
 def get_list_to_approve(dep_name):
     list_approve = []
     stmt = """
-        select event_date, time_out, time_in, employee, post, dep_name, cause, head, id 
+        select event_date, time_out, time_in, employee, post, dep_name, cause, head, id, status 
         from register r
         where trunc(event_date,'MM') = trunc(sysdate,'MM')
         and   dep_name = :dep_name
@@ -102,7 +102,7 @@ def get_list_to_approve(dep_name):
                 for row in rows:
                     res = { 'event_date': row[0], 'time_out': row[1], 'time_in': row[2],
                            'employee': row[3], 'post': row[4], 'dep_name': row[5],
-                           'cause': row[6], 'head': row[7], 'id': row[8]
+                           'cause': row[6], 'head': row[7], 'id': row[8], 'status': row[9]
                            }
                     list_approve.append(res)
             finally:

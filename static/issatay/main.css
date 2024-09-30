@@ -155,13 +155,14 @@ groups > a {
     border: inherit;
     border-radius: inherit;
     color: #fff;
+}
 
-groups {
+group {
     float: left; /*Задаем обтекание*/
     text-align: center; /*Центрируем текст по горизонтали*/
     border-radius: 5px;
-/*    border: 1px solid rgba(180, 180, 180, 0.3);
-*/    margin: 5px;
+    /*    border: 1px solid rgba(180, 180, 180, 0.3);*/
+    margin: 5px;
     background: #444;
 }
 reports > a {
@@ -207,17 +208,4 @@ div.article {
     width: 200%;
     height: 200%;
 
-}
-
-
-img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    margin: auto;
-    min-width: 73.5%;
-    /*min-height: 73%;*/
-    opacity:0.3
 }

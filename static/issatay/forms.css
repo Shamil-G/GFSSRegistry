@@ -13,7 +13,7 @@
 }
 
 .input_s {
-    color: #ddd;
+    color: #444;
     margin: 4px;
     padding: 9px;
     align-items: center;
@@ -22,11 +22,11 @@
     border: 1px solid rgba(180, 180, 180, 0.3);
 }
 
-    .input_s:hover {
-        /*color: bisque;*/
-        align-items: center;
-        /*background-color: #333;*/
-    }
+.input_s:hover {
+    /*color: bisque;*/
+    align-items: center;
+    /*background-color: #333;*/
+}
 
 .name_system {
     color: #ddd;
@@ -36,12 +36,12 @@
     align-items: center;
 }
 
-    .name_system:hover {
-        color: wheat;
-        margin: 4px;
-        padding: 6px;
-        font-weight: bold;
-    }
+.name_system:hover {
+    color: wheat;
+    margin: 4px;
+    padding: 6px;
+    font-weight: bold;
+}
 
 .new_system {
     margin: 4px 4px 4px 4px;
@@ -53,11 +53,11 @@
     text-decoration: none;
 }
 
-    .new_system:hover, .form_login > a:hover {
-        margin: 4px;
-        background: #f5f5b8;
-        color: brown;
-    }
+.new_system:hover, .form_login > a:hover {
+    margin: 4px;
+    background: #f5f5b8;
+    color: brown;
+}
 
 .div_s:hover {
     display: flex;
@@ -97,4 +97,18 @@ select {
     padding: 5px;
     border-radius: 5px;
     width: 540px;
+}
+
+textarea {
+    margin-top: 5px;
+    font-family: cursive, sans-serif;
+    outline: 0;
+    background: #deefdf;
+    color: #444;
+    border: 1px solid #ffe4b57a;
+    padding: 5px;
+    border-radius: 5px;
+    width: 540px;
+    box-shadow: 2px 2px 5px darkseagreen;
+    border: 2px solid rgba(180, 180, 180, 0.3);
 }
