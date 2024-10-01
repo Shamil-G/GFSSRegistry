@@ -4,6 +4,7 @@
     width: 48px;
     height: 48px;
     background-image: url(printer_48.png);
+    text-shadow: 1px 2px 3px grey;
 }
 
 .bt_s {
@@ -21,6 +22,7 @@
     text-decoration: none;
     /*background-color: #333;*/
     transition: color .2s ease-in-out,background-color .2s ease-in-out, border-color .2s ease-in-out, box-shadow .2s ease-in-out;
+    text-shadow: 1px 2px 3px grey;
 }
 
 .bt_r {
@@ -40,6 +42,8 @@
     /*background-color: #333;*/
     background-color: #cfefd5;
     transition: color .2s ease-in-out,background-color .2s ease-in-out, border-color .2s ease-in-out, box-shadow .2s ease-in-out;
+    text-shadow: 1px 2px 3px grey;
+    box-shadow: 4px 4px 6px grey;
 }
 .bt_t {
     color: teal;
@@ -57,6 +61,8 @@
     text-decoration: none;
     background-color: #cfefd5;
     transition: color .2s ease-in-out,background-color .2s ease-in-out, border-color .2s ease-in-out, box-shadow .2s ease-in-out;
+    text-shadow: 1px 2px 3px grey;
+    box-shadow: 4px 4px 6px grey;
 }
 .bt {
     color: #ddd;
@@ -86,6 +92,7 @@
     text-decoration: none;
     /*background-color: #CCF2D3FF;*/
     background-color: lightseagreen;
+    box-shadow: 4px 4px 10px grey;
 }
 
 .bt.danger:hover {
@@ -161,6 +168,7 @@
     border: 1px solid rgba(180, 180, 180, 0.3);
     text-decoration: none;
     transition: color .2s ease-in-out,background-color .2s ease-in-out, border-color .2s ease-in-out, box-shadow .2s ease-in-out;
+    box-shadow: 4px 4px 6px grey;
 }
 
 .img:hover {
@@ -176,4 +184,5 @@
     border-radius: 6px;
     border: 1px solid rgba(180, 180, 180, 0.3);
     transition: color .2s ease-in-out,background-color .2s ease-in-out, border-color .2s ease-in-out, box-shadow .2s ease-in-out;
+    box-shadow: -4px -4px 6px grey;
 }

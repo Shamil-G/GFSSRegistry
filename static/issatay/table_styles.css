@@ -101,7 +101,9 @@ div.field label {
     text-align: center;
     text-decoration: none;
     border-radius: 2px;
+    font-size: 18px;
     border: 1px solid #bface8;
+    text-shadow: 1px 1px 3px grey;
 }
 
 .table-scroll-body {

@@ -14,12 +14,13 @@ html, body {
     font-family: Calibri;
     background: #f7f9fb;
 }
-nav{
+nav {
     border-radius: 5px;
     border: 1px solid rgba(180, 180, 180, 0.3);
     background-image: url('/static/img/bg.jpg'); /* Update this path */
     background-size: cover;
     background-position: center;
+    text-shadow: 1px 2px 3px grey;
 }
 
 article {
@@ -27,8 +28,8 @@ article {
     border: 1px solid rgba(180, 180, 180, 0.3);
 }
 header, footer, .article_title, article_body, article_info {
-  border-radius: 3px;
-  border: 1px solid rgba(180, 180, 180, 0.3);
+    border-radius: 3px;
+    border: 1px solid rgba(180, 180, 180, 0.3);
 }
 .article {
     padding: 6px 0px;
@@ -49,20 +50,22 @@ header {
     padding-left: 16px;
     grid-template-columns: 4fr 4fr 4fr;
     align-items: center; /* Выравниваем по вертикали*/
-    grid-area: header;  /* задаем имя элемента */
+    grid-area: header; /* задаем имя элемента */
     background-image: url('/static/img/bg.jpg'); /* Update this path */
     background-size: cover;
     background-position: center;
+    text-shadow: 1px 2px 3px grey;
 }
 footer {
-  display: grid;
-  padding: 8px 16px;
-  align-items: center; /* Выравниваем по вертикали*/
-  grid-template-columns: 1fr 6fr;
-  grid-area: footer;  /* задаем имя элемента */
-  background-image: url('/static/img/bg.jpg'); /* Update this path */
-  background-size: cover;
-  background-position: center;
+    display: grid;
+    padding: 8px 16px;
+    align-items: center; /* Выравниваем по вертикали*/
+    grid-template-columns: 1fr 6fr;
+    grid-area: footer; /* задаем имя элемента */
+    background-image: url('/static/img/bg.jpg'); /* Update this path */
+    background-size: cover;
+    background-position: center;
+    text-shadow: 1px 2px 3px grey;
 }
 .footer-l {
     margin-left: 10px;
@@ -127,6 +130,7 @@ article_info {
     font-size: 20px;
     color: black;
     background-color: #cfefd5;
+    text-shadow: 1px 2px 3px grey;
 }
 
 .article_title > a {
@@ -212,5 +216,4 @@ div.article {
     left: -50%;
     width: 200%;
     height: 200%;
-
 }
