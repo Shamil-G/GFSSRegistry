@@ -54,13 +54,13 @@ def get_list_birthdate():
         next_month = str(next_month_int).zfill(2)
         log.debug(f'GET_LIST_BIRTHDATE. curr_centure: {curr_centure}, curr_year: {curr_year}, curr_month: {curr_month}, next_month: {next_month}, curr_day: {curr_day}')
         src_filter = f'(&(objectclass=person)(| (telephoneNumber=*{curr_month}*) (telephoneNumber=*{next_month}*) ))' 
-        conn_src.search(search_base='dc=gfss,dc=kz', 
-                # search_filter=f'(&(objectclass=person)(cn=*))', 
-                search_filter=src_filter, 
-                attributes=['distinguishedName', 'userPrincipalName', 'cn', 'sAMAccountName', 'description', 'memberof', 'telephoneNumber', '*'],
-                # attributes=['distinguishedName', 'userPrincipalName', 'cn', 'displayName', 'description', 'memberof', 'telephoneNumber'],
-                search_scope=SUBTREE,
-                paged_size=250)
+    conn_src.search(search_base='dc=gfss,dc=kz', 
+            # search_filter=f'(&(objectclass=person)(cn=*))', 
+            search_filter=src_filter, 
+            attributes=['distinguishedName', 'userPrincipalName', 'cn', 'sAMAccountName', 'description', 'memberof', 'telephoneNumber', '*'],
+            # attributes=['distinguishedName', 'userPrincipalName', 'cn', 'displayName', 'description', 'memberof', 'telephoneNumber'],
+            search_scope=SUBTREE,
+            paged_size=250)
     users = conn_src.entries
     # Connection closed
     

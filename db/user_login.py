@@ -49,6 +49,8 @@ def logout():
         session.pop('password')
     if 'info' in session:
         session.pop('info')
+    if 'list_bd' in session:
+        session.pop('list_bd')
     if '_flashes' in session:
         session['_flashes'].clear()
     return redirect(url_for('view_root'))

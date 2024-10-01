@@ -27,9 +27,12 @@ def utility_processor():
 
 @app.route('/')
 def view_root():
-    if 'list_bd' not in session:
+    if 'list_bd' not in session or type(session['list_bd']) is not list or len(session['list_bd'])<4:
         session['list_bd'] = get_list_birthdate()    
-        log.debug(f'VIEW ROOT. UPDATED LIST BIRTHDATES')
+        log.info(f'----------\nVIEW ROOT. RELOAD LIST BIRTHDATES: TYPE: {type(session['list_bd'])}. '
+                  f'LEN: {len(session['list_bd'])}. FIRST VALUE: {session['list_bd'][0]}\n----------')
+    else:
+        log.info(f'----------\nVIEW ROOT. LIST BIRTHDATES. Type: {type(session['list_bd'])} : {len(session['list_bd'])}\n----------')
     all_mess = get_all_message()
     return render_template("index.html", list_bd=session['list_bd'], all_mess=all_mess)
 
