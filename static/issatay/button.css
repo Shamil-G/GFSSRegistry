@@ -25,26 +25,6 @@
     text-shadow: 1px 2px 3px grey;
 }
 
-.bt_r {
-    color: teal;
-    margin: 2px 4px;
-    padding: 6px 34px 6px 34px;
-    display: inline-block;
-    cursor: pointer;
-    text-align: center;
-    vertical-align: middle;
-    user-select: none;
-    line-height: 1.5;
-    border-radius: 5px;
-    border: 1px solid rgba(180, 180, 180, 0.3);
-    text-decoration: none;
-    font-size: 16px;
-    /*background-color: #333;*/
-    background-color: #cfefd5;
-    transition: color .2s ease-in-out,background-color .2s ease-in-out, border-color .2s ease-in-out, box-shadow .2s ease-in-out;
-    text-shadow: 1px 2px 3px grey;
-    box-shadow: 4px 4px 6px grey;
-}
 .bt_t {
     color: teal;
     padding: 4px 24px 4px 24px;
@@ -62,7 +42,7 @@
     background-color: #cfefd5;
     transition: color .2s ease-in-out,background-color .2s ease-in-out, border-color .2s ease-in-out, box-shadow .2s ease-in-out;
     text-shadow: 1px 2px 3px grey;
-    box-shadow: 4px 4px 6px grey;
+    box-shadow: 3px 3px 6px grey;
 }
 .bt {
     color: #ddd;
@@ -75,8 +55,20 @@
     line-height: 1.5;
     border-radius: 5px;
     border: 1px solid rgba(180, 180, 180, 0.3);
+    position: relative;
     text-decoration: none;
     transition: color .2s ease-in-out,background-color .2s ease-in-out, border-color .2s ease-in-out, box-shadow .2s ease-in-out;
+    background-image: linear-gradient(45deg, rgba(255,255,255,.0) 30%, rgba(255,255,255,.8), rgba(255,255,255,.0) 70%), 
+            linear-gradient(to right, rgba(255,255,255,1), rgba(255,255,255,0) 20%, rgba(255,255,255,0) 90%, rgba(255,255,255,.3)), 
+            linear-gradient(to right, rgba(125,125,125,1), rgba(255,255,255,.9) 45%, rgba(125,125,125,.5)), 
+            linear-gradient(to right, rgba(125,125,125,1), rgba(255,255,255,.9) 45%, rgba(125,125,125,.5)), 
+            linear-gradient(to right, rgba(223,190,170,1), rgba(255,255,255,.9) 45%, rgba(223,190,170,.5)), 
+            linear-gradient(to right, rgba(223,190,170,1), rgba(255,255,255,.9) 45%, rgba(223,190,170,.5));
+    background-repeat: no-repeat;
+    background-size: 200% 100%, auto, 100% 2px, 100% 2px, 100% 1px, 100% 1px;
+    background-position: 200% 0, 0 0, 0 0, 0 100%, 0 4px, 0 calc(100% - 4px);
+    text-shadow: 1px 1px 3px grey;
+    box-shadow: 4px 4px 6px grey;
 }
 
 .bt.danger {
@@ -87,12 +79,62 @@
     border-color: #de3a4b;
 }
 
-.bt:hover, .bt_s:hover, .bt_r:hover, .bt_t:hover {
-    color: #cfefd5;
+.bt_r {
+    color: teal;
+    margin: 2px 4px;
+    padding: 6px 34px 6px 34px;
+    display: inline-block;
+    cursor: pointer;
+    text-align: center;
+    vertical-align: middle;
+    user-select: none;
+    line-height: 1.5;
+}
+.nav_button {
     text-decoration: none;
-    /*background-color: #CCF2D3FF;*/
-    background-color: lightseagreen;
+    align-items: center;
+    padding-left: 5px;
+    display: flex;
+    /*border: inherit;*/
+    border-radius: inherit;
+    color: black;
+    position: relative;
+    /*display: inline-block;*/
+    font-weight: 500;
+    /*text-shadow: rgba(255,255,255,.5) 1px 1px, rgba(100,100,100,.3) 3px 7px 3px;*/
+    text-shadow: 1px 2px 3px grey;
+    /*user-select: none;*/
+    /*padding: 1em 2em;*/
+    /*outline: none;*/
+    /*border-radius: 3px / 100%;*/
+    background-image: linear-gradient(to right, rgba(255,255,255,.0) 30%, rgba(255,255,255,.8), rgba(255,255,255,.0) 70%), linear-gradient(to right, rgba(255,255,255,0.7), rgba(255,255,255,0) 20%, rgba(255,255,255,0) 85%, rgba(255,255,255,.5)),
+    /*linear-gradient(to right, rgba(125,125,125,1), rgba(255,255,255,.9) 45%, rgba(125,125,125,.5)),*/
+    /*linear-gradient(to right, rgba(125,125,125,1), rgba(255,255,255,.9) 45%, rgba(125,125,125,.5)),*/
+    linear-gradient(to right, rgba(121, 219, 144, 0.3), rgba(121, 219, 144,.5) 45%, rgba(121, 219, 144, 0.5)), linear-gradient(to right, rgba(121, 219, 144, 0.3), rgba(121, 219, 144,.5) 0%, rgba(121, 219, 144, 0.5) );
+    background-repeat: no-repeat;
+    background-size: 200% 100%, auto, 100% 2px, 100% 2px, 100% 1px, 100% 1px;
+    background-position: 200% 0, 0 0, 0 0, 0 100%, 0 4px, 0 calc(100% - 4px);
+    box-shadow: 3px 3px 6px grey;
+}
+.bt:hover, .bt_s:hover, .bt_r:hover, .bt_t:hover {
+    top: 1px;
+    position: relative;
+    box-shadow: 6px 6px 12px grey;
+}
+.nav_button:hover {
+    top: 1px;
+    transition: .3s linear;
+    /*background-color: #cfe8d8ff;*/
+    background-position: -200% 0, 0 0, 0 0, 0 100%, 0 4px, 0 calc(100% - 4px);
     box-shadow: 4px 4px 16px grey;
+}
+.nav_button:active {
+    top: 0px;
+    box-shadow: 3px 3px 6px grey;
+}
+.nav_button:active, .bt:active, .bt_s:active, .bt_r:active, .bt_t:active, .bt.danger {
+    top: 0px;
+    box-shadow: 4px 4px 6px grey;
 }
 
 .bt.danger:hover {
@@ -186,3 +228,5 @@
     transition: color .2s ease-in-out,background-color .2s ease-in-out, border-color .2s ease-in-out, box-shadow .2s ease-in-out;
     box-shadow: -4px -4px 6px grey;
 }
+
+

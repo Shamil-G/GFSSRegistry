@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 
 {% block title %}
-{{ res_value('LIST_TIME_OFF') }}
+{{ res_value('ALL_LIST_TIME_OFF') }}
 {% endblock %}
 
 {% block main_title %}
-{{ res_value('LIST_TIME_OFF') }}
+{{ res_value('ALL_LIST_TIME_OFF') }}
 {% endblock %}
 
 {% block navigate %}
@@ -15,11 +15,11 @@
 <form class="form_r" method="POST">
     <label style="margin-left: 4px;" for="flt_month">{{ res_value('PRINT_MONTH') }}</label>
     <input class="input_s" type="month" requied autofocus name="flt_month" minlength="3" value="{{ flt_month }}">
-    &nbsp;<button class="bt_r" type="submit">{{ res_value('FLT_MONTH') }}</button>
+    &nbsp;<button class="bt bt_r" type="submit">{{ res_value('FLT_MONTH') }}</button>
 </form>
 <div>
     <div>
-        <a class="bt_r" href="/uploads">{{ res_value('PRINT_EXECUTE') }}</a>
+        <a class="bt bt_r" href="/uploads">{{ res_value('PRINT_EXECUTE') }}</a>
         <!--<button class="bt_r"  style="margin-left: 12px;" type="submit">{{ res_value('PRINT_EXECUTE') }}</button>-->
     </div>
 </div>
@@ -58,9 +58,9 @@
             <td style="text-align: left; margin-left: 4px; font-size: 16px;"><a>{{ el.dep_name }}</a></td>
             <td style="text-align: left; margin-left: 4px; font-size: 16px;"><a>{{ el.cause }}</a></td>
             {% if el.head %}
-                <td style="text-align: left; margin-left: 4px; font-size: 16px;"><a>{{ el.head }}</a></td>
+            <td style="text-align: left; margin-left: 4px; font-size: 16px;"><a>{{ el.head }}</a></td>
             {% else %}
-                <td style="text-align: center; margin-left: 4px; font-size: 18px; color: hotpink; font-weight: 500"><a>{{ res_value('ON_APPROVING') }}</a></td>
+            <td style="text-align: center; margin-left: 4px; font-size: 18px; color: hotpink; font-weight: 500"><a>{{ res_value('ON_APPROVING') }}</a></td>
             {% endif %}
         </tr>
         {% endfor %}
