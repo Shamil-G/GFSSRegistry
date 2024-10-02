@@ -218,7 +218,7 @@ def get_all_message():
     stmt = """
         select id_mess, mess_date, author, dep_name, message 
         from messages 
-        where mess_date > sysdate-10
+        where mess_date > sysdate-8
         order by mess_date desc
     """
     with get_connection() as connection:

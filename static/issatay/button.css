@@ -92,7 +92,7 @@
     text-decoration: none;
     /*background-color: #CCF2D3FF;*/
     background-color: lightseagreen;
-    box-shadow: 4px 4px 10px grey;
+    box-shadow: 4px 4px 16px grey;
 }
 
 .bt.danger:hover {
