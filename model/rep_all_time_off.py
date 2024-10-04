@@ -29,11 +29,11 @@ def format_worksheet(worksheet, common_format):
 	worksheet.set_column(1, 1, 12)
 	worksheet.set_column(2, 2, 12)
 	worksheet.set_column(3, 3, 12)
-	worksheet.set_column(4, 4, 48)
+	worksheet.set_column(4, 4, 36)
 	worksheet.set_column(5, 5, 36)
 	worksheet.set_column(6, 6, 48)
 	worksheet.set_column(7, 7, 64)
-	worksheet.set_column(8, 8, 24)
+	worksheet.set_column(8, 8, 36)
 
 	worksheet.merge_range('A3:A4', '№', common_format)
 	worksheet.merge_range('B3:B4', 'Дата регистрации', common_format)

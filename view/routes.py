@@ -6,9 +6,10 @@ from flask_login import  login_required
 import os
 from datetime import date
 from util.get_i18n import get_i18n_value
-from model.manage_user import add_time_off, add_head, del_head, get_list_head, get_list_time_off
-from model.manage_user import get_all_list_time_off, del_time_off, get_list_absent, get_list_to_approve
-from model.manage_user import approve_time_off, fact_time_off, refuse_time_off, get_all_message, add_message
+from model.manage_user import add_head, del_head, get_list_head, get_list_time_off
+from model.manage_user import get_all_list_time_off, get_list_absent, get_list_to_approve, get_secure_list_to_approve
+from model.manage_user import add_time_off, add_secure_time_off, fact_time_off, del_time_off, get_all_message, add_message
+from model.manage_user import approve_time_off, refuse_time_off
 from model.rep_all_time_off import do_report
 from model.ldap_function import get_list_birthdate
 from os import environ
@@ -84,6 +85,47 @@ def view_time_off():
     return render_template("time_off.html", message = message, all_mess=all_mess)
 
 
+@app.route('/secure-time-off', methods=['GET','POST'])
+@login_required
+def view_secure_time_off():
+    log.info(f'VIEW_SECURE_TIME_OFF for {session['username']}')
+    # list_heads = get_list_head()
+    message = ''
+    if request.method == 'POST':
+        employee = request.form['employee']
+        dep_name = request.form['dep_name']
+        post = request.form['post']
+        date_out = request.form['date_out'].replace('T',' ',1)
+        date_in = request.form['date_in'].replace('T',' ',1)
+        cause = request.form['cause']
+
+        if not employee:
+            message = ' ! Не указан сотрудник'
+        if not dep_name:
+            message = ' ! Не указан департамент'
+        if not post:
+            message = ' ! Не указана должность'
+        if not date_out:
+            message = ' ! Не указано время ухода'
+        if not date_in:
+            message = ' ! Не указано время прихода'
+        if not cause:
+            message = ' ! Не указана причина ухода'
+        
+        if not message:
+            log.info(f"VIEW_SECURE_TIME_OFF. date_out: {date_out}, date_in: {date_in}, "
+                        f"\n\temployee: {employee}\n\tpost: {post}\n\tdep_name: {dep_name}\n\tcause: {cause}, СБ: {session['full_name']}")
+            message = add_secure_time_off(date_out, date_in, employee, post, dep_name, cause, session['full_name'])
+            return redirect(url_for('view_secure_list_time_off'))            
+    if message == 'Success':
+        message = 'Регистрация завершена успешно'
+    elif message:
+        log.error(f'VIEW_SECURE_TIME_OFF. ERROR: {message}')
+    # return render_template("time_off.html", message = message, list_heads=list_heads)
+    all_mess = get_all_message()
+    return render_template("secure_time_off.html", message = message, all_mess=all_mess)
+
+
 @app.route('/list-time-off')
 @login_required
 def view_list_time_off():
@@ -125,6 +167,15 @@ def view_list_approve():
     list_approve = get_list_to_approve(session['dep_name'])
     all_mess = get_all_message()
     return render_template("list_approve.html", list_approve=list_approve, all_mess=all_mess)
+
+@app.route('/secure-list-time-off', methods=['GET','POST'])
+@login_required
+def view_secure_list_time_off():
+    log.debug(f'VIEW LIST APPROVE. username {session['full_name']}, admin: {session['admin']}')
+    log.debug(f'VIEW LIST APPROVE. dep_name: {session['dep_name']} : {type(session['dep_name'])}')
+    secure_list = get_secure_list_to_approve()
+    all_mess = get_all_message()
+    return render_template("secure_list_time_off.html", secure_list=secure_list, all_mess=all_mess)
 
 
 @app.route('/approve-time-off/<int:id_reg>', methods=['GET','POST'])

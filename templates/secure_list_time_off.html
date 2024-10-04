@@ -37,7 +37,7 @@
     </thead>
     <tfoot></tfoot>
     <tbody>
-        {% for el in list_approve %}
+        {% for el in secure_list %}
         <tr>
             <td style="font-size:16px;"><a>{{ el.event_date }}</a></td>
             <td style="font-size:16px;"><a>{{ el.time_out }}</a></td>
@@ -46,24 +46,7 @@
             <td style="text-align: left; margin-left: 4px; font-size: 16px;"><a>{{ el.post }}</a></td>
             <td style="text-align: left; margin-left: 4px; font-size: 16px;"><a>{{ el.dep_name }}</a></td>
             <td style="text-align: left; margin-left: 4px; font-size: 16px;"><a>{{ el.cause }}</a></td>
-            {% if not el.status or el.status==3 %}
-            <td style="text-align: center;">
-                <div>
-                    <a class="img" href="/approve-time-off/{{ el.id }}">
-                        <img src="/static/img/ok.png" width="24" height="24">
-                    </a>
-                    <a class="img" href="/refuse-time-off/{{ el.id }}">
-                        <img src="/static/img/cancel.png" width="24" height="24">
-                    </a>
-                </div>
-            </td>
-            {% else %}
-            {% if el.status==1 %}
             <td style="font-size: 18px; color:teal; font-weight: 600; "><a>{{ res_value('APPROVED') }}</a></td>
-            {% else %}
-            <td style="font-size: 18px; color: hotpink; font-weight: 600; "><a>{{ res_value('REFUSED') }}</a></td>
-            {% endif %}
-            {% endif %}
         </tr>
         {% endfor %}
     <tbody>

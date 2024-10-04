@@ -10,6 +10,13 @@ def add_time_off(date_out:str, date_in:str, employee:str, post:str, dep_name:str
     return result
 
 
+def add_secure_time_off(date_out:str, date_in:str, employee:str, post:str, dep_name:str, cause:str, boss:str):
+    args = [date_out, date_in, employee, post, dep_name, cause, boss]
+    log.info(f"ADD_SECURE_TIME_OFF. args: {args}")    
+    result = plsql_func_s('Регистрация времени отсутствия', 'reg.add_secure_reg', args)    
+    return result
+
+
 def get_list_time_off(employee: str):
     list_time_off = []
     
@@ -84,13 +91,14 @@ def get_all_list_time_off(mnth: str):
     return list_time_off
 
 
-def get_list_to_approve(dep_name):
+def get_list_to_approve(dep_name: str):
     list_approve = []
     stmt = """
         select event_date, time_out, time_in, employee, post, dep_name, cause, head, id, status 
         from register r
         where trunc(event_date,'MM') = trunc(sysdate,'MM')
         and   dep_name = :dep_name
+        and   status = 0
         order by event_date desc
     """
     with get_connection() as connection:
@@ -107,6 +115,31 @@ def get_list_to_approve(dep_name):
                     list_approve.append(res)
             finally:
                 log.debug(f'LIST APPROVE. {list_approve}')
+    return list_approve
+
+
+def get_secure_list_to_approve():
+    list_approve = []
+    stmt = """
+        select event_date, time_out, time_in, employee, post, dep_name, cause, head, id, status 
+        from register r
+        where trunc(event_date,'MM') = trunc(sysdate,'MM')
+        and   status = 3
+        order by event_date desc
+    """
+    with get_connection() as connection:
+        with connection.cursor() as cursor:
+            try:
+                cursor.execute(stmt)
+                rows = cursor.fetchall()
+                for row in rows:
+                    res = { 'event_date': row[0], 'time_out': row[1], 'time_in': row[2],
+                           'employee': row[3], 'post': row[4], 'dep_name': row[5],
+                           'cause': row[6], 'head': row[7], 'id': row[8], 'status': row[9]
+                           }
+                    list_approve.append(res)
+            finally:
+                log.debug(f'SECURE LIST APPROVE. {list_approve}')
     return list_approve
 
 

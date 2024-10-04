@@ -1,11 +1,14 @@
 APP_NAME = Qyzmetker
 ABOUT = О программе
+EMPLOYEE = Сотрудник
 ORDER_SUPPORT = Обратиться в техподдержку
 TIME_OFF = Зарегистрировать время отсутствия
+SECURE_TIME_OFF = Зарегистрировать от СБ
 LIST_TIME_OFF = Личное время отсутствия
 ALL_LIST_TIME_OFF = Общий список
 LIST_ABSENT = Список отсутствующих
 LIST_APPROVE = Список на утверждение
+SECURE_LIST_APPROVE = Список СБ
 ON_APPROVING = На согласовании
 REFUSED = Отказано
 APPROVED = Согласовано

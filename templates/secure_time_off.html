@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ res_value('SECURE_TIME_OFF') }}
+{% endblock %}
+
+{% block main_title %}
+{{ res_value('SECURE_TIME_OFF') }}
+    {% if message %}
+    &nbsp;&emsp;{{ message }}
+    {% endif %}
+{% endblock %}
+
+{% block navigate %}
+{% endblock %}
+
+{% block body %}
+
+<form class="form_r" style="padding-left: 2%; width: 80%" method="POST">
+    <div class="field">
+        <label for="username">{{ res_value('EMPLOYEE') }}</label>
+        <input class="input_s" style="width: 480px" type="text" name="employee" maxlength="128">
+    </div>
+    <div class="field">
+        <label for="dep_name">{{ res_value('DEP_NAME') }}</label>
+        <input class="input_s" style="width: 480px" type="text" id="dep_name" name="dep_name" maxlength="128">
+    </div>
+    <div class="field">
+        <label for="post">{{ res_value('POST') }}</label>
+        <input class="input_s" style="width: 480px" type="text" id="post" name="post" maxlength="128">
+    </div>
+    <div class="field">
+        <label for="date_out">{{ res_value('TIME_OUT') }}</label>
+        <input class="input_s" type="datetime-local" id="date_out" name="date_out">
+    </div>
+    <div class="field">
+        <label for="date_in">{{ res_value('TIME_IN') }}</label>
+        <input class="input_s" type="datetime-local" id="date_in" name="date_in">
+    </div>
+    <div class="field">
+        <label for="cause">{{ res_value('CAUSE') }}</label>
+        <input class="input_s" style="width: 480px" type="text" id="cause" name="cause" maxlength="512" minlength="12">
+    </div>
+    <br />
+    <button class="bt bt_r" type="submit" name="edit_parms">{{ res_value('SAVE') }}</button>
+    <br />
+</form>
+{% endblock %}
