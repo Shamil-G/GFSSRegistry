@@ -27,7 +27,8 @@
             <th style="font-size:16px;"><a>{{ res_value('REG_DATE') }}</a></th>
             <th style="font-size:16px;"><a>{{ res_value('TIME_OUT') }}</a></th>
             <th style="font-size:16px;"><a>{{ res_value('TIME_IN') }}</a></th>
-            <th style="font-size:16px;"><a>{{ res_value('TIME_FACT') }}</a></th>
+            <!--<th style="font-size:16px;"><a>{{ res_value('TIME_FACT') }}</a></th>-->
+            <th style="font-size:16px;"><a>{{ res_value('AGREE_HEAD') }}</a></th>
             <th style="font-size:16px;"><a>{{ res_value('CAUSE') }}</a></th>
             <th style="font-size:16px;"><a>{{ res_value('STATUS') }}</a></th>
             <th style="font-size:16px;"><a>{{ res_value('ACTION') }}</a></th>
@@ -40,20 +41,25 @@
             <td style="font-size:16px;"><a>{{ el.event_date }}</a></td>
             <td style="font-size:16px;"><a>{{ el.time_out }}</a></td>
             <td style="font-size: 16px;"><a>{{ el.time_in }}</a></td>
-            {% if el.status==1 and not el.time_fact %}
-                <td style="font-size:16px;"><a class="bt_t" href="/fact-time-off/{{ el.id }}">{{ res_value('TIME_MARK') }}</a></td>
-            {% elif el.time_fact %}
-                <td style="font-size: 16px;"><a>{{ el.time_fact }}</a></td>
-            {% else %}
-                <td style="font-size: 16px;"><a></a></td>
-            {% endif %}
+
+            <td style="font-size: 16px;"><a>{{ el.head }}</a></td>
+
+            <!--{% if el.status==1 and not el.time_fact %}
+        <td style="font-size:16px;"><a class="bt_t" href="/fact-time-off/{{ el.id }}">{{ res_value('TIME_MARK') }}</a></td>
+    {% elif el.time_fact %}
+        <td style="font-size: 16px;"><a>{{ el.time_fact }}</a></td>
+    {% else %}
+        <td style="font-size: 16px;"><a></a></td>
+    {% endif %}-->
+
+
             <td style="text-align: left; margin-left: 4px; font-size: 16px;"><a>{{ el.cause }}</a></td>
             {% if el.status==2 %}
-                <td style="color: hotpink; margin-left: 4px; font-size: 16px; font-weight: 600;"><a>{{ res_value('REFUSED') }}</a></td>
+            <td style="color: hotpink; margin-left: 4px; font-size: 16px; font-weight: 600;"><a>{{ res_value('REFUSED') }}</a></td>
             {% elif el.status==1 %}
-                <td style="text-align: left; margin-left: 4px; font-size: 16px;"><a>{{ res_value('APPROVED') }}</a></td>
+            <td style="text-align: left; margin-left: 4px; font-size: 16px;"><a>{{ res_value('APPROVED') }}</a></td>
             {% else %}
-                <td style="text-align: center; margin-left: 4px; font-size: 16px; color: hotpink;"><a>{{ res_value('ON_APPROVING') }}</a></td>
+            <td style="text-align: center; margin-left: 4px; font-size: 16px; color: hotpink;"><a>{{ res_value('ON_APPROVING') }}</a></td>
             {% endif %}
             <td style="font-size:16px;"><a class="bt_t" href="/del-from-list-time-off/{{ el.id }}">{{ res_value('REMOVE') }}</a></td>
         </tr>

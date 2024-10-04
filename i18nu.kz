@@ -1,5 +1,6 @@
 APP_NAME = Qyzmetker
 ABOUT = Программа жайлы
+AGREE_HEAD = Кто согласовал
 EMPLOYEE = Сотрудник
 ORDER_SUPPORT = Техникалық қолдауға жүгіну
 TIME_OFF = Болмау уақытын тіркеңіз

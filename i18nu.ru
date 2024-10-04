@@ -1,5 +1,6 @@
 APP_NAME = Qyzmetker
 ABOUT = О программе
+AGREE_HEAD = Кто согласовал
 EMPLOYEE = Сотрудник
 ORDER_SUPPORT = Обратиться в техподдержку
 TIME_OFF = Зарегистрировать время отсутствия

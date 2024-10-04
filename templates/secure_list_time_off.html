@@ -32,7 +32,7 @@
             <th style="font-size:16px;"><a>{{ res_value('POST') }}</a></th>
             <th style="font-size:16px;"><a>{{ res_value('DEP_NAME') }}</a></th>
             <th style="font-size:16px;"><a>{{ res_value('CAUSE') }}</a></th>
-            <th style="font-size:16px;"><a>{{ res_value('STATUS') }}</a></th>
+            <th style="font-size:16px;"><a>{{ res_value('AGREE_HEAD') }}</a></th>
         </tr>
     </thead>
     <tfoot></tfoot>
@@ -46,7 +46,7 @@
             <td style="text-align: left; margin-left: 4px; font-size: 16px;"><a>{{ el.post }}</a></td>
             <td style="text-align: left; margin-left: 4px; font-size: 16px;"><a>{{ el.dep_name }}</a></td>
             <td style="text-align: left; margin-left: 4px; font-size: 16px;"><a>{{ el.cause }}</a></td>
-            <td style="font-size: 18px; color:teal; font-weight: 600; "><a>{{ res_value('APPROVED') }}</a></td>
+            <td style="text-align: left; font-weight: 600;"><a>{{ el.head }}</a></td>
         </tr>
         {% endfor %}
     <tbody>
