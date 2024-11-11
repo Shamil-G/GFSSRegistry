@@ -166,10 +166,7 @@ class LDAP_User:
 if __name__ == "__main__":
     #'bind_dn'       => 'cn=ldp,ou=admins,dc=gfss,dc=kz',
     #'bind_pass'     => 'hu89_fart7',    
-    #get_users('Гусейнов_Ш@GFSS', 'Strptz256')
-    connect_ldap('Гусейнов', 'Strptz256')
-    #get_users('Гусейнов_Ш', 'Strptz256')
-    #get_users('s.gusseynov@GFSS', 'Strptz256')
+    connect_ldap('Гусейнов', '123')
 
 
 
