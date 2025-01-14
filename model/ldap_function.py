@@ -72,11 +72,14 @@ def get_list_birthdate():
     result_list=[]
     for user in users:
         iin = str(user['telephoneNumber'])
+        dn = str(user['distinguishedName'])
+        ou = find_value(dn, 'OU')
+        if ou=='UVOLEN':
+            log.debug(f'UVOLEN! {user}')
+            continue
         log.debug(f'-------------\nIIN:\n{iin}\n-------------')
         
         if (iin[2:4] == curr_month and int(iin[4:6])>=curr_day_int and int(iin[4:6])<curr_day_int+10) or (iin[2:4] == next_month and int(iin[4:6])<10):
-            dn = str(user['distinguishedName'])
-            ou = find_value(dn, 'OU')
             bd_year_int = int(iin[:2])
             if bd_year_int > int(curr_year):
                 birth_date = f'{int(curr_centure)-1}{iin[:2]}.{iin[2:4]}.{iin[4:6]}'
