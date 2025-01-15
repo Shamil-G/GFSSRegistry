@@ -61,6 +61,7 @@ INSERT_NICKNAME = Тіркелген атауды енгізіңіз
 INSERT_PASSWORD = Құпия сөзді енгізіңіз
 LOAD_LIST_ORG_MINSO = Мин. с есебіне арналған ұйымдардың тізімін жүктеп алыңыз
 LOGIN = Кіру
+LOGIN_NAME = Тегі/ЖСН
 LOGIN_BUTTON = Кіру
 LOGIN_INFO = Аты мен паролін енгізіңіз
 LOGIN_PAGE = Кіру

@@ -86,9 +86,9 @@ def login_page():
                 return redirect(url_for('view_root'))
         else:
             log.error(f'LOGIN_PAGE. FAIL USERNAME. {session['username']}')
-        flash("Имя пользователя или пароль неверны")
+        flash("Фамилия/ИИН пользователя или пароль неверны")
         log.error(f'LOGIN_PAGE. FAIL AUTHORITY')
-    flash('Введите имя и пароль')
+    flash('Введите Фамилию/ИИН и пароль')
     return render_template('login.html')
 
 

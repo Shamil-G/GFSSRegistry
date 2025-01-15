@@ -63,6 +63,7 @@ LOGIN = Войти
 LOGIN_BUTTON = Войти в систему
 LOGIN_INFO = Введите имя и пароль
 LOGIN_PAGE = Вход в систему
+LOGIN_NAME = Фамилия/ИИН
 LOGOUT = Выйти
 LIST_MODELS = Список всех моделей
 MONTH_CALC = Месяц расчета
