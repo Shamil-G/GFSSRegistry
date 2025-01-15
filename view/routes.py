@@ -75,7 +75,8 @@ def view_time_off():
             log.debug(f"VIEW_TIME-OFF. date_out: {date_out}, date_in: {date_in}, "
                         f"\n\temployee: {employee}\n\tpost: {post}\n\tdep_name: {dep_name}\n\tcause: {cause}")
             message = add_time_off(date_out, date_in, employee, post, dep_name, cause)
-            return redirect(url_for('view_list_time_off'))            
+            # if message=='Success':
+            #     return redirect(url_for('view_list_time_off'))            
     if message == 'Success':
         message = 'Регистрация завершена успешно'
     elif message:
