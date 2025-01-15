@@ -1,4 +1,5 @@
-from datetime import date
+import locale
+from datetime import date, datetime
 from ldap3 import Server, Connection, SUBTREE
 from flask import session
 from app_config import ldap_admins, ldap_server, ldap_user, ldap_password, ldap_ignore_ou, ldap_boss
@@ -16,7 +17,7 @@ def find_value(src_string:str, key:str):
 def sortElementBD(element:dict):
     sortElement=''
     if 'birth_date' in element:
-        sortElement = element['birth_date'][5:]
+        sortElement = element['birth_date'][0:]
     log.debug(f'element: {element}, sortelement: {sortElement}')
     return sortElement
 
@@ -80,11 +81,18 @@ def get_list_birthdate():
         log.debug(f'-------------\nIIN:\n{iin}\n-------------')
         
         if (iin[2:4] == curr_month and int(iin[4:6])>=curr_day_int and int(iin[4:6])<curr_day_int+10) or (iin[2:4] == next_month and int(iin[4:6])<10):
-            bd_year_int = int(iin[:2])
-            if bd_year_int > int(curr_year):
-                birth_date = f'{int(curr_centure)-1}{iin[:2]}.{iin[2:4]}.{iin[4:6]}'
-            else:
-                birth_date = f'{int(curr_centure)}{iin[:2]}.{iin[2:4]}.{iin[4:6]}'
+            # cur_locale = locale.getlocale()
+            # locale.setlocale(locale.LC_ALL, 'ru_RU.UTF-8')
+            bd_date = datetime.strptime(iin[:6], '%y%m%d')
+            # bd_year_int = int(iin[:2])
+            # if bd_year_int > int(curr_year):
+            #     # birth_date = f'{int(curr_centure)-1}{iin[:2]}.{iin[2:4]}.{iin[4:6]}'
+            #     birth_date = f'{iin[4:6]}.{iin[2:4]}'
+            # else:
+            #     # birth_date = f'{int(curr_centure)}{iin[:2]}.{iin[2:4]}.{iin[4:6]}'
+            #     birth_date = f'{iin[4:6]}.{iin[2:4]}.{int(curr_centure)}{iin[:2]}'
+            birth_date = bd_date.strftime('%d, %B')
+            # locale.setlocale(locale.LC_ALL, cur_locale)
             result_user = { 
                             'birth_date': birth_date,
                             'employee': str(user['displayName']),

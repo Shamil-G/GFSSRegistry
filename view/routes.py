@@ -1,3 +1,4 @@
+from locale import setlocale, LC_ALL
 from gfss_parameter import platform
 from app_config import REPORT_PATH, debug_level, styles
 from main_app import app, log
@@ -14,6 +15,7 @@ from model.rep_all_time_off import do_report
 from model.ldap_function import get_list_birthdate
 from os import environ
 
+setlocale(LC_ALL, 'ru_RU.UTF-8')
 
 @app.context_processor
 def utility_processor():
