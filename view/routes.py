@@ -250,7 +250,7 @@ def view_del_head(head_name):
 
 @app.route('/language/<string:lang>')
 def set_language(lang):
-    log.debug(f"Set language. LANG: {lang}, предыдущий язык: {session['language']}")
+    log.debug(f"Set language. LANG: {lang}")
     session['language'] = lang
     # Получим предыдущую страницу, чтобы на неё вернуться
     current_page = request.referrer
