@@ -1,6 +1,6 @@
 from ldap3 import Server, Connection, SUBTREE
 from flask import session
-from app_config import ldap_admins, ldap_server, ldap_user, ldap_password, ldap_ignore_ou, ldap_boss
+from app_config import ldap_admins, approve_admins, ldap_server, ldap_user, ldap_password, ldap_ignore_ou, ldap_boss
 from util.ip_addr import ip_addr
 from util.logger import log
 
@@ -111,6 +111,7 @@ class LDAP_User:
         ip = ip_addr()
         self.src_user = src_user
         session['admin']=0
+        session['approve_admin']=0
         if 'password' in session:
             self.password = session['password']
         if src_user:
@@ -126,11 +127,13 @@ class LDAP_User:
                 # log.debug(f'ldap_admins: {ldap_admins}')
                 if session['full_name'] in ldap_admins:
                     session['admin']=1
+                if session['full_name'] in approve_admins:
+                    session['approve_admin']=1
                 
                 self.ip_addr = ip
-                log.info(f"LM. SUCCESS. USERNAME: {self.username}, ip_addr: {self.ip_addr}\n\tFIO: {self.full_name}\n\tadmin: {session['admin']}")
+                log.info(f"LM. SUCCESS. USERNAME: {self.username}, ip_addr: {self.ip_addr}\n\tFIO: {self.full_name}\n\tadmin: {session['admin']}, approve_admin: {session['approve_admin']}")
                 return self
-        log.info(f"LM. FAIL. USERNAME: {src_user}, ip_addr: {ip}, password: {session['password']}, admin: {session['admin']}")
+        log.info(f"LM. FAIL. USERNAME: {src_user}, ip_addr: {ip}, password: {session['password']}")
         return None
 
     def have_role(self, role_name):

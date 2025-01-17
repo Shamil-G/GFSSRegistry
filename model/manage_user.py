@@ -91,21 +91,33 @@ def get_all_list_time_off(mnth: str):
     return list_time_off
 
 
-def get_list_to_approve(dep_name: str):
-    list_approve = []
-    stmt = """
-        select event_date, time_out, time_in, employee, post, dep_name, cause, head, id, status 
-        from register r
-        where trunc(event_date,'MM') = trunc(sysdate,'MM')
-        and   dep_name = :dep_name
-        and   status = 0
-        order by event_date desc
-    """
+def get_list_to_approve(dep_name: str, admin: int):
+    if admin==1:
+        stmt = """
+            select event_date, time_out, time_in, employee, post, dep_name, cause, head, id, status 
+            from register r
+            where trunc(event_date,'MM') >= trunc(sysdate,'MM')-5
+            and   status = 0
+            order by event_date desc
+        """
+    else:
+        stmt = """
+            select event_date, time_out, time_in, employee, post, dep_name, cause, head, id, status 
+            from register r
+            where trunc(event_date,'MM') >= trunc(sysdate,'MM')-5
+            and   dep_name = :dep_name
+            and   status = 0
+            order by event_date desc
+        """
+    list_approve=[]
     with get_connection() as connection:
         with connection.cursor() as cursor:
             try:
                 log.debug(f'LIST APPROVE. dep_name: {dep_name} : {type(dep_name)}')
-                cursor.execute(stmt, dep_name=dep_name)
+                if admin==1:
+                    cursor.execute(stmt)
+                else:
+                    cursor.execute(stmt, dep_name=dep_name)
                 rows = cursor.fetchall()
                 for row in rows:
                     res = { 'event_date': row[0], 'time_out': row[1], 'time_in': row[2],

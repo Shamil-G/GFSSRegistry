@@ -165,9 +165,9 @@ def view_all_list_time_off():
 @app.route('/list-to-approve', methods=['GET','POST'])
 @login_required
 def view_list_approve():
-    log.debug(f'VIEW LIST APPROVE. username {session['full_name']}, admin: {session['admin']}')
+    log.debug(f'VIEW LIST APPROVE. username {session['full_name']}, admin: {session['admin']}, approve_admin: {session['approve_admin']}')
     log.debug(f'VIEW LIST APPROVE. dep_name: {session['dep_name']} : {type(session['dep_name'])}')
-    list_approve = get_list_to_approve(session['dep_name'])
+    list_approve = get_list_to_approve(session['dep_name'], session['approve_admin'])
     all_mess = get_all_message()
     return render_template("list_approve.html", list_approve=list_approve, all_mess=all_mess)
 

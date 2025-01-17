@@ -16,9 +16,8 @@ def find_value(src_string:str, key:str):
 
 def sortElementBD(element:dict):
     sortElement=''
-    if 'birth_date' in element:
-        sortElement = element['birth_date'][0:]
-    log.debug(f'element: {element}, sortelement: {sortElement}')
+    if 'birth_date_sort' in element:
+        sortElement = element['birth_date_sort'][0:]
     return sortElement
 
 def get_connect(username:str, password:str):
@@ -84,17 +83,15 @@ def get_list_birthdate():
             # cur_locale = locale.getlocale()
             # locale.setlocale(locale.LC_ALL, 'ru_RU.UTF-8')
             bd_date = datetime.strptime(iin[:6], '%y%m%d')
-            # bd_year_int = int(iin[:2])
-            # if bd_year_int > int(curr_year):
-            #     # birth_date = f'{int(curr_centure)-1}{iin[:2]}.{iin[2:4]}.{iin[4:6]}'
-            #     birth_date = f'{iin[4:6]}.{iin[2:4]}'
-            # else:
-            #     # birth_date = f'{int(curr_centure)}{iin[:2]}.{iin[2:4]}.{iin[4:6]}'
-            #     birth_date = f'{iin[4:6]}.{iin[2:4]}.{int(curr_centure)}{iin[:2]}'
+            bd_month = int(iin[2:4])
+            if int(curr_month) > bd_month:  # Ситуация в декабре-январе когда 12>1
+                birth_date_sort = f'{int(iin[2:4])+1}.{iin[4:6]}'
+            else:
+                birth_date_sort = f'{iin[2:4]}.{iin[4:6]}'
             birth_date = bd_date.strftime('%d, %B')
-            # locale.setlocale(locale.LC_ALL, cur_locale)
             result_user = { 
                             'birth_date': birth_date,
+                            'birth_date_sort': birth_date_sort,
                             'employee': str(user['displayName']),
                             'post': str(user['description'])
                             }
