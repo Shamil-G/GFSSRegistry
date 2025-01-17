@@ -18,6 +18,7 @@ approve_admins = ['Гусейнов Шамиль Аладдинович', 'Ал�
 ldap_server = 'ldap://192.168.1.3:3268'
 ldap_user = 'cn=ldp,ou=admins,dc=gfss,dc=kz'
 ldap_password = 'hu89_fart7'
-ldap_ignore_ou = ['UVOLEN',]
+ldap_ignore_ou = ['UVOLEN','OLD','Domain Controllers','Admins','WinUpdate','TMP','pfsense','UpOK',
+                  'ATT','BUILTIN','Computers','DEKRET', 'gfss', 'Tempo', 'REG', 'Servers_Reg']
 ldap_boss = ['Директор', 'Руководитель','Главный разработчик']
 #ldap_boss = ['Директор', 'Руководитель']
