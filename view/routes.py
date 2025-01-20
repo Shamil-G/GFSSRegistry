@@ -272,6 +272,7 @@ def uploaded_file():
     return send_from_directory(REPORT_PATH, file_name)
     # return redirect(url_for('view_running_reports'))
 
+
 @app.route('/phone')
 def uploaded_phone():
     file_name = 'PhoneRefer.xlsx'
@@ -279,3 +280,27 @@ def uploaded_phone():
     log.debug(f"UPLOADED_FILE. REPORT_PATH: {REPORT_PATH} FILE_NAME: {file_name}")
     return send_from_directory(REPORT_PATH, file_name)
     # return redirect(url_for('view_running_reports'))
+
+
+@app.route('/set-black-white')
+def set_bw():
+    session['styles']='styles'
+    # Получим предыдущую страницу, чтобы на неё вернуться
+    current_page = request.referrer
+    log.debug(f"Set BLACK color. {current_page}")
+    if current_page is not None:
+        return redirect(current_page)
+    else:
+        return redirect(url_for('view_root'))
+
+
+@app.route('/set-color')
+def set_color():
+    session['styles']='issatay'
+    # Получим предыдущую страницу, чтобы на неё вернуться
+    current_page = request.referrer
+    log.debug(f"Set Set BLACK color. {current_page}")
+    if current_page is not None:
+        return redirect(current_page)
+    else:
+        return redirect(url_for('view_root'))

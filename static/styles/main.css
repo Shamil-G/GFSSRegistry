@@ -4,9 +4,10 @@
 @import url('button.css');
 /*@import url('elements.css');*/
 
-:root{
+:root {
     color: #ddd;
     font-size: 16px;
+    text-decoration: none;
 }
 html, body {
     /*width: 99%;*/
@@ -14,7 +15,15 @@ html, body {
     font-family: Calibri;
     background: #222;
 }
-nav, article {
+nav {
+    border-radius: 5px;
+    border: 1px solid rgba(180, 180, 180, 0.3);
+    /*background-image: url('/static/img/bg.jpg');*/ /* Update this path */
+    background-size: cover;
+    background-position: center;
+    text-shadow: 1px 2px 3px grey;
+}
+article {
     border-radius: 5px;
     border: 1px solid rgba(180, 180, 180, 0.3);
 }
@@ -59,12 +68,15 @@ footer > .footer-r, header > .header-r {
     /*margin-left: 15px;*/
     margin-right: 10px;
     text-align: right;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
 }
 nav {
     margin: 0;
     padding: 2px;
     display: grid;
-    grid-template-rows: repeat(7,minmax(20px, 10%));
+    grid-template-rows: repeat(12,minmax(20px, 10%));
     grid-template-columns: 100%;
     grid-row-gap: 3px;
     grid-area: nav;  /* задаем имя элемента */
@@ -82,8 +94,24 @@ nav > a {
 }
 
 article {
-  margin: 0;
-  grid-area: article;  /* задаем имя элемента */
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+    grid-area: article; /* задаем имя элемента */
+    grid-template-areas: "article_body article_info";
+}
+article_body {
+    margin: 0;
+    grid-area: article_body; /* задаем имя элемента */
+    /*background-color: #deefdf;*/
+    /*min-height: 100%;*/
+    display: grid;
+}
+article_info {
+    margin: 0;
+    grid-area: article_info; /* задаем имя элемента */
+/*    background-color: #222;*/
+    /*min-height: 100%;*/
+    display: grid;
 }
 .article_title {
   padding: 2px 16px;

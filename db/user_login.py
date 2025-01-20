@@ -59,10 +59,11 @@ def logout():
 
 @app.route('/login', methods=['GET', 'POST'])
 def login_page():
-    if "STYLE" in environ:
-        session['styles']=environ["STYLES"]
-    else:
-        session['styles']=cfg.styles
+    if 'styles' not in session:
+        if "STYLE" in environ:
+            session['styles']=environ["STYLES"]
+        else:
+            session['styles']=cfg.styles
     
     if '_flashes' in session:
          session['_flashes'].clear()
