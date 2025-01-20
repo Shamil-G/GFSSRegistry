@@ -10,7 +10,7 @@
 .bt_s {
     color: teal;
     margin: 2px 7px;
-    padding: 6px 39px 6px 39px;
+    padding: 6px 34px 6px 34px;
     cursor: pointer;
     display: inline-block;
     text-align: center;
@@ -46,8 +46,8 @@
 }
 .bt {
     color: #ddd;
-    margin: 2px 2px;
-    padding: 6px 10px 6px 8px;
+    margin: 2px 4px;
+    padding: 6px 34px 6px 34px;
     display: inline-block;
     text-align: center;
     vertical-align: middle;
