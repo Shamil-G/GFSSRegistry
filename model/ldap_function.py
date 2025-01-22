@@ -67,9 +67,9 @@ def get_list_birthdate():
     users = conn_src.entries
     # Connection closed
     
-    log.info(f"-------USERS: \n\t{users}\n-------")
+    log.debug(f"-------USERS: \n\t{users}\n-------")
     if len(users)==0:
-        log.debug(f'CONNECT_LDAP. FOUND USERS: {len(users)}\n{users}\n--------------------------------------------')
+        log.info(f'CONNECT_LDAP. FOUND USERS: {len(users)}\n{users}\n--------------------------------------------')
         return 0,'',''
 
     dn=''
@@ -118,7 +118,7 @@ def get_list_birthdate():
 
     conn_src.unbind()
 
-    log.info(f'GET_LIST_BIRTHDATE. SUCCESS. {result_list}')
+    log.debug(f'GET_LIST_BIRTHDATE. SUCCESS. {result_list}')
     return result_list
 
 
@@ -208,5 +208,5 @@ def get_list_birthdate_orig():
 
     conn_src.unbind()
 
-    log.info(f'GET_LIST_BIRTHDATE. SUCCESS. {result_list}')
+    log.debug(f'GET_LIST_BIRTHDATE. SUCCESS. {result_list}')
     return result_list
