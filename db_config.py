@@ -3,15 +3,13 @@ from util.logger import log
 import redis
 
 if platform == 'unix':
-    pool_min = 0
-    pool_max = 40
-    pool_inc = 10
-    username = 'reports'
-else:
     pool_min = 4
-    pool_max = 10
+    pool_max = 80
     pool_inc = 4
-    username = 'reports_test'
+else:
+    pool_min = 2
+    pool_max = 10
+    pool_inc = 2
 
 expire_time = 15  # количество минут между отправкой keepalive
 timeout = 300     # В секундах. Время простоя, после которого курсор освобождается
@@ -20,7 +18,7 @@ max_lifetime_session = 180  # Время в секундах, в течении 
 retry_count = 5
 retry_delay = 1
 
-Debug = True
+Debug = False
 
 # if using != 'DEV_WIN_HOME':
 #     db_redis = redis.from_url('redis://@10.15.15.11:6379')
