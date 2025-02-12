@@ -57,7 +57,7 @@
             {% endif %}
             <a class="nav_button" href="/list-time-off">{{ res_value('LIST_TIME_OFF') }}</a>
             <a class="nav_button" href="/new-message">{{ res_value('NEW_MESSAGE') }}</a>
-            <a class="nav_button" href="/">{{ res_value('ORDER_SUPPORT') }}</a>
+            <!--<a class="nav_button" href="/">{{ res_value('ORDER_SUPPORT') }}</a>-->
             <a class="nav_button" href="/">{{ res_value('NEAR_BIRTH_DATE') }}</a>
             <a class="nav_button" href="/static/nsi/PhoneRefer.pdf" target="_blank">{{ res_value('PHONE_REFER') }}</a>
             <a class="nav_button" href="/logout">{{ res_value('LOGOUT') }}</a>
@@ -97,8 +97,10 @@
                                         <a style="margin-left:2px; font-size: 12px; font-weight:300">{{ el.mess_date }}</a>&nbsp;
                                         <a style="font-weight:600">{{ el.author }}</a>
                                         <br>
+                                        {% if el.dep_name %}
                                         <a style="margin-left: 2px; font-size: 14px; font-weight: 300; font-style: italic">{{ el.dep_name }}</a>
                                         <br>
+                                        {% endif %}
                                         <a style="margin-left: 2px; font-weight: 500;">{{ el.message }}</a>
                                         <br>
                                         <br>
