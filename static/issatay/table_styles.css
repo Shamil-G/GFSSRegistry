@@ -74,7 +74,8 @@ div.field label {
     padding: 3px 12px;
     text-align: center;
     border-radius: 5px;
-    border: 1px solid #bface8;
+    border: 2px solid rgba(171, 243, 172, 0.8);
+    /*border: 1px solid #bface8;*/
 }
 /* Подсвечиваем строки на котором стоит курсор*/
 .table_common tbody tr:hover {
@@ -102,7 +103,8 @@ div.field label {
     text-decoration: none;
     border-radius: 2px;
     font-size: 18px;
-    border: 1px solid #bface8;
+    /*border: 1px solid #bface8;*/
+    border: 2px solid rgba(171, 243, 172, 0.5);
     text-shadow: 1px 1px 3px grey;
 }
 
