@@ -1,4 +1,4 @@
-python3 -m venv venv
+python -m venv venv
 PROJECT_DIR=$HOME/REPORTS_GFSS
 . $PROJECT_DIR/venv/bin/activate
 pip install --upgrade pip

@@ -53,11 +53,11 @@
     text-decoration: none;
 }
 
-    .new_system:hover, .form_login > a:hover {
-        margin: 4px;
-        background: #f5f5b8;
-        color: brown;
-    }
+.new_system:hover, .form_login > a:hover {
+    margin: 4px;
+    background: #f5f5b8;
+    color: brown;
+}
 
 .div_s:hover {
     display: flex;
@@ -109,5 +109,5 @@ textarea {
     padding: 5px;
     border-radius: 5px;
     width: 540px;
-    box-shadow: 4px 4px 4px grey;
+    box-shadow: 4px -4px 12px rgba(70, 205, 79, 0.3);
 }

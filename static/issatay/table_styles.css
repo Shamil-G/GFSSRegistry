@@ -104,8 +104,9 @@ div.field label {
     border-radius: 2px;
     font-size: 18px;
     /*border: 1px solid #bface8;*/
-    border: 2px solid rgba(171, 243, 172, 0.5);
+    border: 1px solid rgba(171, 243, 172, 0.5);
     text-shadow: 1px 1px 3px grey;
+    box-shadow: 6px 6px 8px rgba(70, 205, 79, 0.2);
 }
 
 .table-scroll-body {

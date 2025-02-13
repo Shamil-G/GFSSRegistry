@@ -43,7 +43,7 @@
     background-color: #333;
     transition: color .2s ease-in-out,background-color .2s ease-in-out, border-color .2s ease-in-out, box-shadow .2s ease-in-out;
     text-shadow: 1px 2px 3px grey;
-    box-shadow: 4px 4px 6px grey;
+    /*box-shadow: 4px 4px 6px grey;*/
 }
 .bt_t {
     color: hotpink;
@@ -78,7 +78,7 @@
     text-decoration: none;
     transition: color .2s ease-in-out,background-color .2s ease-in-out, border-color .2s ease-in-out, box-shadow .2s ease-in-out;
     text-shadow: 1px 2px 3px grey;
-    box-shadow: 4px 4px 6px grey;
+    box-shadow: 5px 5px 8px rgba(70, 205, 79, 0.3);
 }
 
 .bt.danger {
@@ -152,4 +152,53 @@
     border-radius: 5px;
     cursor: pointer;
     margin: 5px 2px;
+}
+.img {
+    width: 40px;
+    height: 36px;
+    border-radius: 32px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    margin: 2px 2px;
+    padding: 5px 0px 0px 1px;
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 1.5;
+    border-radius: 5px;
+    border: 1px solid rgba(180, 180, 180, 0.3);
+    text-decoration: none;
+    transition: color .2s ease-in-out,background-color .2s ease-in-out, border-color .2s ease-in-out, box-shadow .2s ease-in-out;
+    /*box-shadow: 4px 4px 6px grey;*/
+    /*box-shadow: 6px 6px 8px #8080805e;*/
+    box-shadow: 5px 5px 8px rgba(70, 205, 79, 0.3);
+}
+
+.img:hover {
+    width: 40px;
+    height: 36px;
+    color: #3d3c3c;
+    text-decoration: none;
+    /*background-color: #CCF2D3FF;*/
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    margin: 2px 2px;
+    padding: 5px 0px 0px 1px;
+    display: inline-block;
+    border-radius: 6px;
+    border: 1px solid rgba(180, 180, 180, 0.3);
+    transition: color .2s ease-in-out,background-color .2s ease-in-out, border-color .2s ease-in-out, box-shadow .2s ease-in-out;
+    /*box-shadow: -4px -4px 5px grey;*/
+    box-shadow: 5px -5px 8px rgba(70, 205, 79, 0.4);
+}
+.img_theme {
+    border-radius: 18px;
+    margin: 2px 2px;
+    vertical-align: middle;
+    transition: color .2s ease-in-out,background-color .2s ease-in-out, border-color .2s ease-in-out, box-shadow .2s ease-in-out;
+    box-shadow: 5px 5px 8px rgba(70, 205, 79, 0.4);
+}
+.img_theme:hover {
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    margin: 2px 2px;
+    transition: color .2s ease-in-out,background-color .2s ease-in-out, border-color .2s ease-in-out, box-shadow .2s ease-in-out;
+    box-shadow: 5px -5px 8px rgba(70, 205, 79, 0.4);
 }

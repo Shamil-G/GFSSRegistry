@@ -14,4 +14,3 @@ log.info(f'GFSSRegistry configured and started')
 
 log.info(f"__INIT MAIN APP for {app_name} started")
 print("__INIT MAIN APP__ started")
-
