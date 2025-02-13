@@ -16,7 +16,7 @@
 
 {% block body %}
 
-<form class="form_r" style="padding-left: 2%; width: 60%" method="POST">
+<form class="form_r" style="padding-left: 2%; width: 95%" method="POST">
     <div class="field">
         <label for="date_out">{{ res_value('TIME_OUT') }}</label>
         <input class="input_s" type="datetime-local" id="date_out" name="date_out">
@@ -27,7 +27,7 @@
     </div>
     <div class="field">
         <label for="cause">{{ res_value('CAUSE') }}</label>
-        <input class="input_s" type="text" id="cause" name="cause" maxlength="512" minlength="12">
+        <input class="input_s" type="text" id="cause" name="cause" maxlength="512" minlength="12" style="width: 75%">
     </div>
     <!--<div class="field">
         <label for="head_name">{{ res_value('HEAD_NAME') }}</label>

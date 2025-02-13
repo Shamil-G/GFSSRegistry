@@ -16,7 +16,7 @@
 
 {% block body %}
 
-<form class="form_r" style="padding-left: 2%; width: 80%" method="POST">
+<form class="form_r" style="padding-left: 2%; width: 95%" method="POST">
     <div class="field">
         <label for="username">{{ res_value('EMPLOYEE') }}</label>
         <input class="input_s" style="width: 480px" type="text" name="employee" maxlength="128">
@@ -39,7 +39,7 @@
     </div>
     <div class="field">
         <label for="cause">{{ res_value('CAUSE') }}</label>
-        <input class="input_s" style="width: 480px" type="text" id="cause" name="cause" maxlength="512" minlength="12">
+        <input class="input_s" style="width: 75%" type="text" id="cause" name="cause" maxlength="512" minlength="12">
     </div>
     <br />
     <button class="bt bt_r" type="submit" name="edit_parms">{{ res_value('SAVE') }}</button>
