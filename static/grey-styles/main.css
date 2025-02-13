@@ -58,6 +58,9 @@ footer > .footer-r, header > .header-r {
     /*margin-left: 15px;*/
     margin-right: 10px;
     text-align: right;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
 }
 nav {
     margin: 0;
