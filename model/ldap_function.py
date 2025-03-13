@@ -111,7 +111,7 @@ def get_list_birthdate():
 
             log.debug(f'Found organizations: {orgs}')
             for org in orgs:
-                log.debug(f'---\nORG_UNIT: {ou}, dep_name: {str(org['description'])}\n---')
+                log.debug(f'\tORG_UNIT: {ou}, DEP_NAME: {str(org['description'])}\n---')
             result_user['dep_name'] = str(orgs[0]['description'])
             result_list.append(result_user)
     result_list.sort(key=sortElementBD)
@@ -196,12 +196,15 @@ def get_list_birthdate_orig():
                         # attributes=['name', 'description', '*'],
                         attributes=['name', 'description'],
                         search_scope=SUBTREE,
-                        paged_size=1)
+                        paged_size=2)
             orgs = conn_src.entries
 
-            log.debug(f'Found organizations: {orgs}')
+            log.info(f'Found OU: {orgs}')
+            log.info(f'--- LIST ORGS')
             for org in orgs:
-                log.debug(f'---\nORG_UNIT: {ou}, dep_name: {str(org['description'])}\n---')
+                log.info(f'\tORG_UNIT: {ou}')
+                log.info(f'\tDEP_NAME: {str(org['description'])}\n---')
+            log.debug(f'--- LIST ORGS')
             result_user['dep_name'] = str(orgs[0]['description'])
             result_list.append(result_user)
     result_list.sort(key=sortElementBD)

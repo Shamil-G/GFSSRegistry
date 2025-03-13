@@ -44,6 +44,7 @@ log.info(f'\n---------------------- START connect --------------------------'
          f'\n\ttimeout: {db_timeout}, wait_timeout: {db_wait_timeout}, expire_time: {db_expire_time}' 
          f'\n\tmax_lifetime_session: {db_max_lifetime_session}, '
          f'\n\tmin: {db_pool_min}, max: {db_pool_max}, increment: {db_pool_inc}, '
+         f'\n\tLD_LIBRARY_PATH: {LD_LIBRARY_PATH} '
          f'\n------------------------   connect   --------------------------\n'
          )
 

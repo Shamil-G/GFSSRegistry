@@ -12,6 +12,13 @@ def find_value(src_string:str, key:str):
         if key_field==key:
             return value
 
+def get_ou(src:str):
+    index = src.find('OU')
+    if index>=0:
+        res = src[index:]
+    else:
+        res = ''
+    return res
 
 def get_connect(username:str, password:str):
     try:
@@ -47,7 +54,7 @@ def connect_ldap(username:str, password:str):
         log.debug(f'CONNECT_LDAP. FOUND USERS: {len(users)}\n{users}\n--------------------------------------------')
         return 0,'',''
 
-    log.debug(f'\nUSERS:\n{users}\n-----------------------')
+    log.info(f'\nUSERS:\n{users}\n-----------------------')
 
     dn=''
     principalName=''
@@ -56,14 +63,15 @@ def connect_ldap(username:str, password:str):
     conn_usr=''
     employeeNumber=''
     for user in users:
-        dn = str(user['distinguishedName'])
-        principalName = str(user['userPrincipalName'])
+        dn = user['distinguishedName'].value
+        search_dn = get_ou(dn)
+        principalName = user['userPrincipalName'].value
         if 'employeeNumber' in user:
-            employeeNumber = user['employeeNumber']
+            employeeNumber = user['employeeNumber'].value
         if 'displayName' in user:
-            full_name = str(user['displayName'])
+            full_name = user['displayName'].value
         if 'description' in user:
-            session['post'] = str(user['description'])
+            session['post'] = user['description'].value
             if session['post'] in ldap_boss:
                 session['boss']=1
             elif 'boss' in session:
@@ -81,28 +89,48 @@ def connect_ldap(username:str, password:str):
         log.info(f'USER NOT FOUND user: {principalName} : {password}.\nMISTAKE !!!\n---------------------------')
         return 0,'',''
        
-    log.debug(f'\nDN: {dn}\n-----------------------')
+    log.debug(f'-----------------------\nDN: {search_dn}\n-----------------------')
     log.debug(f'SUCCESS CONNECTED as user {principalName}. \n\tpost: {session['post']}'
               f'\n\tfull_name: {full_name}\n\temployeeNumber: {employeeNumber}\n\tOU: {ou}'
               '\nNOW will be search ORGANIZATION UNIT ...\n-----------------------')
     
-    conn_usr.search(search_base=f'OU={ou},dc=gfss,dc=kz', 
+    conn_usr.search(search_base=f'{search_dn}',
                 search_filter=f'(objectClass=OrganizationalUnit)', 
                 # attributes=['name', 'description', '*'],
                 attributes=['name', 'description'],
                 search_scope=SUBTREE,
-                paged_size=5)
+                paged_size=10)
 
     orgs = conn_usr.entries    
     conn_usr.unbind()
         
-    log.debug(f'Found organizations: {orgs}')
-    for org in orgs:
-        org_name = org['name']
-        session['dep_name'] = str(org['description'])
-        log.debug(f'---\nORG_UNIT: {ou}, org_name: {org_name}, dep_name: {session['dep_name']}\n---')
+    log.debug(f'---------\n\tOU: {ou}\n\tFound organizations: {orgs}')
+    v_int = 0
+    subordinate_ou = []
+    self_org_name = ''
+    self_dep_name = ''
+    if 'subordinate_ou' in session:
+        session.pop('subordinate_ou')
+    if 'dep_name' in session:
+        session.pop('dep_name')
 
-    log.info(f'CONNECT LDAP. SUCCESS. {principalName} : {full_name} : {session['dep_name']}')
+    for org in orgs:
+        v_int = v_int+1
+        org_name = org['name'].value
+        dep_name = org['description'].value
+        if v_int == 1 and org_name and dep_name:
+            self_org_name = org_name
+            self_dep_name = dep_name
+            session['dep_name'] = self_dep_name
+        else:
+            # if org_name:
+            #     subordinate_ou.append(str(org_name)) 
+            if dep_name:
+                subordinate_ou.append(dep_name) 
+    if len(subordinate_ou) > 0:
+        session['subordinate_ou'] = subordinate_ou
+        log.info(f'-----\n\tSUBORDINATE ORG. {session['subordinate_ou']}\n-----')
+    log.debug(f'CONNECT LDAP. SUCCESS. {principalName} : {full_name}, OU: {self_org_name}, DEP_NAME: {self_dep_name}')
     return success, principalName, full_name
 
         

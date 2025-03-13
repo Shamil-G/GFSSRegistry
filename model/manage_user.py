@@ -1,6 +1,7 @@
 from app_config import debug_level
 from main_app import log
 from db.connect import get_connection, plsql_func_s
+from flask import session
 
 
 def add_time_off(date_out:str, date_in:str, employee:str, post:str, dep_name:str, cause:str):
@@ -105,7 +106,7 @@ def get_list_to_approve(dep_name: str, admin: int):
             select event_date, time_out, time_in, employee, post, dep_name, cause, head, id, status 
             from register r
             where trunc(event_date,'MM') >= trunc(sysdate,'MM')-5
-            and   dep_name = :dep_name
+            and   dep_name in (:dep_name)
             and   status = 0
             order by event_date desc
         """
@@ -113,8 +114,12 @@ def get_list_to_approve(dep_name: str, admin: int):
     with get_connection() as connection:
         with connection.cursor() as cursor:
             try:
-                log.debug(f'LIST APPROVE. dep_name: {dep_name} : {type(dep_name)}')
-                if admin==1:
+                if 'subordinate_ou' in session:
+                    subordinate_ou = str(session['subordinate_ou'])[1:-1]
+                    stmt_new = stmt.replace(':dep_name', subordinate_ou);
+                    log.debug(f'\n\t!!! subordinate_ou: {subordinate_ou}\n\tstmt: {stmt_new}\n\t{session['subordinate_ou']}')
+                    cursor.execute(stmt_new)
+                elif admin==1:
                     cursor.execute(stmt)
                 else:
                     cursor.execute(stmt, dep_name=dep_name)

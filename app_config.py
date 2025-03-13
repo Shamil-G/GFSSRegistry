@@ -2,7 +2,7 @@ from gfss_parameter import BASE
 
 styles = 'issatay'
 
-debug_level = 2
+debug_level = 2 # >2 logger in DEBUG
 host = 'localhost'
 port=9000
 src_lang = 'file'
