@@ -16,9 +16,10 @@ if "HOME" in os.environ:
     platform='unix'
 
 if "LD_LIBRARY_PATH" in os.environ:
-    LD_LIBRARY_PATH=f'{LD_LIBRARY_PATH}'
+    LD_LIBRARY_PATH=os.environ['LD_LIBRARY_PATH']
 elif "ORACLE_HOME" in os.environ: 
-    ORACLE_HOME=f'{os.environ["ORACLE_HOME"]}'
+    ORACLE_HOME=os.environ['ORACLE_HOME']
     LD_LIBRARY_PATH=f'{ORACLE_HOME}/lib'
 
+print(f'LD_LIBRARY_PATH: {LD_LIBRARY_PATH}')
 BASE=f'{app_home}/{app_name}'
