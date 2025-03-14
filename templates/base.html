@@ -123,7 +123,7 @@
             <div class="footer-r">
                 <small style="visibility: hidden">{{ res_value('CREATORS') }}</small>
                 <small style="visibility: hidden">{{ res_value('FOR_DEVELOPERS') }}</small>
-                <a style="font-size:14px">{% if g.user.is_authenticated %} #{{ g.user.username }} {% endif %}</a>
+                <a style="font-size:14px">{% if g.user.is_authenticated %} #{{ g.user.username }} : {{g.user.post}} : {{g.user.dep_name}} {% endif %}</a>
             </div>
         </footer>
     </div>

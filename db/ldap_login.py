@@ -81,6 +81,8 @@ class LDAP_User:
     def get_user_by_name(self, src_user):
         ip = ip_addr()
         self.src_user = src_user
+        self.post=''
+        self.dep_name=''
         session['admin']=0
         session['approve_admin']=0
         if 'password' in session:
@@ -91,6 +93,11 @@ class LDAP_User:
                 log.debug(f'LM LDAP. success: {success}, login_user: {src_user}, password: {self.password}, full_name: {full_name}, login_name: {login_name}')
                 self.username = login_name
                 session['username'] = login_name
+
+                if 'post' in session:
+                    self.post = session['post']
+                if 'dep_name' in session:
+                    self.dep_name = session['dep_name']
                 
                 self.full_name = full_name
                 session['full_name'] = full_name 
