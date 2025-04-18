@@ -1,9 +1,9 @@
 from locale import setlocale, LC_ALL
 from gfss_parameter import platform
-from app_config import REPORT_PATH, debug_level, styles
+from app_config import REPORT_PATH, styles, sso_server
 from main_app import app, log
 from flask import  session, flash, request, render_template, redirect, url_for, send_from_directory, g
-from flask_login import  login_required
+from flask_login import  login_required, login_user
 import os
 from datetime import date
 from util.get_i18n import get_i18n_value
@@ -12,8 +12,12 @@ from model.manage_user import get_all_list_time_off, get_list_absent, get_list_t
 from model.manage_user import add_time_off, add_secure_time_off, fact_time_off, del_time_off, get_all_message, add_message
 from model.manage_user import approve_time_off, refuse_time_off
 from model.rep_all_time_off import do_report
-from model.ldap_function import get_list_birthdate
+from model.list_bd import get_list_birthdate
+import requests
 from os import environ
+from sso.sso_login import SSO_User
+from util.ip_addr import ip_addr
+
 
 setlocale(LC_ALL, 'ru_RU.UTF-8')
 
@@ -28,15 +32,41 @@ def utility_processor():
     return dict(res_value=get_i18n_value)
 
 
+def try_auto_login():
+    req_json = {'ip_addr': f'{ip_addr()}'}
+    resp = requests.post(url=f'{sso_server}/check', json=req_json)
+    log.debug(f'LOGIN CHECK. \n\taddr: {sso_server}/check\n\tresp: {resp}')
+    if resp.status_code == 200:
+        resp_json=resp.json()
+        log.debug(f'LOGIN GET. resp_json: {resp_json}')
+        if 'status' in resp_json and resp_json['status'] == 200:
+            json_user = resp_json['user']
+            log.info(f'LOGIN GET. json_user: {json_user}')
+            session['username'] = json_user['login_name']
+            user = SSO_User().get_user_by_name(json_user)
+            login_user(user)
+        else:
+            log.info(f'----------------\n\tUSER {ip_addr()} not Registred\n----------------')
+            return render_template('login.html')
+
+
+
 @app.route('/')
 def view_root():
+    if g and g.user.is_anonymous:
+        # LOGIN with session variable
+        log.info(f'Use session variable for login ...')
+    # If session variable empty then try_auto_login
+    if 'username' not in session:
+        try_auto_login()
     if 'list_bd' not in session or type(session['list_bd']) is not list or len(session['list_bd'])<4:
         session['list_bd'] = get_list_birthdate()    
         log.info(f'----------\nVIEW ROOT. RELOAD LIST BIRTHDATES: TYPE: {type(session['list_bd'])}. '
-                  f'LEN: {len(session['list_bd'])}. FIRST VALUE: {session['list_bd'][0]}\n----------')
+                  f'LEN: {len(session['list_bd'])}. FIRST VALUE: {session['list_bd']}\n----------')
     else:
-        log.info(f'----------\nVIEW ROOT. LIST BIRTHDATES. Type: {type(session['list_bd'])} : {len(session['list_bd'])}\n----------')
+        log.info(f'----------\nVIEW ROOT. LIST BIRTHDATES EXIST\n\tType: {type(session['list_bd'])} / {len(session['list_bd'])} строк\n\t{session['list_bd'][0]}\n----------')
     all_mess = get_all_message()
+    # return render_template("index.html", list_bd=[], all_mess=all_mess)
     return render_template("index.html", list_bd=session['list_bd'], all_mess=all_mess)
 
 
@@ -165,9 +195,10 @@ def view_all_list_time_off():
 @app.route('/list-to-approve', methods=['GET','POST'])
 @login_required
 def view_list_approve():
-    log.debug(f'VIEW LIST APPROVE. username {session['full_name']}, admin: {session['admin']}, approve_admin: {session['approve_admin']}')
-    log.debug(f'VIEW LIST APPROVE. dep_name: {session['dep_name']} : {type(session['dep_name'])}')
-    list_approve = get_list_to_approve(session['dep_name'], session['approve_admin'])
+    log.debug(f'VIEW LIST APPROVE. username {g.user.username} / {g.user.dep_name} / {g.user.principalName}')
+    # log.debug(f'VIEW LIST APPROVE. dep_name: {session['dep_name']} : {type(session['dep_name'])}')
+    # list_approve = get_list_to_approve(session['dep_name'], session['approve_admin'])
+    list_approve = get_list_to_approve(g.user)
     all_mess = get_all_message()
     return render_template("list_approve.html", list_approve=list_approve, all_mess=all_mess)
 
@@ -220,8 +251,7 @@ def view_new_message():
     if request.method == 'POST':
         mess = request.form['new-message']
                 
-        if debug_level > 2:
-            log.info(f"VIEW NEW MESSAGE. new_mess: {mess}")
+        log.debug(f"VIEW NEW MESSAGE. new_mess: {mess}")
         add_message(session['full_name'], session['dep_name'], mess)
         return redirect(url_for('view_root'))
     all_mess = get_all_message()
@@ -236,8 +266,7 @@ def view_heads():
     if request.method == 'POST':
         head_name = request.form['head_name']
                 
-        if debug_level > 2:
-            log.info(f"VIEW_TIME-OFF. head_name: {head_name}\n\tlist_head: {list_heads}")
+        log.debug(f"VIEW_TIME-OFF. head_name: {head_name}\n\tlist_head: {list_heads}")
         add_head(head_name)
         return redirect(url_for('view_heads'))
     return render_template("heads.html", list_heads=list_heads)

@@ -1,7 +1,5 @@
-from app_config import debug_level
 from main_app import log
 from db.connect import get_connection, plsql_func_s
-from flask import session
 
 
 def add_time_off(date_out:str, date_in:str, employee:str, post:str, dep_name:str, cause:str):
@@ -92,7 +90,20 @@ def get_all_list_time_off(mnth: str):
     return list_time_off
 
 
-def get_list_to_approve(dep_name: str, admin: int):
+def get_list_to_approve(user):
+# def get_list_to_approve(dep_name: str, admin: int):
+    if user.is_anonymous():
+        log.info(f'GET_LIST_TO_APPROVE: USER is ANONYMOUS')
+        return {}
+
+    admin = 0
+    subordinate_ou = ''
+    if hasattr(user, 'subordinate_ou'):
+        subordinate_ou = ", ".join( f"'{str(elem)}'" for elem in user.subordinate_ou)
+
+    if hasattr(user, 'roles') and 'admin' in user.roles:
+        admin=1
+
     if admin==1:
         stmt = """
             select event_date, time_out, time_in, employee, post, dep_name, cause, head, id, status 
@@ -114,15 +125,18 @@ def get_list_to_approve(dep_name: str, admin: int):
     with get_connection() as connection:
         with connection.cursor() as cursor:
             try:
-                if 'subordinate_ou' in session:
-                    subordinate_ou = str(session['subordinate_ou'])[1:-1]
+                if subordinate_ou:
+                    # subordinate_ou = str(session['subordinate_ou'])[1:-1]
                     stmt_new = stmt.replace(':dep_name', subordinate_ou);
-                    log.debug(f'\n\t!!! subordinate_ou: {subordinate_ou}\n\tstmt: {stmt_new}\n\t{session['subordinate_ou']}')
+                    log.info(f'-------\n\tGET LIST TO APPROVE\n\tUSER: {user.full_name}\n\tSUBORDINATE_OU: {subordinate_ou}')
+                    log.debug(f'-------\n\tGET LIST TO APPROVE. STMT:\n\t{stmt_new}\n-------')
                     cursor.execute(stmt_new)
                 elif admin==1:
                     cursor.execute(stmt)
                 else:
-                    cursor.execute(stmt, dep_name=dep_name)
+                    log.info(f'-------\n\tGET LIST TO APPROVE\n\tUSER: {user.full_name}\n\tDEP_NAME: {user.dep_name}')
+                    log.debug(f'-------\n\tGET LIST TO APPROVE. STMT:\n\t{stmt}\n-------')
+                    cursor.execute(stmt, dep_name=user.dep_name)
                 rows = cursor.fetchall()
                 for row in rows:
                     res = { 'event_date': row[0], 'time_out': row[1], 'time_in': row[2],
@@ -169,7 +183,7 @@ def del_time_off(id_reg: int, employee: str):
             try:
                 cursor.execute(stmt, id_reg=id_reg)
             finally:
-                log.info(f'DEL TIME_OFF. username: {employee}, id_reg: {id_reg}')
+                log.debug(f'DEL TIME_OFF. username: {employee}, id_reg: {id_reg}')
 
 
 def fact_time_off(id_reg: int, employee: str):
@@ -181,7 +195,7 @@ def fact_time_off(id_reg: int, employee: str):
             try:
                 cursor.execute(stmt, id_reg=id_reg)
             finally:
-                log.info(f'FACT TIME_OFF. username: {employee}, id_reg: {id_reg}')
+                log.debug(f'FACT TIME_OFF. username: {employee}, id_reg: {id_reg}')
 
 
 def approve_time_off(id_reg: int, boss: str):
@@ -193,7 +207,7 @@ def approve_time_off(id_reg: int, boss: str):
             try:
                 cursor.execute(stmt, id_reg=id_reg, boss=boss)
             finally:
-                log.info(f'DEL TIME_OFF. boss: {boss}, id_reg: {id_reg}')
+                log.debug(f'DEL TIME_OFF. boss: {boss}, id_reg: {id_reg}')
 
 
 def refuse_time_off(id_reg: int, boss: str):
@@ -205,7 +219,7 @@ def refuse_time_off(id_reg: int, boss: str):
             try:
                 cursor.execute(stmt, id_reg=id_reg, boss=boss)
             finally:
-                log.info(f'REFUSE TIME_OFF. boss: {boss}, id_reg: {id_reg}')
+                log.debug(f'REFUSE TIME_OFF. boss: {boss}, id_reg: {id_reg}')
 
 
 def get_list_head():
@@ -222,8 +236,7 @@ def get_list_head():
                     res = { 'id_head': row[0], 'head_name': row[1]}
                     list_head.append(res)
             finally:
-                if debug_level > 2:
-                    log.info(f'LIST HEAD. {list_head}')
+                log.debug(f'LIST HEAD. {list_head}')
     return list_head
 
 
@@ -236,7 +249,7 @@ def add_head(head_name: str):
             try:
                 cursor.execute(stmt, head_name=head_name)
             finally:
-                log.info(f'ADD HEAD. {head_name}')
+                log.debug(f'ADD HEAD. {head_name}')
 
     
 def del_head(head_name: str):
@@ -248,7 +261,7 @@ def del_head(head_name: str):
             try:
                 cursor.execute(stmt, head_name=head_name)
             finally:
-                log.info(f'DEL HEAD. {head_name}')
+                log.debug(f'DEL HEAD. {head_name}')
 
 
 def add_message(employee: str, dep_name: str,  mess: str):
@@ -260,7 +273,7 @@ def add_message(employee: str, dep_name: str,  mess: str):
             try:
                 cursor.execute(stmt, employee=employee, dep_name=dep_name, message=mess)
             finally:
-                log.info(f'ADD MESSAGE. employee: {employee}, dep_name: {dep_name}, message: {mess}')
+                log.debug(f'ADD MESSAGE. employee: {employee}, dep_name: {dep_name}, message: {mess}')
 
 
 def get_all_message():
@@ -284,7 +297,6 @@ def get_all_message():
                     res = { 'id_mess': row[0], 'mess_date': short_date, 'author': short_name, 'dep_name': row[3], 'message': row[4]}
                     list_message.append(res)
             finally:
-                if debug_level > 2:
-                    log.info(f'LIST MESSAGE. {list_message}')
+                log.debug(f'LIST MESSAGE. {list_message}')
     return list_message
 

@@ -18,6 +18,7 @@
     padding: 9px;
     align-items: center;
     /*background-color: #444;*/
+    width: 220px;
     border-radius: 5px;
     border: 1px solid rgba(180, 180, 180, 0.3);
     box-shadow: 6px 6px 8px rgba(70, 205, 79, 0.2);

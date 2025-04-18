@@ -1,6 +1,6 @@
 from flask import render_template, request, redirect, flash, url_for, g, session
 from flask_login import LoginManager, login_required, logout_user, login_user, current_user
-from db.ldap_login import LDAP_User
+from ldap.ldap_login import LDAP_User
 from util.get_i18n import get_i18n_value
 from werkzeug.security import check_password_hash, generate_password_hash
 from db.connect import get_connection
