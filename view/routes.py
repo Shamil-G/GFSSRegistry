@@ -23,11 +23,9 @@ setlocale(LC_ALL, 'ru_RU.UTF-8')
 
 @app.context_processor
 def utility_processor():
-    if 'styles' not in session:
-        if "STYLE" in environ:
-            session['styles']=environ["STYLES"]
-        else:
-            session['styles']=styles
+    if 'style' not in session:
+        session['style']=styles[0]    
+        log.info(f'------- CP\n\tSET SESSION STYLE: {session['style']}\n------')
     log.debug(f"CP. {get_i18n_value('APP_NAME')}")
     return dict(res_value=get_i18n_value)
 
@@ -311,25 +309,20 @@ def uploaded_phone():
     # return redirect(url_for('view_running_reports'))
 
 
-@app.route('/set-black-white')
-def set_bw():
-    session['styles']='styles'
+@app.route('/change-style')
+def change_style():
+    if 'style' in session:
+        for style in styles:
+            if style!=session['style']:
+                session['style']=style
+                break
+    else: 
+        session['style']=styles[0]
     # Получим предыдущую страницу, чтобы на неё вернуться
     current_page = request.referrer
-    log.debug(f"Set BLACK color. {current_page}")
+    log.debug(f"Set style {session['style']}. Next page: {current_page}")
     if current_page is not None:
         return redirect(current_page)
     else:
         return redirect(url_for('view_root'))
 
-
-@app.route('/set-color')
-def set_color():
-    session['styles']='issatay'
-    # Получим предыдущую страницу, чтобы на неё вернуться
-    current_page = request.referrer
-    log.debug(f"Set Set BLACK color. {current_page}")
-    if current_page is not None:
-        return redirect(current_page)
-    else:
-        return redirect(url_for('view_root'))

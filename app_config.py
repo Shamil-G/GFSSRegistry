@@ -1,6 +1,6 @@
 from gfss_parameter import BASE
 
-styles = 'issatay'
+styles = ['color','dark']
 
 host = 'localhost'
 port=9000
