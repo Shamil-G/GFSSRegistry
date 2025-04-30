@@ -13,6 +13,7 @@ from model.manage_user import add_time_off, add_secure_time_off, fact_time_off, 
 from model.manage_user import approve_time_off, refuse_time_off
 from model.rep_all_time_off import do_report
 from model.list_bd import get_list_birthdate
+from model.ldap_function import get_all_employers
 import requests
 from os import environ
 from sso.sso_login import SSO_User
@@ -20,6 +21,7 @@ from util.ip_addr import ip_addr
 
 
 setlocale(LC_ALL, 'ru_RU.UTF-8')
+
 
 @app.context_processor
 def utility_processor():
@@ -326,3 +328,7 @@ def change_style():
     else:
         return redirect(url_for('view_root'))
 
+
+@app.route('/list-all-employers')
+def list_all_employer():
+        return get_all_employers(), 200

@@ -40,6 +40,64 @@ def get_connect_ldap(username:str, password:str):
     return conn
 
 
+def get_all_employers():
+    conn_src = get_connect_ldap(ldap_user, ldap_password)
+
+    if not conn_src:
+        return 0,'',''
+    
+    src_filter = f'(&(objectclass=person)(| (telephoneNumber=*) ))' 
+    conn_src.search(search_base='dc=gfss,dc=kz', 
+            # search_filter=f'(&(objectclass=person)(cn=*))', 
+
+            search_filter=src_filter,
+
+            attributes=['distinguishedName', 'userPrincipalName', 'cn', 'sAMAccountName', 'description', 'memberof', 'telephoneNumber', '*'],
+            # attributes=['distinguishedName', 'userPrincipalName', 'cn', 'displayName', 'description', 'memberof', 'telephoneNumber'],
+            search_scope=SUBTREE,
+            paged_size=250)
+    users = conn_src.entries
+    # Connection closed
+    
+    log.debug(f"-------USERS: \n\t{users}\n-------")
+    if len(users)==0:
+        log.info(f'CONNECT_LDAP. FOUND USERS: {len(users)}\n{users}\n--------------------------------------------')
+        return 0,'',''
+
+    dn=''
+    result_list=[]
+    for user in users:
+        iin = str(user['telephoneNumber'])
+        dn = str(user['distinguishedName'])
+        ou = find_value(dn, 'OU')
+        if ou in ldap_ignore_ou:
+            log.debug(f'UVOLEN! {user}')
+            continue
+        log.debug(f'-------------\nIIN:\n{iin}\n-------------')
+        
+        result_user = { 
+                        'birth_date': iin[:6],
+                        'employee': str(user['displayName']),
+                        'post': str(user['description'])
+                      }
+    
+        conn_src.search(search_base=f'OU={ou},dc=gfss,dc=kz', 
+                    search_filter=f'(objectClass=OrganizationalUnit)', 
+                    # attributes=['name', 'description', '*'],
+                    attributes=['name', 'description'],
+                    search_scope=SUBTREE,
+                    paged_size=1)
+        orgs = conn_src.entries
+
+        result_user['dep_name'] = str(orgs[0]['description'])
+        result_list.append(result_user)
+
+    conn_src.unbind()
+
+    log.debug(f'GET_LIST_BIRTHDATE. SUCCESS. {result_list}')
+    return result_list
+
+
 def get_list_birthdate():
     conn_src = get_connect_ldap(ldap_user, ldap_password)
 
