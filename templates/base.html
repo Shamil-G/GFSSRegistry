@@ -13,7 +13,7 @@
     <div class="common-container">
         <header class="header">
             <!--<div><a>{{ res_value('APP_NAME') }}</a></div>-->
-            <div><img src="/static/img/logo-g.ico" style="width: 24px; height: 24px"><a>{{ res_value('APP_NAME') }}</a> </div>
+            <div class="header-l"><img src="/static/img/logo-g.ico" style="width: 24px; height: 24px">&emsp;<a style="font-size: 20px">{{ res_value('APP_NAME') }}</a> </div>
             <div><a></a></div>
             <div class="header-r">
                 {% if 'style' in session and session['style'] == 'color' %}
@@ -31,7 +31,7 @@
                 {% else %}
                 <a href="/language/ru">РУС</a>
                 {% endif %}
-                {% if g.user.is_anonymous == True %}
+                {% if g and g.user and g.user.is_anonymous == True %}
                 <a href="/login">{{ res_value('LOGIN') }}</a>
                 {% else %}
                 <a href="/logout">{{ res_value('LOGOUT') }}</a>
@@ -118,7 +118,7 @@
         <footer class="footer">
             <div class="footer-l">
                 <img src="/static/img/logo-g.ico" style="width: 24px; height: 24px">
-                <small>©2024</small>
+                <small>&emsp;©2024</small>
             </div>
             <div class="footer-r">
                 <small style="visibility: hidden">{{ res_value('CREATORS') }}</small>

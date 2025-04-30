@@ -15,6 +15,17 @@ html, body {
     font-family: Calibri;
     background: #222;
 }
+.common-container {
+    min-height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 7fr;
+    grid-template-rows: 44px 44px auto 36px;
+    grid-gap: 2px;
+    grid-template-areas: "header header"
+        "nav article_title"
+        "nav article"
+        "footer footer";
+}
 nav {
     border-radius: 5px;
     border: 1px solid rgba(180, 180, 180, 0.3);
@@ -43,17 +54,6 @@ header, footer, .article_title {
 .article {
     padding: 6px 0px;
 }
-.common-container {
-    min-height: 100%;
-    display: grid;
-    grid-template-columns: 1fr 7fr;
-    grid-template-rows: 0.5fr 0.5fr 7fr 0.3fr;
-    grid-gap: 2px;
-    grid-template-areas: "header header"
-                 "nav article_title"
-                 "nav article"
-                 "footer footer";
-}
 header {
     display: grid;
     padding-left: 16px;
@@ -68,10 +68,13 @@ footer {
   grid-template-columns: 1fr 6fr;
   grid-area: footer;  /* задаем имя элемента */
 }
-.footer-l {
+footer > .footer-l, header > .header-l {
     margin-left: 10px;
     /*color: #307080;*/
     font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
 }
 footer > .footer-r, header > .header-r {
     /*margin-left: 15px;*/

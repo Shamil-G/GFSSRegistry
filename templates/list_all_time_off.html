@@ -7,12 +7,6 @@
 {% block main_title %}
 <div>
     <p>{{ res_value('ALL_LIST_TIME_OFF') }}</p>
-    <form class="form_r" method="POST">
-        <label style="margin-left: 4px;" for="flt_month">{{ res_value('PRINT_MONTH') }}</label>
-        <input class="input_s" type="month" requied autofocus name="flt_month" minlength="3" value="{{ flt_month }}">
-        &nbsp;<button class="bt bt_r" type="submit">{{ res_value('FLT_MONTH') }}</button>
-        &nbsp;&nbsp;&nbsp;&emsp;<a class="bt bt_r" href="/uploads">{{ res_value('PRINT_EXECUTE') }}</a>
-    </form>
 </div>
 {% endblock %}
 
@@ -20,6 +14,12 @@
 {% endblock %}
 
 {% block body %}
+<form class="form_r" method="POST">
+    <label style="margin-left: 4px;" for="flt_month">{{ res_value('PRINT_MONTH') }}</label>
+    <input class="input_s" type="month" requied autofocus name="flt_month" minlength="3" value="{{ flt_month }}">
+    &nbsp;<button class="bt bt_r" type="submit">{{ res_value('FLT_MONTH') }}</button>
+    &nbsp;&nbsp;&nbsp;&emsp;<a class="bt bt_r" href="/uploads">{{ res_value('PRINT_EXECUTE') }}</a>
+</form>
 <div class="table-scroll-body">
     <table class="table-head table_common" style="width: 98%">
         <colgroup>
@@ -44,7 +44,7 @@
                 <th style="font-size:16px;"><a>{{ res_value('HEAD_NAME') }}</a></th>
             </tr>
         </thead>
-    <tfoot></tfoot>
+        <tfoot></tfoot>
         <tbody>
             {% for el in list_time_off %}
             <tr>
