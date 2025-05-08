@@ -122,7 +122,6 @@ article_title {
 }
 
 a[href^='/language'], header a[href^='/log'] {
-    color: #fff;
     margin-left:10px;
     padding: 5px;
     text-decoration: none;
@@ -137,7 +136,6 @@ groups > a {
     display: flex;
     border: inherit;
     border-radius: inherit;
-    color: #fff;
 }
 
 groups {
@@ -159,6 +157,7 @@ reports > a {
 }
 a {
     font-weight: normal;
+    color: #fff;
 }
 reports {
     color: #ddd;
