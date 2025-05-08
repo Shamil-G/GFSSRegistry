@@ -5,10 +5,12 @@
 {% endblock %}
 
 {% block main_title %}
-{{ res_value('TIME_OFF') }}.
-    {% if message %}
-    &nbsp;&emsp;{{ message }}.
-    {% endif %}
+    <a class="title">
+        {{ res_value('TIME_OFF') }}.
+        {% if message %}
+            &nbsp;&emsp;{{ message }}.
+        {% endif %}
+    </a>
 {% endblock %}
 
 {% block navigate %}
@@ -16,7 +18,7 @@
 
 {% block body %}
 
-<form class="form_r" style="padding-left: 2%; width: 95%" method="POST">
+<form class="form_r" method="POST">
     <div class="field">
         <label for="date_out">{{ res_value('TIME_OUT') }}</label>
         <input class="input_s" type="datetime-local" id="date_out" name="date_out">
@@ -42,7 +44,7 @@
         </select>
     </div>-->
     <br />
-    <button class="bt bt_r" type="submit" name="edit_parms">{{ res_value('SAVE') }}</button>
+    <button class="bt" type="submit" name="edit_parms">{{ res_value('SAVE') }}</button>
     <br />
 </form>
 {% endblock %}

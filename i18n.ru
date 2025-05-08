@@ -13,6 +13,7 @@ SECURE_LIST_APPROVE = Список СБ
 ON_APPROVING = На согласовании
 REFUSED = Отказано
 APPROVED = Согласовано
+NOT_APPROVED =Не согласовано
 APPROVE_TIME_OFF = Согласовать
 REFUSE_TIME_OFF = Отказать
 STATUS = Статус согласования

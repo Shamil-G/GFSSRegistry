@@ -1,12 +1,25 @@
-.form_s, .form_r {
-    margin: 12px;
-    padding: 6px;
+form {
     border-radius: 5px;
+    margin: 2px;
+    padding: 16px;
+    text-shadow: none;
     border: 1px solid rgba(180, 180, 180, 0.3);
+}
+div.field {
+    margin-top: 5px;
+    display: flex;
+    vertical-align: bottom;
+    align-items: center;
+    align-content: center;
+}
+
+div.field label {
+    height: 24px;
+    width: 195px;
 }
 
 .form_aux {
-    margin: 4px;
+    margin: 3px;
     padding: 12px 10px 12px 10px;
     border-radius: 5px;
     border: 1px solid rgba(180, 180, 180, 0.3);
@@ -14,7 +27,7 @@
 
 .input_s {
     color: #444;
-    margin: 4px;
+    margin-left: 12px;
     padding: 9px;
     align-items: center;
     /*background-color: #444;*/

@@ -14,14 +14,14 @@
 {% endblock %}
 
 {% block body %}
-<form class="form_r" method="POST">
+<form method="POST">
     <label style="margin-left: 4px;" for="flt_month">{{ res_value('PRINT_MONTH') }}</label>
     <input class="input_s" type="month" requied autofocus name="flt_month" minlength="3" value="{{ flt_month }}">
-    &nbsp;<button class="bt bt_r" type="submit">{{ res_value('FLT_MONTH') }}</button>
-    &nbsp;&nbsp;&nbsp;&emsp;<a class="bt bt_r" href="/uploads">{{ res_value('PRINT_EXECUTE') }}</a>
+    &nbsp;<button class="bt" type="submit">{{ res_value('FLT_MONTH') }}</button>
+    &nbsp;<a class="bt" href="/uploads">{{ res_value('PRINT_EXECUTE') }}</a>
 </form>
-<div class="table-scroll-body">
-    <table class="table-head table_common" style="width: 98%">
+<div class="table-scroll-800">
+    <table class="table-head table_common" style="width: 99.9%">
         <colgroup>
             <col>
             <col>

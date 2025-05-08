@@ -1,3 +1,59 @@
+.bt, .a_bt {
+    margin: 14px 0px;
+    padding: 6px 34px 6px 34px;
+    font-size: 16px;
+    font-family: Calibri;
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    user-select: none;
+    line-height: 1.5;
+    border-radius: 5px;
+    border: 1px solid;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color .2s ease-in-out,background-color .2s ease-in-out, border-color .2s ease-in-out, box-shadow .2s ease-in-out;
+    background-color: rgba(239, 220, 112, 0.15);
+    box-shadow: 6px 6px 8px rgba(70, 205, 79, 0.2);
+    border-color: saddlebrown;
+    color: darkgreen;
+}
+.a_bt_table {
+    padding: 5px 8px;
+    display: inline-block;
+    color: darkgreen;
+    border-radius: 5px;
+    border: 1px solid;
+    border-color: saddlebrown;
+    text-decoration: none;
+    text-shadow: 1px 2px 3px grey;
+    background-color: rgba(239, 220, 112, 0.06);
+    font-weight: 600;
+}
+.a_bt_table:hover {
+    color: darkgreen;
+    /*font-weight: 600;*/
+}
+
+.bt:hover, .a_bt:hover, .a_bt_table:hover {
+    color: brown;
+    /*font-weight: 600;*/
+    border-color: #4F809F;
+    border-color: brown;
+    /*box-shadow: 6px 6px 6px rgba(70, 205, 79, 0.35);*/
+}
+.bt:hover, .bt_s:hover, .bt_t:hover {
+    /*border: 1px solid;*/
+    /*border: 2px solid rgba(53, 177, 62, 0.3);*/
+    top: 1px;
+    /*    position: relative;*/
+    outline-color: rgba(255, 255, 255, 0);
+    /*box-shadow: 6px 6px 12px grey;*/
+    /*box-shadow: inset 0 0 20px rgba(53, 177, 62, .2), 0 0 20px rgba(255, 255, 255, .2);*/
+    box-shadow: inset 0 0 20px rgba(53, 177, 62, .1), 6px 6px 12px rgba(0,80,80, 0.2);
+    outline-offset: 15px;
+    text-shadow: 1px 1px 3px #427388;
+}
 .bt_report {
     display: inline-block;
     vertical-align: middle;
@@ -44,38 +100,6 @@
     text-shadow: 1px 2px 3px grey;
     box-shadow: 3px 3px 6px grey;
 }
-.bt {
-    /*    color: #ddd;
-    margin: 2px 4px;
-    padding: 6px 34px 6px 34px;
-    display: inline-block;
-    text-align: center;
-    vertical-align: middle;
-    user-select: none;
-    line-height: 1.5;*/
-    border-radius: 5px;
-    border: 2px solid rgba(70, 205, 79, 0.3);
-    text-decoration: none;
-    box-shadow: 6px 6px 8px rgba(70, 205, 79, 0.2);
-    /*    position: relative;
-    text-decoration: none;
-*/ /*transition: color .2s ease-in-out,background-color .2s ease-in-out, border-color .2s ease-in-out, box-shadow .2s ease-in-out;*/
-    /*background-size: 200% 100%, auto, 100% 2px, 100% 2px, 100% 1px, 100% 1px;*/
-    /*background-position: 200% 0, 0 0, 0 0, 0 100%, 0 4px, 0 calc(100% - 4px);*/
-    /*text-shadow: 1px 1px 3px grey;*/
-    /*    color: #fff;
-    cursor: pointer;*/
-    /*// display: block;*/
-    /*  font-size: 16px;
-    font-weight: 400;
-    line-height: 45px;
-    margin: 0 0 2em;
-    max-width: 160px;
-    position: relative;
-    text-decoration: none;
-    text-transform: uppercase;
-    width: 100%;*/
-}
 
 .bt.danger {
     color: white;
@@ -83,18 +107,6 @@
     margin-left: 30px;
     background-color: #971c2c;
     border-color: #de3a4b;
-}
-
-.bt_r {
-    color: teal;
-    margin: 2px 4px;
-    padding: 6px 34px 6px 34px;
-    display: inline-block;
-    cursor: pointer;
-    text-align: center;
-    vertical-align: middle;
-    user-select: none;
-    line-height: 1.5;
 }
 .nav_button {
     text-decoration: none;
@@ -122,18 +134,6 @@
     background-position: 200% 0, 0 0, 0 0, 0 100%, 0 4px, 0 calc(100% - 4px);
     box-shadow: 3px 3px 6px grey;
 }
-.bt:hover, .bt_s:hover, .bt_r:hover, .bt_t:hover {
-    /*border: 1px solid;*/
-    border: 2px solid rgba(53, 177, 62, 0.3);
-    top: 1px;
-    /*    position: relative;*/
-    outline-color: rgba(255, 255, 255, 0);
-    /*box-shadow: 6px 6px 12px grey;*/
-    /*box-shadow: inset 0 0 20px rgba(53, 177, 62, .2), 0 0 20px rgba(255, 255, 255, .2);*/
-    box-shadow: inset 0 0 20px rgba(53, 177, 62, .1), 6px 6px 12px rgba(0,80,80, 0.2);
-    outline-offset: 15px;
-    text-shadow: 1px 1px 3px #427388;
-}
 .nav_button:hover {
     top: 1px;
     transition: .3s linear;
@@ -145,7 +145,7 @@
     top: 0px;
     box-shadow: 3px 3px 6px grey;
 }
-.nav_button:active, .bt:active, .bt_s:active, .bt_r:active, .bt_t:active, .bt.danger {
+.nav_button:active, .bt:active, .bt_s:active, .bt_t:active, .bt.danger {
     top: 0px;
     box-shadow: 4px 4px 6px grey;
 }

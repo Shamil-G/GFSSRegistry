@@ -1,25 +1,28 @@
-/*@import url('clear.css');*/
+@import url('clear.css');
 @import url('forms.css');
 @import url('table_styles.css');
 @import url('button.css');
 /*@import url('elements.css');*/
 
 :root {
-    color: black;
-    font-size: 16px;
     text-decoration: none;
+    text-shadow: 1px 2px 3px grey;
 }
 html, body {
-/*    width: 99%;*/
-    height: 99.4%;
+    /*    width: 99%;*/
+    height: 99.9%;
+    width: 100%;
+    color: green;
     font-family: Calibri;
-    background: #f7f9fb;
+    /*background: #f7f9fb;*/
+    background: #c9edcd;
 }
-.common-container {
+common-container {
+    margin: 1px;
     min-height: 100%;
     display: grid;
     grid-template-columns: 1fr 7fr;
-    grid-template-rows: 44px 44px auto 36px;
+    grid-template-rows: 44px 40px auto 36px;
     grid-gap: 2px;
     grid-template-areas: "header header"
         "nav article_title"
@@ -27,31 +30,21 @@ html, body {
         "footer footer";
 }
 nav {
+    margin: 0px;
+    padding: 2px;
+    display: grid;
     border-radius: 5px;
-    border: 1px solid rgba(180, 180, 180, 0.3);
+    /*border: 1px solid rgba(180, 180, 180, 0.3);*/
+    /*text-shadow: 1px 2px 3px grey;*/
+    grid-template-rows: repeat(12,minmax(28px, 64px));
+    /*grid-template-columns: 100%;*/
+    grid-row-gap: 3px;
+    grid-area: nav; /* задаем имя элемента */
+
+    align-content: stretch;
     background-image: url('/static/img/bg.jpg'); /* Update this path */
     background-size: cover;
     background-position: center;
-    text-shadow: 1px 2px 3px grey;
-    margin: 0;
-    padding: 2px;
-    display: grid;
-    grid-template-rows: repeat(12,minmax(28px, 64px));
-    grid-template-columns: 100%;
-    grid-row-gap: 3px;
-    grid-area: nav; /* задаем имя элемента */
-    align-content: stretch;
-}
-article {
-    border-radius: 5px;
-    border: 1px solid rgba(180, 180, 180, 0.3);
-}
-header, footer, .article_title, article_body, article_info {
-    border-radius: 3px;
-    border: 1px solid rgba(180, 180, 180, 0.3);
-}
-.article {
-    padding: 6px 0px;
 }
 header {
     display: grid;
@@ -62,7 +55,34 @@ header {
     background-image: url('/static/img/bg.jpg'); /* Update this path */
     background-size: cover;
     background-position: center;
-    text-shadow: 1px 2px 3px grey;
+}
+article {
+    display: grid;
+    grid-template-columns: 7fr 2fr;
+    grid-area: article; /* задаем имя элемента */
+    grid-template-areas: "article_body article_info";
+    border-radius: 5px;
+    border: 1px solid rgba(180, 180, 180, 0.3);
+}
+article_title {
+    padding: 2px 9px;
+    display: flex; /*Для выравнивания заголовка по центру*/
+    align-items: center; /*Для выравнивания заголовка по центру*/
+    background-color: #cfefd5;
+}
+article_body {
+    margin: 0;
+    grid-area: article_body; /* задаем имя элемента */
+    background-color: #deefdf;
+    /*min-height: 100%;*/
+    display: grid;
+}
+article_info {
+    padding: 0px 1px 0px 1px;
+    grid-area: article_info; /* задаем имя элемента */
+    background-color: #deefdf;
+    /*min-height: 100%;*/
+    display: grid;
 }
 footer {
     display: grid;
@@ -74,6 +94,14 @@ footer {
     background-size: cover;
     background-position: center;
     text-shadow: 1px 2px 3px grey;
+}
+header, nav, article_title, article_body, article_info, footer {
+    border-radius: 3px;
+    border: 1px solid rgba(142, 142, 142, 0.3);
+}
+header, .article_title, footer {
+    padding-left: 8px;
+    align-items: center;
 }
 footer > .footer-l, header > .header-l {
     margin-left: 10px;
@@ -92,7 +120,7 @@ footer > .footer-r, header > .header-r {
     justify-content: flex-end;
 }
 
-/*nav > a {
+nav > a {
     text-decoration: none;
     align-items: center;
     padding-left: 5px;
@@ -100,49 +128,6 @@ footer > .footer-r, header > .header-r {
     border: inherit;
     border-radius: inherit;
     color: black;
-}*/
-
-article {
-    display: grid;
-    grid-template-columns: 4fr 1fr;
-    grid-area: article; /* задаем имя элемента */
-    grid-template-areas: "article_body article_info";
-}
-
-article_body {
-    margin: 0;
-    grid-area: article_body; /* задаем имя элемента */
-    background-color: #deefdf;
-    /*min-height: 100%;*/
-    display: grid;
-}
-
-article_info {
-    margin: 0;
-    grid-area: article_info; /* задаем имя элемента */
-    background-color: #deefdf;
-    /*min-height: 100%;*/
-    display: grid;
-}
-
-.article_title {
-    padding: 2px 16px;
-    display: flex; /*Для выравнивания заголовка по центру*/
-    align-items: center; /*Для выравнивания заголовка по центру*/
-    grid-area: article_title; /* задаем имя элемента */
-    font-size: 20px;
-    color: black;
-    background-color: #cfefd5;
-    text-shadow: 1px 2px 3px grey;
-}
-
-.article_title > a {
-    background: #333;
-    color: black;
-    padding: 3px 12px 3px 12px;
-    margin: 2px;
-    text-decoration: none;
-    border-radius: 4px;
 }
 
 a[href^='/language'], header a[href^='/log'] {
@@ -181,11 +166,14 @@ reports > a {
     border-radius: inherit;
     color: #fff;
 }
+a {
+    font-weight: normal;
+}
 reports {
     color: #ddd;
     text-align: left; /*Центрируем текст по горизонтали*/
 }
-.article_title > a:hover, groups > a:hover, reports > a:hover,
+groups > a:hover, reports > a:hover,
 .header-r > a:hover {
     color: #cfefd5;
     /*background-color: #CCF2D3FF;*/

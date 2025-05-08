@@ -1,3 +1,22 @@
+.bt {
+    margin: 14px 0px;
+    padding: 6px 34px 6px 34px;
+    color: #ddd;
+    background-color: #333;
+    font-size: 16px;
+    font-family: Calibri;
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    user-select: none;
+    line-height: 1.5;
+    border-radius: 5px;
+    border: 1px solid rgba(180, 180, 180, 0.3);
+    text-decoration: none;
+    transition: color .2s ease-in-out,background-color .2s ease-in-out, border-color .2s ease-in-out, box-shadow .2s ease-in-out;
+    text-shadow: 1px 2px 3px grey;
+    box-shadow: 5px 5px 8px rgba(70, 205, 79, 0.3);
+}
 .bt_report {
     display: inline-block;
     vertical-align: middle;
@@ -26,25 +45,6 @@
     box-shadow: 4px 4px 6px grey;
 }
 
-.bt_r {
-    color: #ddd;
-    margin: 2px 4px;
-    padding: 6px 34px 6px 34px;
-    display: inline-block;
-    cursor: pointer;
-    text-align: center;
-    vertical-align: middle;
-    user-select: none;
-    line-height: 1.5;
-    border-radius: 5px;
-    border: 1px solid rgba(180, 180, 180, 0.3);
-    text-decoration: none;
-    font-size: 16px;
-    background-color: #333;
-    transition: color .2s ease-in-out,background-color .2s ease-in-out, border-color .2s ease-in-out, box-shadow .2s ease-in-out;
-    text-shadow: 1px 2px 3px grey;
-    /*box-shadow: 4px 4px 6px grey;*/
-}
 .bt_t {
     color: hotpink;
     padding: 4px 24px 4px 24px;
@@ -64,22 +64,6 @@
     text-shadow: 1px 2px 3px grey;
     box-shadow: 4px 4px 6px grey;
 }
-.bt {
-    color: #ddd;
-    margin: 2px 4px;
-    padding: 6px 34px 6px 34px;
-    display: inline-block;
-    text-align: center;
-    vertical-align: middle;
-    user-select: none;
-    line-height: 1.5;
-    border-radius: 5px;
-    border: 1px solid rgba(180, 180, 180, 0.3);
-    text-decoration: none;
-    transition: color .2s ease-in-out,background-color .2s ease-in-out, border-color .2s ease-in-out, box-shadow .2s ease-in-out;
-    text-shadow: 1px 2px 3px grey;
-    box-shadow: 5px 5px 8px rgba(70, 205, 79, 0.3);
-}
 
 .bt.danger {
     color: white;
@@ -89,7 +73,7 @@
     border-color: #de3a4b;
 }
 
-.bt:hover, .bt_s:hover, .bt_r:hover, .bt_t:hover {
+.bt:hover, .bt_s:hover, .bt_t:hover {
     color: moccasin;
     text-decoration: none;
     background-color: #20608F;
