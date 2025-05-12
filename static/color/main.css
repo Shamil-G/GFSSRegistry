@@ -58,7 +58,7 @@ header {
 }
 article {
     display: grid;
-    /*grid-template-columns: 7fr 2fr;*/
+    grid-template-columns: 7fr auto;
     grid-area: article; /* задаем имя элемента */
     grid-template-areas: "article_body article_info";
     border-radius: 5px;
