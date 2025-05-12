@@ -111,8 +111,7 @@ tr, td {
 .table_common th, .table_common tbody tr, .table_common tbody td {
     text-align: center;
     border-radius: 5px;
-    border: 2px solid rgba(171, 243, 172, 0.8);
-    border: 1px solid #bface8;
+    border: 1px solid grey;
 }
 
 /* Подсвечиваем строки на котором стоит курсор*/

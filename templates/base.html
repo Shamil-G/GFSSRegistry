@@ -76,6 +76,7 @@
                 </div>
             </article_body>
             <article_info>
+                {% if all_mess %}
                 <div class="news-container">
                     <table>
                         <thead class="news-head">
@@ -87,7 +88,7 @@
                         </thead>
 
                         <tbody class="news-tbody">
-                            {% if all_mess %}
+                            <!--{% if all_mess %}-->
                             <tr>
                                 <td>
                                     {% for el in all_mess %}
@@ -104,12 +105,13 @@
                                     {% endfor %}
                                 </td>
                             </tr>
-                            {% endif %}
+                            <!--{% endif %}-->
                         </tbody>
                     </table>
 
                 </div>
                 {% block info %}{% endblock %}
+                {% endif %}
             </article_info>
         </article>
         <footer class="footer">

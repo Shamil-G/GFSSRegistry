@@ -1,7 +1,4 @@
 .bt, .a_bt {
-    margin: 14px 0px;
-    padding: 6px 34px 6px 34px;
-    font-size: 16px;
     font-family: Calibri;
     display: inline-block;
     text-align: center;
@@ -15,8 +12,18 @@
     transition: color .2s ease-in-out,background-color .2s ease-in-out, border-color .2s ease-in-out, box-shadow .2s ease-in-out;
     background-color: rgba(239, 220, 112, 0.15);
     box-shadow: 6px 6px 8px rgba(70, 205, 79, 0.2);
-    border-color: saddlebrown;
-    color: darkgreen;
+    /*border-color: saddlebrown;*/
+    /*color: darkgreen;*/
+}
+.bt {
+    margin: 14px 0px;
+    padding: 6px 34px 6px 34px;
+    font-size: 18px;
+}
+.a_bt {
+    margin: 3px 0px;
+    padding: 0px 18px 0px 18px;
+    font-size: 16px;
 }
 .a_bt_table {
     padding: 5px 8px;
@@ -32,27 +39,10 @@
 }
 .a_bt_table:hover {
     color: darkgreen;
-    /*font-weight: 600;*/
 }
 
-.bt:hover, .a_bt:hover, .a_bt_table:hover {
-    color: brown;
-    /*font-weight: 600;*/
-    border-color: #4F809F;
-    border-color: brown;
-    /*box-shadow: 6px 6px 6px rgba(70, 205, 79, 0.35);*/
-}
-.bt:hover, .bt_s:hover, .bt_t:hover {
-    /*border: 1px solid;*/
-    /*border: 2px solid rgba(53, 177, 62, 0.3);*/
-    top: 1px;
-    /*    position: relative;*/
-    outline-color: rgba(255, 255, 255, 0);
-    /*box-shadow: 6px 6px 12px grey;*/
-    /*box-shadow: inset 0 0 20px rgba(53, 177, 62, .2), 0 0 20px rgba(255, 255, 255, .2);*/
-    box-shadow: inset 0 0 20px rgba(53, 177, 62, .1), 6px 6px 12px rgba(0,80,80, 0.2);
-    outline-offset: 15px;
-    text-shadow: 1px 1px 3px #427388;
+.bt:hover, .a_bt:hover, .bt_s:hover, .bt_t:hover {
+    box-shadow: 6px 6px 8px rgba(10, 10, 10, 0.25);
 }
 .bt_report {
     display: inline-block;
