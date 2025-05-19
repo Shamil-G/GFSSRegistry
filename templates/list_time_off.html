@@ -60,7 +60,7 @@
             {% else %}
             <td style="text-align: center; margin-left: 4px; font-size: 16px; color: hotpink;"><a>{{ res_value('ON_APPROVING') }}</a></td>
             {% endif %}
-            <td style="text-align: center;"><a class="button" style="margin: 0px; padding: 3px 12px 0px 12px " href="/del-from-list-time-off/{{ el.id }}">{{ res_value('REMOVE') }}</a></td>
+            <td style="text-align: center;"><a class="button_red" style="margin: 0px; padding: 3px 12px 0px 12px;" href="/del-from-list-time-off/{{ el.id }}">{{ res_value('REMOVE') }}</a></td>
         </tr>
         {% endfor %}
     <tbody>

@@ -1,4 +1,4 @@
-button, .button {
+button, .button, .button_red {
     margin: 9px 0px;
     padding: 6px 34px 6px 34px;
     font-size: 16px;
@@ -30,6 +30,15 @@ button:hover, .button:hover {
 button:hover {
     box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.2);
 }
+.button_red {
+    color: brown;
+    border-color: brown;
+}
+.button_red:hover {
+    color: red;
+    box-shadow: 4px 4px 6px rgba(255, 0, 0, 0.1);
+}
+
 
 .nav_button {
     text-decoration: none;
