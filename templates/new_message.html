@@ -12,11 +12,13 @@
 {% endblock %}
 
 {% block body %}
-<form class="form_r" style="padding-left: 2%" method="POST">
-    <h3 style="color: #555;">{{ res_value('ADD_MESSAGE') }}</h3>
-    <textarea class="textarea" name="new-message" rows="10" cols="80"></textarea>
-    <br />
-    <br />
-    <div><button type="submit">{{ res_value('SAVE') }}</button></div>
+<form method="POST">
+    <div>
+        <a style="font-size: 20px; font-weight: 500">{{ res_value('ADD_MESSAGE') }}</a>
+    </div>
+    <div>
+        <textarea style="margin-top: 12px" class="textarea" name="new-message" rows="10" cols="80"></textarea>
+    </div>
+    <div style="margin-top: 16px"><button type="submit">{{ res_value('SAVE') }}</button></div>
 </form>
 {% endblock %}

@@ -15,7 +15,7 @@
 <div style="border-radius: 5px; border-bottom: 1px solid rgba(142, 142, 142, 0.3);">
 <form-article-title method="POST">
     <label style="margin: 4px; font-size: 20px" for="flt_month">{{ res_value('PRINT_MONTH') }}</label>
-    <input class="input_s" type="month" requied autofocus name="flt_month" minlength="3" value="{{ flt_month }}">
+    <input class="input_s" style="width: 154px" type="month" requied autofocus name="flt_month" minlength="3" value="{{ flt_month }}">
     
     <button type="submit" style="margin-left:12px">{{ res_value('FLT_MONTH') }}</button>
     <div style="display:inline-block; border-radius: 5px"><a class="button" style="margin-left:12px; font-size: 18px" href="/uploads">{{ res_value('PRINT_EXECUTE') }}</a></div>
@@ -59,7 +59,7 @@
                 {% if el.head %}
                 <td><a>{{ el.head }}</a></td>
                 {% else %}
-                <td style="text-align: center;"><a style="color: hotpink; font-size: 18px; font-weight: 600">{{ res_value('ON_APPROVING') }}</a></td>
+                <td><a style="color: hotpink; font-size: 18px; font-weight: 600">{{ res_value('ON_APPROVING') }}</a></td>
                 {% endif %}
             </tr>
             {% endfor %}

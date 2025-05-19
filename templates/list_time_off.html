@@ -52,7 +52,6 @@
         <td style="font-size: 16px;"><a></a></td>
     {% endif %}-->
 
-
             <td style="text-align: left; margin-left: 4px; font-size: 16px;"><a>{{ el.cause }}</a></td>
             {% if el.status==2 %}
             <td style="color: hotpink; margin-left: 4px; font-size: 16px; font-weight: 600;"><a>{{ res_value('REFUSED') }}</a></td>
@@ -61,7 +60,7 @@
             {% else %}
             <td style="text-align: center; margin-left: 4px; font-size: 16px; color: hotpink;"><a>{{ res_value('ON_APPROVING') }}</a></td>
             {% endif %}
-            <td><a class="a_bt" href="/del-from-list-time-off/{{ el.id }}">{{ res_value('REMOVE') }}</a></td>
+            <td style="text-align: center;"><a class="button" style="margin: 0px; padding: 3px 12px 0px 12px " href="/del-from-list-time-off/{{ el.id }}">{{ res_value('REMOVE') }}</a></td>
         </tr>
         {% endfor %}
     <tbody>

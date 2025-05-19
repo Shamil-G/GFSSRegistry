@@ -59,6 +59,15 @@ article {
     border-radius: 5px;
     border: 1px solid rgba(180, 180, 180, 0.3);
 }
+article_title {
+    padding: 2px 24px;
+    font-size: 20px;
+    display: flex;
+    align-items: center; /*Для выравнивания заголовка по центру*/
+    grid-area: article_title; /* задаем имя элемента */
+    color: #fff;
+    background: #333;
+}
 footer {
   display: grid;
   padding: 8px 16px;
@@ -69,10 +78,6 @@ footer {
 header, footer, article_title {
     border-radius: 3px;
     border: 1px solid rgba(180, 180, 180, 0.3);
-}
-article_title {
-    display: flex; /*Для выравнивания заголовка по центру*/
-    background: #cfefd5;
 }
 footer > .footer-l, header > .header-l {
     margin-left: 10px;
@@ -113,16 +118,6 @@ article_info {
     /*min-height: 100%;*/
     display: grid;
 }
-article_title {
-    padding: 2px 16px;
-    display: flex; /*Для выравнивания заголовка по центру*/
-    align-items: center; /*Для выравнивания заголовка по центру*/
-    grid-area: article_title; /* задаем имя элемента */
-    font-size: 20px;
-    color: #fff;
-    background: #333;
-}
-
 nav > a:hover, .header-r > a:hover {
     background: #777;
     color: wheat;
@@ -130,3 +125,11 @@ nav > a:hover, .header-r > a:hover {
     border-radius: 4px;
 }
 
+/*Меняем алгоритм расчета длины и 
+высоты элемента с контента (width), 
+значения отступов (margin), 
+полей (padding) и границ (border) 
+на размеры блока */ /
+*, *:after, *:before {
+    box-sizing: border-box;
+}

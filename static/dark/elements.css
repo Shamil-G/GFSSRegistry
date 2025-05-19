@@ -15,7 +15,7 @@ a {
 }
 
 /**/
-.title, .title2 {
+.title {
     padding: 6px 12px;
 }
 
@@ -23,6 +23,3 @@ a {
     font-size: 20px;
 }
 
-.title2 {
-    font-size: 16px;
-}
