@@ -5,23 +5,24 @@
 {% endblock %}
 
 {% block main_title %}
-<div>
-    <p>{{ res_value('ALL_LIST_TIME_OFF') }}</p>
-</div>
+    {{ res_value('ALL_LIST_TIME_OFF') }}
 {% endblock %}
 
 {% block navigate %}
 {% endblock %}
 
 {% block body %}
-<form method="POST">
-    <label style="margin-left: 4px;" for="flt_month">{{ res_value('PRINT_MONTH') }}</label>
+<div style="border-radius: 5px; border-bottom: 1px solid rgba(142, 142, 142, 0.3);">
+<form-article-title method="POST">
+    <label style="margin: 4px; font-size: 20px" for="flt_month">{{ res_value('PRINT_MONTH') }}</label>
     <input class="input_s" type="month" requied autofocus name="flt_month" minlength="3" value="{{ flt_month }}">
-    &nbsp;<button class="bt" type="submit">{{ res_value('FLT_MONTH') }}</button>
-    &nbsp;<a class="bt" href="/uploads">{{ res_value('PRINT_EXECUTE') }}</a>
-</form>
+    
+    <button type="submit" style="margin-left:12px">{{ res_value('FLT_MONTH') }}</button>
+    <div style="display:inline-block; border-radius: 5px"><a class="button" style="margin-left:12px; font-size: 18px" href="/uploads">{{ res_value('PRINT_EXECUTE') }}</a></div>
+</form-article-title>
+</div>
 <div class="table-scroll-800">
-    <table class="table-head table_common" style="width: 99.9%">
+    <table>
         <colgroup>
             <col>
             <col>
@@ -34,31 +35,31 @@
         </colgroup>
         <thead>
             <tr>
-                <th style="font-size:16px;"><a>{{ res_value('REG_DATE') }}</a></th>
-                <th style="font-size:16px;"><a>{{ res_value('TIME_OUT') }}</a></th>
-                <th style="font-size:16px;"><a>{{ res_value('TIME_IN') }}</a></th>
-                <th style="font-size:16px;"><a>{{ res_value('EMPLOYEE') }}</a></th>
-                <th style="font-size:16px;"><a>{{ res_value('POST') }}</a></th>
-                <th style="font-size:16px;"><a>{{ res_value('DEP_NAME') }}</a></th>
-                <th style="font-size:16px;"><a>{{ res_value('CAUSE') }}</a></th>
-                <th style="font-size:16px;"><a>{{ res_value('HEAD_NAME') }}</a></th>
+                <th><a>{{ res_value('REG_DATE') }}</a></th>
+                <th><a>{{ res_value('TIME_OUT') }}</a></th>
+                <th><a>{{ res_value('TIME_IN') }}</a></th>
+                <th><a>{{ res_value('EMPLOYEE') }}</a></th>
+                <th><a>{{ res_value('POST') }}</a></th>
+                <th><a>{{ res_value('DEP_NAME') }}</a></th>
+                <th><a>{{ res_value('CAUSE') }}</a></th>
+                <th><a>{{ res_value('HEAD_NAME') }}</a></th>
             </tr>
         </thead>
         <tfoot></tfoot>
         <tbody>
             {% for el in list_time_off %}
             <tr>
-                <td style="font-size:16px;"><a>{{ el.event_date }}</a></td>
-                <td style="font-size:16px;"><a>{{ el.time_out }}</a></td>
-                <td style="font-size: 16px;"><a>{{ el.time_in }}</a></td>
-                <td style="text-align: left; margin-left: 4px; font-size: 16px;"><a>{{ el.employee }}</a></td>
-                <td style="text-align: left; margin-left: 4px; font-size: 16px;"><a>{{ el.post }}</a></td>
-                <td style="text-align: left; margin-left: 4px; font-size: 16px;"><a>{{ el.dep_name }}</a></td>
-                <td style="text-align: left; margin-left: 4px; font-size: 16px;"><a>{{ el.cause }}</a></td>
+                <td style="text-align: center"><a>{{ el.event_date }}</a></td>
+                <td style="text-align: center"><a>{{ el.time_out }}</a></td>
+                <td style="text-align: center"><a>{{ el.time_in }}</a></td>
+                <td><a>{{ el.employee }}</a></td>
+                <td><a>{{ el.post }}</a></td>
+                <td><a>{{ el.dep_name }}</a></td>
+                <td><a>{{ el.cause }}</a></td>
                 {% if el.head %}
-                <td style="text-align: left; margin-left: 4px; font-size: 16px;"><a>{{ el.head }}</a></td>
+                <td><a>{{ el.head }}</a></td>
                 {% else %}
-                <td style="text-align: center; margin-left: 4px; font-size: 18px; color: hotpink; font-weight: 500"><a>{{ res_value('ON_APPROVING') }}</a></td>
+                <td style="text-align: center;"><a style="color: hotpink; font-size: 18px; font-weight: 600">{{ res_value('ON_APPROVING') }}</a></td>
                 {% endif %}
             </tr>
             {% endfor %}

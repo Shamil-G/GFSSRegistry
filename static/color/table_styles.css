@@ -1,23 +1,33 @@
-table {
+﻿table {
     width: 100%;
     border-collapse: collapse;
-    box-shadow: 5px 5px 8px rgba(70, 205, 79, 0.3);
+    box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.1);
     text-shadow: none;
 }
 thead th {
+    font-size: 18px;
     font-weight: bold;
-    text-align: left;
-    padding: 10px 5px;
     text-shadow: 1px 1px 3px grey;
-    box-shadow: 1px 2px 3px rgba(70, 205, 79, 0.2);
+    border: 1px solid grey;
+    box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.1);
 }
-th, td {
+tr > th {
     padding: 10px;
-    text-align: left;
+    text-align: center;
     box-sizing: border-box;
 }
-tr, td {
+tr > td {
+    margin-left: 4px;
     padding: 3px 12px;
+    font-size: 16px;
+    text-align: left;
+    border: 1px solid grey;
+}
+/* Подсвечиваем строки на котором стоит курсор*/
+table tbody tr:hover {
+    /*background-color: rgba(255, 255, 255, 0.34);*/
+    background-color: rgb(248, 240, 192, 0.17);
+    box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.2);
 }
 .news-container {
     max-height: 830px;
@@ -38,6 +48,10 @@ tr, td {
     height: 830px;
     overflow-y: auto;
 }
+.table-scroll-800 tbody tr:nth-child(even) {
+    /*background: #f3f3f3;*/
+    /*background-color: rgb(0, 255, 0, 0.07);*/
+}
 /* Стили для скролла */
 ::-webkit-scrollbar {
     width: 2px;
@@ -48,106 +62,6 @@ tr, td {
 ::-webkit-scrollbar-thumb {
     box-shadow: inset 0 0 3px rgba(255 0 0 / 1);
 }
-/* */
-.title, .title2 {
-    padding: 6px 12px;
-}
-.title{
-    font-size: 20px;
-}
-.title2 {
-    font-size: 16px;
-}
-/* Форма ABOUT*/
-.table_s {
-    margin: 12px;
-}
-.th_s, .td_s, .td_s2 {
-    text-align: center;
-    text-decoration: none;
-    padding: 3px 12px;
-    font-weight: normal;
-    border: 1px solid rgba(180, 180, 180, 0.3);
-}
-/* Подсвечиваем строки на котором стоит курсор*/
-.tr_s:hover {
-    border: 1px solid rgba(180, 180, 180, 0.3);
-    background: #555;
-}
-/* Если отчет выбирали то установим новый цвет */
-.a_s {
-    color: #ddd;
-    text-decoration: none;
-}
-.a_s:visited {
-    color: #ddd;
-    text-decoration: none;
-}
-.a_s:link {
-    color: #ddd;
-    text-decoration: none;
-}
-.a_s2 {
-    color:moccasin;
-    text-decoration: none;
-}
-.a_s2:hover {
-    color:palevioletred;
-}
-
-/*
-.a_s2:visited {
-    color: blanchedalmond;
-    text-decoration: none;
-}
-*/*, *:after, *:before {
+*, *:after, *:before {
     box-sizing: border-box;
-}
-.table_about {
-    margin: 12px;
-    /*border-collapse: collapse;*/
-    text-align: center;
-}
-.table_common th, .table_common tbody tr, .table_common tbody td {
-    text-align: center;
-    border-radius: 5px;
-    border: 1px solid grey;
-}
-
-/* Подсвечиваем строки на котором стоит курсор*/
-table tbody tr:hover {
-    background-color: rgba(255, 255, 255, 0.34);
-}
-.table_common a[name='sum_column'] {
-    margin-left: 5px;
-    margin-right: 5px;
-}
-.table_common > a {
-    background: #777;
-    color: wheat;
-    text-decoration: none;
-    border-radius: 4px;
-}
-.table-scroll thead th {
-    font-weight: bold;
-    text-align: left;
-    border: none;
-    padding: 10px 15px;
-    /*    font-size: 14px;*/
-/*    border-left: 1px solid #ddd;
-    border-right: 1px solid #ddd;
-*/
-}
-
-.table-scroll tbody td {
-    text-align: left;
-    border-left: 1px solid #ddd;
-    border-right: 1px solid #ddd;
-    padding: 10px 15px;
-    font-size: 14px;
-    vertical-align: top;
-}
-
-.table-scroll tbody tr:nth-child(even) {
-    background: #f3f3f3;
 }

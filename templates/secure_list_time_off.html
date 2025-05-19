@@ -12,7 +12,7 @@
 {% endblock %}
 
 {% block body %}
-<table class="table_common">
+<table>
     <colgroup>
         <col>
         <col>
@@ -25,28 +25,28 @@
     </colgroup>
     <thead>
         <tr>
-            <th style="font-size:16px;"><a>{{ res_value('REG_DATE') }}</a></th>
-            <th style="font-size:16px;"><a>{{ res_value('TIME_OUT') }}</a></th>
-            <th style="font-size:16px;"><a>{{ res_value('TIME_IN') }}</a></th>
-            <th style="font-size:16px;"><a>{{ res_value('EMPLOYEE') }}</a></th>
-            <th style="font-size:16px;"><a>{{ res_value('POST') }}</a></th>
-            <th style="font-size:16px;"><a>{{ res_value('DEP_NAME') }}</a></th>
-            <th style="font-size:16px;"><a>{{ res_value('CAUSE') }}</a></th>
-            <th style="font-size:16px;"><a>{{ res_value('AGREE_HEAD') }}</a></th>
+            <th><a>{{ res_value('REG_DATE') }}</a></th>
+            <th><a>{{ res_value('TIME_OUT') }}</a></th>
+            <th><a>{{ res_value('TIME_IN') }}</a></th>
+            <th><a>{{ res_value('EMPLOYEE') }}</a></th>
+            <th><a>{{ res_value('POST') }}</a></th>
+            <th><a>{{ res_value('DEP_NAME') }}</a></th>
+            <th><a>{{ res_value('CAUSE') }}</a></th>
+            <th><a>{{ res_value('AGREE_HEAD') }}</a></th>
         </tr>
     </thead>
     <tfoot></tfoot>
     <tbody>
         {% for el in secure_list %}
         <tr>
-            <td style="font-size:16px;"><a>{{ el.event_date }}</a></td>
-            <td style="font-size:16px;"><a>{{ el.time_out }}</a></td>
-            <td style="font-size: 16px;"><a>{{ el.time_in }}</a></td>
-            <td style="font-size: 16px;"><a>{{ el.employee }}</a></td>
-            <td style="text-align: left; margin-left: 4px; font-size: 16px;"><a>{{ el.post }}</a></td>
-            <td style="text-align: left; margin-left: 4px; font-size: 16px;"><a>{{ el.dep_name }}</a></td>
-            <td style="text-align: left; margin-left: 4px; font-size: 16px;"><a>{{ el.cause }}</a></td>
-            <td style="text-align: left; font-weight: 600;"><a>{{ el.head }}</a></td>
+            <td style="text-align: center"><a>{{ el.event_date }}</a></td>
+            <td style="text-align: center"><a>{{ el.time_out }}</a></td>
+            <td style="text-align: center"><a>{{ el.time_in }}</a></td>
+            <td><a>{{ el.employee }}</a></td>
+            <td><a>{{ el.post }}</a></td>
+            <td><a>{{ el.dep_name }}</a></td>
+            <td><a>{{ el.cause }}</a></td>
+            <td><a>{{ el.head }}</a></td>
         </tr>
         {% endfor %}
     <tbody>

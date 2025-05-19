@@ -12,7 +12,7 @@
 {% endblock %}
 
 {% block body %}
-<table class="table_common">
+<table>
     <colgroup>
         <col>
         <col>
@@ -25,43 +25,39 @@
     </colgroup>
     <thead>
         <tr>
-            <th style="font-size:16px;"><a>{{ res_value('REG_DATE') }}</a></th>
-            <th style="font-size:16px;"><a>{{ res_value('TIME_OUT') }}</a></th>
-            <th style="font-size:16px;"><a>{{ res_value('TIME_IN') }}</a></th>
-            <th style="font-size:16px;"><a>{{ res_value('EMPLOYEE') }}</a></th>
-            <th style="font-size:16px;"><a>{{ res_value('POST') }}</a></th>
-            <th style="font-size:16px;"><a>{{ res_value('DEP_NAME') }}</a></th>
-            <th style="font-size:16px;"><a>{{ res_value('CAUSE') }}</a></th>
-            <th style="font-size:16px;"><a>{{ res_value('STATUS') }}</a></th>
+            <th><a>{{ res_value('REG_DATE') }}</a></th>
+            <th><a>{{ res_value('TIME_OUT') }}</a></th>
+            <th><a>{{ res_value('TIME_IN') }}</a></th>
+            <th><a>{{ res_value('EMPLOYEE') }}</a></th>
+            <th><a>{{ res_value('POST') }}</a></th>
+            <th><a>{{ res_value('DEP_NAME') }}</a></th>
+            <th><a>{{ res_value('CAUSE') }}</a></th>
+            <th><a>{{ res_value('STATUS') }}</a></th>
         </tr>
     </thead>
     <tfoot></tfoot>
     <tbody>
         {% for el in list_approve %}
         <tr>
-            <td style="font-size:16px;"><a>{{ el.event_date }}</a></td>
-            <td style="font-size:16px;"><a>{{ el.time_out }}</a></td>
-            <td style="font-size: 16px;"><a>{{ el.time_in }}</a></td>
-            <td style="font-size: 16px;"><a>{{ el.employee }}</a></td>
-            <td style="text-align: left; margin-left: 4px; font-size: 16px;"><a>{{ el.post }}</a></td>
-            <td style="text-align: left; margin-left: 4px; font-size: 16px;"><a>{{ el.dep_name }}</a></td>
-            <td style="text-align: left; margin-left: 4px; font-size: 16px;"><a>{{ el.cause }}</a></td>
+            <td style="text-align: center"><a>{{ el.event_date }}</a></td>
+            <td style="text-align: center"><a>{{ el.time_out }}</a></td>
+            <td style="text-align: center"><a>{{ el.time_in }}</a></td>
+            <td><a>{{ el.employee }}</a></td>
+            <td><a>{{ el.post }}</a></td>
+            <td><a>{{ el.dep_name }}</a></td>
+            <td><a>{{ el.cause }}</a></td>
             {% if not el.status or el.status==3 %}
             <td style="text-align: center;">
                 <div>
-                    <a class="img" href="/approve-time-off/{{ el.id }}">
-                        <img src="/static/img/ok.png" width="24" height="24">
-                    </a>
-                    <a class="img" href="/refuse-time-off/{{ el.id }}">
-                        <img src="/static/img/cancel.png" width="24" height="24">
-                    </a>
+                    <a href="/approve-time-off/{{el.id}}"><img class="ok" src="/static/img/ok.png"></a>
+                    <a href="/refuse-time-off/{{el.id}}"><img class="cancel" src="/static/img/cancel.png"></a>
                 </div>
             </td>
             {% else %}
             {% if el.status==1 %}
-            <td style="font-size: 18px; color:teal; font-weight: 600; "><a>{{ res_value('APPROVED') }}</a></td>
+            <td style="font-size: 18px;"><a style="color: teal; font-weight: 600;">{{ res_value('APPROVED') }}&emsp;</a></td>
             {% else %}
-            <td style="font-size: 18px; color: hotpink; font-weight: 600; "><a>{{ res_value('REFUSED') }}</a></td>
+            <td style="font-size: 18px;"><a style="color: hotpink; font-weight: 600;">{{ res_value('REFUSED') }}</a></td>
             {% endif %}
             {% endif %}
         </tr>

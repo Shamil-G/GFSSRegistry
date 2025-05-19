@@ -1,9 +1,12 @@
 form {
-    border-radius: 5px;
-    margin: 2px;
-    padding: 16px;
+    margin: 1px 1px;
+    padding: 24px 15px 0px;
     text-shadow: none;
-    border: 1px solid rgba(180, 180, 180, 0.3);
+}
+form-article-title {
+    margin: 2px;
+    padding: 0px 16px;
+    text-shadow: none;
 }
 div.field {
     margin-top: 5px;
@@ -18,17 +21,12 @@ div.field label {
     width: 195px;
 }
 
-.form_aux {
-    margin: 3px;
-    padding: 12px 10px 12px 10px;
-    border-radius: 5px;
-    border: 1px solid rgba(180, 180, 180, 0.3);
-}
-
 .input_s {
-    color: #444;
     margin-left: 12px;
     padding: 9px;
+    color: #444;
+    font-size: 18px;
+    background-color: #efefd3e6;
     align-items: center;
     /*background-color: #444;*/
     width: 220px;
@@ -40,66 +38,21 @@ div.field label {
 .input_s:hover {
     /*color: bisque;*/
     align-items: center;
-    /*background-color: #333;*/
+    box-shadow: 2px 2px 5px darkseagreen;
 }
-
-.name_system {
-    color: #ddd;
-    margin: 4px;
-    padding: 6px;
-    text-decoration: none;
-    align-items: center;
-}
-
-.name_system:hover {
-    color: wheat;
-    margin: 4px;
-    padding: 6px;
-    font-weight: bold;
-}
-
-.new_system {
-    margin: 4px 4px 4px 4px;
-    padding: 6px;
-    color: #ddd;
-    background: #555;
+/*Сообщение в новостную ленту*/
+textarea {
+    margin-top: 5px;
+    font-family: cursive, sans-serif;
+    outline: 0;
+    background: #deefdf;
+    color: #444;
+    border: 1px solid #ffe4b57a;
+    padding: 5px;
     border-radius: 5px;
-    border: 1px solid rgba(180, 180, 180, 0.3);
-    text-decoration: none;
-}
-
-.new_system:hover, .form_login > a:hover {
-    margin: 4px;
-    background: #f5f5b8;
-    color: brown;
-}
-
-.div_s:hover {
-    display: flex;
-    border-radius: 5px;
-    border: 1px solid rgba(180, 180, 180, 0.3);
-    background: #555;
-}
-
-.div_s {
-    display: flex;
-    padding: 6px;
-    border-radius: 5px;
-    border: 1px solid rgba(180, 180, 180, 0.3);
-}
-
-.div_role_users {
-    display: flex;
-    margin: 10px;
-    padding: 10px;
-}
-
-.div_users_all {
-    margin: 10px;
-}
-
-.div_users_selected {
-    margin: 10px;
+    width: 540px;
+    box-shadow: 2px 2px 5px darkseagreen;
+    border: 2px solid rgba(180, 180, 180, 0.3);
 }
 
 select {
@@ -114,16 +67,3 @@ select {
     width: 540px;
 }
 
-textarea {
-    margin-top: 5px;
-    font-family: cursive, sans-serif;
-    outline: 0;
-    background: #deefdf;
-    color: #444;
-    border: 1px solid #ffe4b57a;
-    padding: 5px;
-    border-radius: 5px;
-    width: 540px;
-    box-shadow: 2px 2px 5px darkseagreen;
-    border: 2px solid rgba(180, 180, 180, 0.3);
-}

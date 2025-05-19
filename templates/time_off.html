@@ -5,20 +5,17 @@
 {% endblock %}
 
 {% block main_title %}
-    <a class="title">
-        {{ res_value('TIME_OFF') }}.
-        {% if message %}
-            &nbsp;&emsp;{{ message }}.
-        {% endif %}
-    </a>
+{{ res_value('TIME_OFF') }}
+{% if message %}
+    &nbsp;&emsp;{{ message }}
+{% endif %}
 {% endblock %}
 
 {% block navigate %}
 {% endblock %}
 
 {% block body %}
-
-<form class="form_r" method="POST">
+<form method="POST">
     <div class="field">
         <label for="date_out">{{ res_value('TIME_OUT') }}</label>
         <input class="input_s" type="datetime-local" id="date_out" name="date_out">
@@ -29,8 +26,9 @@
     </div>
     <div class="field">
         <label for="cause">{{ res_value('CAUSE') }}</label>
-        <input class="input_s" type="text" id="cause" name="cause" maxlength="512" minlength="12" style="width: 75%">
+        <input class="input_s" type="text" id="cause" name="cause" maxlength="512" minlength="12" style="max-width: 32%; width: 480px">
     </div>
+    <!-- Не используется. Осталось как образец обращения к списку -->
     <!--<div class="field">
         <label for="head_name">{{ res_value('HEAD_NAME') }}</label>
         <select name="head_name" id="head_name">
@@ -44,7 +42,7 @@
         </select>
     </div>-->
     <br />
-    <button class="bt" type="submit" name="edit_parms">{{ res_value('SAVE') }}</button>
+    <button type="submit" name="edit_parms">{{ res_value('SAVE') }}</button>
     <br />
 </form>
 {% endblock %}

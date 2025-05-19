@@ -20,26 +20,18 @@
     {% endif %}
     {% endwith %}
 </div>
-<form class="form_s" method="POST">
-    <table style="width:40%">
-        <tr>
-            <td>
-                <input class="input_s" type="text" name="username" placeholder="{{ res_value('LOGIN_NAME') }}">
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <input class="input_s" type="password" name="password"  placeholder="{{ res_value('INSERT_PASSWORD') }}">
-            </td>
-        </tr>
-    </table>
-    <br/>
-    <button class="bt" type="submit">{{ res_value('LOGIN_BUTTON') }}</button>
-    <div style="text-align: left; margin: 12px 7px 0px">
+<form class="form_body" method="POST">
+    <div>
+        <input class="input_s" style="margin-left:0px" type="text" name="username" placeholder="{{ res_value('LOGIN_NAME') }}">
+    </div>
+    <div style="margin-top: 9px">
+        <input class="input_s" style="margin-left:0px" type="password" name="password" placeholder="{{ res_value('INSERT_PASSWORD') }}">
+    </div>
+    <button style="margin-top:16px" type="submit">{{ res_value('LOGIN_BUTTON') }}</button>
+    <div style="text-align: left; margin-top: 16px 7px 0px">
         {% if info %}
         <a>{{ info }}</a>
         {% endif %}
     </div>
-    <br>
 </form>
 {% endblock %}
