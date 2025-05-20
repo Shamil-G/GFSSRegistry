@@ -20,7 +20,8 @@ def get_list_time_off(employee: str):
     list_time_off = []
     
     stmt = """
-        select event_date, time_out, time_in, employee, post, dep_name, cause, head, status, time_fact, id 
+        select event_date, time_out, time_in, employee, post, dep_name, cause, head, status, time_fact, id, 
+               sysdate - trunc(time_out,'MM') as cnt_days
         from register r
         where r.employee = :employee
         order by event_date desc
@@ -34,7 +35,8 @@ def get_list_time_off(employee: str):
                     res = {'event_date': row[0], 'time_out': row[1], 'time_in': row[2],
                            'employee': row[3], 'post': row[4], 'dep_name': row[5],
                            'cause': row[6], 'head': row[7], 
-                           'status': row[8], 'time_fact': row[9], 'id': row[10]
+                           'status': row[8], 'time_fact': row[9], 'id': row[10], 
+                           'cnt_days': row[11]
                            }
                     list_time_off.append(res)
             finally:

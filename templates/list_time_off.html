@@ -38,9 +38,9 @@
     <tbody>
         {% for el in list_time_off %}
         <tr>
-            <td style="font-size:16px;"><a>{{ el.event_date }}</a></td>
-            <td style="font-size:16px;"><a>{{ el.time_out }}</a></td>
-            <td style="font-size: 16px;"><a>{{ el.time_in }}</a></td>
+            <td style="font-size: 16px; text-align: center;"><a>{{ el.event_date }}</a></td>
+            <td style="font-size: 16px; text-align: center;"><a>{{ el.time_out }}</a></td>
+            <td style="font-size: 16px; text-align: center;"><a>{{ el.time_in }}</a></td>
 
             <td style="font-size: 16px;"><a>{{ el.head }}</a></td>
 
@@ -52,15 +52,22 @@
         <td style="font-size: 16px;"><a></a></td>
     {% endif %}-->
 
-            <td style="text-align: left; margin-left: 4px; font-size: 16px;"><a>{{ el.cause }}</a></td>
+            <td style="margin-left: 4px; font-size: 16px;"><a>{{ el.cause }}</a></td>
+
             {% if el.status==2 %}
-            <td style="color: hotpink; margin-left: 4px; font-size: 16px; font-weight: 600;"><a>{{ res_value('REFUSED') }}</a></td>
+            <!--<td style="margin-left: 4px; text-align: center; font-size: 16px; color: hotpink; font-weight: 600; "><a>{{ res_value('REFUSED') }}</a></td>-->
+                <td style="text-align: center;"><img src="/static/img/refuse-1.png" class="img-logo"></td>
             {% elif el.status==1 %}
-            <td style="text-align: left; margin-left: 4px; font-size: 16px;"><a>{{ res_value('APPROVED') }}</a></td>
+                <td style="text-align: center;"><img src="/static/img/approved-3.png" class="img-logo"></td>
             {% else %}
-            <td style="text-align: center; margin-left: 4px; font-size: 16px; color: hotpink;"><a>{{ res_value('ON_APPROVING') }}</a></td>
+                <td style="margin-left: 4px; text-align: center; font-size: 16px; color: hotpink;"><a>{{ res_value('ON_APPROVING') }}</a></td>
             {% endif %}
-            <td style="text-align: center;"><a class="button_red" style="margin: 0px; padding: 3px 12px 0px 12px;" href="/del-from-list-time-off/{{ el.id }}">{{ res_value('REMOVE') }}</a></td>
+
+            {% if el.cnt_days < 35 or el.status!=1 %}
+                <td style="text-align: center;"><a class="button_red" style="margin: 0px; padding: 3px 12px 0px 12px;" href="/del-from-list-time-off/{{ el.id }}">{{ res_value('REMOVE') }}</a></td>
+            {% else %}
+                <td style="text-align: center;"><img src="/static/img/flower.png" class="img-logo"></td>
+            {% endif %}
         </tr>
         {% endfor %}
     <tbody>
