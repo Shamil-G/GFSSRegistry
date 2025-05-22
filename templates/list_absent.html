@@ -39,17 +39,17 @@
     <tbody>
         {% for el in list_absent %}
         <tr>
-            <td style="font-size:16px;"><a>{{ el.event_date }}</a></td>
-            <td style="font-size:16px;"><a>{{ el.time_out }}</a></td>
-            <td style="font-size: 16px;"><a>{{ el.time_in }}</a></td>
-            <td style="font-size: 16px;"><a>{{ el.employee }}</a></td>
-            <td style="text-align: left; margin-left: 4px; font-size: 16px;"><a>{{ el.post }}</a></td>
-            <td style="text-align: left; margin-left: 4px; font-size: 16px;"><a>{{ el.dep_name }}</a></td>
-            <td style="text-align: left; margin-left: 4px; font-size: 16px;"><a>{{ el.cause }}</a></td>
+            <td style="text-align: center"><a>{{ el.event_date }}</a></td>
+            <td style="text-align: center"><a>{{ el.time_out }}</a></td>
+            <td style="text-align: center"><a>{{ el.time_in }}</a></td>
+            <td><a>{{ el.employee }}</a></td>
+            <td><a>{{ el.post }}</a></td>
+            <td><a>{{ el.dep_name }}</a></td>
+            <td><a>{{ el.cause }}</a></td>
             {% if el.head %}
-                <td style="text-align: left; margin-left: 4px; font-size: 16px;"><a>{{ el.head }}</a></td>
+                <td><a>{{ el.head }}</a></td>
             {% else %}
-                <td style="text-align: center; margin-left: 4px; font-size: 16px; color: hotpink;"><a>{{ res_value('NOT_APPROVED') }}</a></td>
+                <td><a  style="color: hotpink; font-weight: 600">{{ res_value('NOT_APPROVED') }}</a></td>
             {% endif %}
         </tr>
         {% endfor %}
