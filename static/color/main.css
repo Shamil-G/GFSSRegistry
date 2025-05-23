@@ -138,11 +138,4 @@ nav > a {
     color: #cfefd5;
     background-color: lightseagreen;
 }
-/*Меняем алгоритм расчета длины и 
-высоты элемента с контента (width), 
-значения отступов (margin), 
-полей (padding) и границ (border) 
-на размеры блока *//
-*, *:after, *:before {
-    box-sizing: border-box;
-}
+

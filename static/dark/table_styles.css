@@ -61,3 +61,13 @@ tbody > tr:hover {
 ::-webkit-scrollbar-thumb {
     box-shadow: inset 0 0 6px rgba(0 255 0 / 0.6);
 }
+
+/*Меняем алгоритм расчета длины и 
+высоты элемента с контента (width), 
+значения отступов (margin), 
+полей (padding) и границ (border) 
+на размеры блока. 
+В секции main.css это не работает !!! */
+*, *:after, *:before {
+    box-sizing: border-box;
+}

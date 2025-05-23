@@ -124,12 +124,3 @@ nav > a:hover, .header-r > a:hover {
     text-decoration: none;
     border-radius: 4px;
 }
-
-/*Меняем алгоритм расчета длины и 
-высоты элемента с контента (width), 
-значения отступов (margin), 
-полей (padding) и границ (border) 
-на размеры блока */ /
-*, *:after, *:before {
-    box-sizing: border-box;
-}
