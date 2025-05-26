@@ -23,12 +23,11 @@ tr > td {
     text-align: left;
     border: 1px solid #ffe4b57a;
 }
-
 /* Подсвечиваем строки на котором стоит курсор*/
-tbody > tr:hover {
+table tbody > tr:hover {
     background: #555;
+    box-shadow: 1px 2px 3px rgba(70, 205, 79, 0.4);
 }
-
 .news-container {
     max-height: 830px;
     overflow-y: auto;
