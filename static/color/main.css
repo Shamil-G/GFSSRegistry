@@ -24,7 +24,7 @@ common-container {
     min-height: 100%;
     display: grid;
     grid-template-columns: 1fr 7fr;
-    grid-template-rows: 44px 40px auto 36px;
+    grid-template-rows: 44px 44px auto 36px;
     grid-gap: 2px;
     grid-template-areas: "header header"
         "nav article_title"
