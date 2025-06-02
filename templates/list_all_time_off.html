@@ -13,13 +13,13 @@
 
 {% block body %}
 <div style="border-radius: 5px; border-bottom: 1px solid rgba(142, 142, 142, 0.3);">
-<form-article-title method="POST">
-    <label style="margin: 4px; font-size: 20px" for="flt_month">{{ res_value('PRINT_MONTH') }}</label>
-    <input class="input_s" style="width: 154px" type="month" requied autofocus name="flt_month" minlength="3" value="{{ flt_month }}">
-    
-    <button type="submit" style="margin-left:12px">{{ res_value('FLT_MONTH') }}</button>
-    <div style="display:inline-block; border-radius: 5px"><a class="button" style="margin-left:12px; font-size: 18px" href="/uploads">{{ res_value('PRINT_EXECUTE') }}</a></div>
-</form-article-title>
+    <form style="margin: 2px; padding: 0px 16px" method="POST">
+        <label style="margin: 4px; font-size: 20px" for="flt_month">{{ res_value('PRINT_MONTH') }}</label>
+        <input class="input_s" style="width: 154px" type="month" requied autofocus name="flt_month" id="flt_month" minlength="3" value="{{ flt_month }}">
+
+        <button type="submit" style="margin-left:12px">{{ res_value('FLT_MONTH') }}</button>
+        <div style="display:inline-block; border-radius: 5px"><a class="button" style="margin-left:12px; font-size: 18px" href="/uploads">{{ res_value('PRINT_EXECUTE') }}</a></div>
+    </form>
 </div>
 <div class="table-scroll-800">
     <table>

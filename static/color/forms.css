@@ -3,11 +3,6 @@ form {
     padding: 24px 15px 0px 24px;
     text-shadow: none;
 }
-form-article-title {
-    margin: 2px;
-    padding: 0px 16px;
-    text-shadow: none;
-}
 div.field {
     margin-top: 5px;
     display: flex;
@@ -20,7 +15,6 @@ div.field label {
     height: 24px;
     width: 195px;
 }
-
 .input_s {
     margin-left: 12px;
     padding: 9px;
