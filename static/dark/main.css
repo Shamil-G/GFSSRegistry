@@ -118,7 +118,7 @@ article_info {
     /*min-height: 100%;*/
     display: grid;
 }
-nav > a:hover, .header-r > a:hover {
+.header-r > a:hover {
     background: #777;
     color: wheat;
     text-decoration: none;

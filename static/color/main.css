@@ -38,7 +38,7 @@ nav {
     border-radius: 5px;
     /*border: 1px solid rgba(180, 180, 180, 0.3);*/
     /*text-shadow: 1px 2px 3px grey;*/
-    grid-template-rows: repeat(12,minmax(28px, 64px));
+    grid-template-rows: repeat(12,minmax(48px, 58px));
     /*grid-template-columns: 100%;*/
     grid-row-gap: 3px;
     grid-area: nav; /* задаем имя элемента */
