@@ -38,7 +38,7 @@ nav {
     border-radius: 5px;
     /*border: 1px solid rgba(180, 180, 180, 0.3);*/
     /*text-shadow: 1px 2px 3px grey;*/
-    grid-template-rows: repeat(12,minmax(48px, 58px));
+    grid-template-rows: repeat(12,minmax(32px, 64px));
     /*grid-template-columns: 100%;*/
     grid-row-gap: 3px;
     grid-area: nav; /* задаем имя элемента */
@@ -122,16 +122,6 @@ footer > .footer-r, header > .header-r {
     display: flex;
     align-items: center;
     justify-content: flex-end;
-}
-
-nav > a {
-    text-decoration: none;
-    align-items: center;
-    padding-left: 5px;
-    display: flex;
-    border: inherit;
-    border-radius: inherit;
-    color: black;
 }
 
 .header-r > a:hover {

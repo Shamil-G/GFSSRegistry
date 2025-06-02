@@ -43,9 +43,9 @@ button:hover {
 .nav_button {
     text-decoration: none;
     align-items: center;
-    padding: 3px 12px;
+    padding: 3px 12px 3px 6px;
     display: flex;
-    /*border: inherit;*/
+    border: inherit;
     border-radius: inherit;
     color: black;
     position: relative;

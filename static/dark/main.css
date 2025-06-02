@@ -95,15 +95,6 @@ footer > .footer-r, header > .header-r {
     align-items: center;
     justify-content: flex-end;
 }
-nav > a {
-    text-decoration: none;
-    align-items: center;
-    padding-left: 5px;
-    display: flex;
-    border: inherit;
-    border-radius: inherit;
-    color: #ddd;
-}
 article_body {
     margin: 0;
     grid-area: article_body; /* задаем имя элемента */
