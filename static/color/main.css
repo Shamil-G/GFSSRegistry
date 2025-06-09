@@ -60,7 +60,7 @@ header {
 }
 article {
     display: grid;
-    grid-template-columns: 7fr auto;
+    grid-template-columns: auto auto;
     grid-area: article; /* задаем имя элемента */
     grid-template-areas: "article_body article_info";
     border-radius: 5px;
@@ -78,14 +78,15 @@ article_body {
     margin: 0;
     grid-area: article_body; /* задаем имя элемента */
     background-color: #deefdf;
-    /*min-height: 100%;*/
+    min-height: 100%;
     display: grid;
 }
 article_info {
     padding: 0px 1px 0px 1px;
     grid-area: article_info; /* задаем имя элемента */
     background-color: #deefdf;
-    /*min-height: 100%;*/
+    min-height: 100%;
+    /*max-width: 30%;*/
     display: grid;
 }
 footer {

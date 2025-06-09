@@ -53,7 +53,7 @@ header {
 }
 article {
     display: grid;
-    grid-template-columns: 7fr auto;
+    grid-template-columns: auto auto;
     grid-area: article; /* задаем имя элемента */
     grid-template-areas: "article_body article_info";
     border-radius: 5px;
