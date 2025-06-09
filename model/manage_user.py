@@ -98,13 +98,19 @@ def get_list_to_approve(user):
         log.info(f'GET_LIST_TO_APPROVE: USER is ANONYMOUS')
         return {}
 
-    admin = 0
-    subordinate_ou = ''
-    if hasattr(user, 'subordinate_ou'):
+    admin = 0 # Администратор, служба безопасности
+    boss = 0  # Руководитель департамента
+    subordinate_ou = ""
+    if hasattr(user, 'subordinate_ou') and user.subordinate_ou is not None:
         subordinate_ou = ", ".join( f"'{str(elem)}'" for elem in user.subordinate_ou)
 
-    if hasattr(user, 'roles') and 'admin' in user.roles:
-        admin=1
+    if hasattr(user, 'roles'):
+        if 'admin' in user.roles:
+            admin=1
+        if 'boss' in user.roles:
+            boss=1
+
+    log.info(f'GET_LIST_TO_APPROVE. Admin: {admin}, Boss: {boss}')
 
     if admin==1:
         stmt = """
@@ -127,15 +133,15 @@ def get_list_to_approve(user):
     with get_connection() as connection:
         with connection.cursor() as cursor:
             try:
-                if subordinate_ou:
+                if subordinate_ou and subordinate_ou is not None:
                     # subordinate_ou = str(session['subordinate_ou'])[1:-1]
                     stmt_new = stmt.replace(':dep_name', subordinate_ou);
-                    log.info(f'-------\n\tGET LIST TO APPROVE\n\tUSER: {user.full_name}\n\tSUBORDINATE_OU: {subordinate_ou}')
+                    log.info(f'-------\n\tGET LIST TO APPROVE\n\tUSER: {user.full_name}\n\tSUBORDINATE_OU: {subordinate_ou}\n\tlen: {len(subordinate_ou)}\n\t{len(user.subordinate_ou)} : {user.subordinate_ou}')
                     log.debug(f'-------\n\tGET LIST TO APPROVE. STMT:\n\t{stmt_new}\n-------')
                     cursor.execute(stmt_new)
                 elif admin==1:
                     cursor.execute(stmt)
-                else:
+                elif boss==1:
                     log.info(f'-------\n\tGET LIST TO APPROVE\n\tUSER: {user.full_name}\n\tDEP_NAME: {user.dep_name}')
                     log.debug(f'-------\n\tGET LIST TO APPROVE. STMT:\n\t{stmt}\n-------')
                     cursor.execute(stmt, dep_name=user.dep_name)
