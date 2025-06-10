@@ -1,8 +1,19 @@
 button, .button, .button_red {
-    color: #333;
-    background-color: #efefd3e6;
-    transition: color .2s ease-in-out,background-color .2s ease-in-out, border-color .2s ease-in-out, box-shadow .2s ease-in-out;
-    box-shadow: 6px 6px 8px rgba(70, 205, 79, 0.2);
+    margin: 9px 0px;
+    padding: 6px 34px 6px 34px;
+    font-size: 16px;
+    margin: 2px 0px;
+    padding: 9px 34px 9px 34px;
+    text-decoration: none;
+    align-items: center;
+    display: inline-block;
+    border-radius: 5px;
+    font-weight: 500;
+    cursor: pointer;
+    line-height: 1.5;
+    position: relative;
+    text-decoration: none;
+    border: 1px solid;
 }
 button:hover, .button:hover {
     top: 1px;
@@ -24,10 +35,25 @@ button:hover {
 }
 
 .nav_button {
-    color: black;
+    text-decoration: none;
+    align-items: center;
+    padding: 3px 12px 3px 6px;
+    display: flex;
+    border: inherit;
+    border-radius: inherit;
+    position: relative;
+    /*display: inline-block;*/
+    font-weight: 500;
+    /*text-shadow: rgba(255,255,255,.5) 1px 1px, rgba(100,100,100,.3) 3px 7px 3px;*/
     text-shadow: 1px 2px 3px grey;
+    /*user-select: none;*/
+    /*padding: 1em 2em;*/
+    /*outline: none;*/
+    /*border-radius: 3px / 100%;*/
     background-image: linear-gradient(to right, rgba(255,255,255,.0) 30%, rgba(255,255,255,.8), rgba(255,255,255,.0) 70%), linear-gradient(to right, rgba(255,255,255,0.7), rgba(255,255,255,0) 20%, rgba(255,255,255,0) 85%, rgba(255,255,255,.5)),
-                      linear-gradient(to right, rgba(121, 219, 144, 0.3), rgba(121, 219, 144,.5) 45%, rgba(121, 219, 144, 0.5)), linear-gradient(to right, rgba(121, 219, 144, 0.3), rgba(121, 219, 144,.5) 0%, rgba(121, 219, 144, 0.5) );
+    /*linear-gradient(to right, rgba(125,125,125,1), rgba(255,255,255,.9) 45%, rgba(125,125,125,.5)),*/
+    /*linear-gradient(to right, rgba(125,125,125,1), rgba(255,255,255,.9) 45%, rgba(125,125,125,.5)),*/
+    linear-gradient(to right, rgba(121, 219, 144, 0.3), rgba(121, 219, 144,.5) 45%, rgba(121, 219, 144, 0.5)), linear-gradient(to right, rgba(121, 219, 144, 0.3), rgba(121, 219, 144,.5) 0%, rgba(121, 219, 144, 0.5) );
     background-repeat: no-repeat;
     background-size: 200% 100%, auto, 100% 2px, 100% 2px, 100% 1px, 100% 1px;
     background-position: 200% 0, 0 0, 0 0, 0 100%, 0 4px, 0 calc(100% - 4px);
@@ -36,7 +62,6 @@ button:hover {
 .nav_button:hover {
     top: 1px;
     transition: .3s linear;
-    /*background-color: #cfe8d8ff;*/
     background-position: -200% 0, 0 0, 0 0, 0 100%, 0 4px, 0 calc(100% - 4px);
     box-shadow: 4px 4px 16px grey;
 }

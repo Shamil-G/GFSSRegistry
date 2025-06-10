@@ -1,7 +1,7 @@
 ﻿<!doctype html>
 <html lang="ru">
 <head class="intro-header">
-    <link rel="stylesheet" type="text/css" href="/static/{{session['style']}}/main.css">
+    <link rel="stylesheet" type="text/css" href="/static/{{session['style']}}/include.css">
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -40,26 +40,33 @@
         <nav>
             {% block navigate %}{% endblock %}
             {% if g.user.is_active %}
-            <a class="nav_button" href="/time-off">{{ res_value('TIME_OFF') }}</a>
-            <!--                    <a class="title2" href="/check-doc">{{ res_value('CHECK_DOC') }}</a>-->
-            {% if g.user.subordinate_ou or 'admin' in g.user.roles or 'boss' in g.user.roles %}
-            <a class="nav_button" href="/list-to-approve">{{ res_value('LIST_APPROVE') }}</a>
-            {% endif %}
-            {% if 'admin' in g.user.roles %}
-            <a class="nav_button" href="/secure-time-off">{{ res_value('SECURE_TIME_OFF') }}</a>
-            <a class="nav_button" href="/all-list-time-off">{{ res_value('ALL_LIST_TIME_OFF') }}</a>
-            <a class="nav_button" href="/secure-list-time-off">{{ res_value('SECURE_LIST_APPROVE') }}</a>
-            <a class="nav_button" href="/list-absent">{{ res_value('LIST_ABSENT') }}</a>
-            <!--<a class="title2" href="/heads">{{ res_value('HEADS') }}</a>-->
-            {% endif %}
-            <a class="nav_button" href="/list-time-off">{{ res_value('LIST_TIME_OFF') }}</a>
-            <a class="nav_button" href="/new-message">{{ res_value('NEW_MESSAGE') }}</a>
-            <!--<a class="nav_button" href="/">{{ res_value('ORDER_SUPPORT') }}</a>-->
-            <a class="nav_button" href="/">{{ res_value('NEAR_BIRTH_DATE') }}</a>
-            <a class="nav_button" href="/static/nsi/PhoneRefer.pdf" target="_blank">{{ res_value('PHONE_REFER') }}</a>
-            <a class="nav_button" href="/logout">{{ res_value('LOGOUT') }}</a>
+                <a class="nav_button" href="/time-off">{{ res_value('TIME_OFF') }}</a>
+                <!--                    <a class="title2" href="/check-doc">{{ res_value('CHECK_DOC') }}</a>-->
+                {% if g.user.subordinate_ou or 'admin' in g.user.roles or 'boss' in g.user.roles %}
+                    <a class="nav_button" href="/list-to-approve">{{ res_value('LIST_APPROVE') }}</a>
+                {% endif %}
+                
+                {% if 'admin' in g.user.roles %}
+                    <a class="nav_button" href="/secure-time-off">{{ res_value('SECURE_TIME_OFF') }}</a>
+                {% endif %}
+
+                {% if g.user.subordinate_ou or 'admin' in g.user.roles or 'boss' in g.user.roles %}
+                    <a class="nav_button" href="/all-list-time-off">{{ res_value('ALL_LIST_TIME_OFF') }}</a>
+                {% endif %}
+
+                {% if 'admin' in g.user.roles %}
+                    <a class="nav_button" href="/secure-list-time-off">{{ res_value('SECURE_LIST_APPROVE') }}</a>
+                    <a class="nav_button" href="/list-absent">{{ res_value('LIST_ABSENT') }}</a>
+                    <!--<a class="title2" href="/heads">{{ res_value('HEADS') }}</a>-->
+                {% endif %}
+                <a class="nav_button" href="/list-time-off">{{ res_value('LIST_TIME_OFF') }}</a>
+                <a class="nav_button" href="/new-message">{{ res_value('NEW_MESSAGE') }}</a>
+                <!--<a class="nav_button" href="/">{{ res_value('ORDER_SUPPORT') }}</a>-->
+                <a class="nav_button" href="/">{{ res_value('NEAR_BIRTH_DATE') }}</a>
+                <a class="nav_button" href="/static/nsi/PhoneRefer.pdf" target="_blank">{{ res_value('PHONE_REFER') }}</a>
+                <a class="nav_button" href="/logout">{{ res_value('LOGOUT') }}</a>
             {% else %}
-            <a class="nav_button" href="/login">{{ res_value('LOGIN') }}</a>
+                <a class="nav_button" href="/login">{{ res_value('LOGIN') }}</a>
             {% endif %}
         </nav>
 

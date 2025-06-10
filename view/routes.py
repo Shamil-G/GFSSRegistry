@@ -180,6 +180,9 @@ def view_list_absent():
 @app.route('/all-list-time-off', methods=['GET','POST'])
 @login_required
 def view_all_list_time_off():
+    if 'stmt_list' in session:
+        session.pop('stmt_list')
+
     log.debug(f'VIEW LIST TIME OFF. username {session['full_name']}, admin: {session['admin']}')
     if 'flt_month' not in session:
         session['flt_month'] = str(date.today())[0:7]
@@ -187,7 +190,8 @@ def view_all_list_time_off():
         flt_month = request.form['flt_month']  
         log.info(f' FLT_MONTH: {flt_month} : {type(flt_month)}')
         session['flt_month'] = flt_month
-    list_time_off = get_all_list_time_off(f'{session['flt_month']}-01')
+    list_time_off, stmt_list = get_all_list_time_off(g.user, f'{session['flt_month']}-01')
+    session['stmt_list'] = stmt_list
     all_mess = get_all_message()
     return render_template("list_all_time_off.html", list_time_off=list_time_off, flt_month=session['flt_month'], all_mess=all_mess)
 
@@ -296,10 +300,12 @@ def set_language(lang):
 @app.route('/uploads')
 def uploaded_file():
     file_name = 'rep_all_time_off.xlsx'
-    do_report(session['flt_month'], file_name)
-    log.debug(f"UPLOADED_FILE. REPORT_PATH: {REPORT_PATH} FILE_NAME: {file_name}")
-    return send_from_directory(REPORT_PATH, file_name)
-    # return redirect(url_for('view_running_reports'))
+
+    if 'stmt_list' in session:
+        do_report(session['flt_month'], file_name, session['stmt_list'])
+        log.debug(f"UPLOADED_FILE. REPORT_PATH: {REPORT_PATH} FILE_NAME: {file_name}")
+        return send_from_directory(REPORT_PATH, file_name)
+    return redirect(url_for('view_root'))
 
 
 @app.route('/phone')

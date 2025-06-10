@@ -11,15 +11,15 @@ report_name = 'Список зарегистрированых выходов с
 report_code = '01'
 
 
-stmt = """
-        select event_date, time_out, time_in, employee, post, dep_name, cause, coalesce(head,'Не утверждено'), id 
-        from register r
-        where trunc(event_date,'MM') = trunc(to_date(:mnth,'YYYY-MM-DD'),'MM')
-        order by dep_name, employee, event_date
-"""
+# stmt = """
+#         select event_date, time_out, time_in, employee, post, dep_name, cause, coalesce(head,'Не утверждено'), id 
+#         from register r
+#         where trunc(event_date,'MM') = trunc(to_date(:mnth,'YYYY-MM-DD'),'MM')
+#         order by dep_name, employee, event_date
+# """
 
 
-active_stmt = stmt
+# active_stmt = stmt
 
 def format_worksheet(worksheet, common_format):
 	worksheet.set_row(0, 24)
@@ -34,6 +34,7 @@ def format_worksheet(worksheet, common_format):
 	worksheet.set_column(6, 6, 48)
 	worksheet.set_column(7, 7, 64)
 	worksheet.set_column(8, 8, 36)
+	worksheet.set_column(9, 9, 24)
 
 	worksheet.merge_range('A3:A4', '№', common_format)
 	worksheet.merge_range('B3:B4', 'Дата регистрации', common_format)
@@ -44,9 +45,10 @@ def format_worksheet(worksheet, common_format):
 	worksheet.merge_range('G3:G4', 'Департамент', common_format)
 	worksheet.merge_range('H3:H4', 'Причина отсутствия', common_format)
 	worksheet.merge_range('I3:I4', 'ФИО руководителя', common_format)
+	worksheet.merge_range('J3:J4', 'Статус', common_format)
 
 
-def do_report(flt_month: str, file_name: str):
+def do_report(flt_month: str, file_name: str, active_stmt):
 	full_file_name = f'{REPORT_PATH}/{file_name}'
 	if exists(file_name):
 		remove(file_name)
@@ -109,11 +111,9 @@ def do_report(flt_month: str, file_name: str):
 
 			row_cnt = 1
 			shift_row = 3
-			cnt_part = 0
-			m_val = [0]
 
 			log.info(f'{file_name}. Загружаем данные за период {flt_month}')
-			cursor.execute(active_stmt, mnth=f'{flt_month}-01')
+			cursor.execute(active_stmt)
 
 			records = cursor.fetchall()
 			
@@ -126,14 +126,20 @@ def do_report(flt_month: str, file_name: str):
 						worksheet.write(row_cnt+shift_row, col, list_val, date_format)
 					if col in (4,5,6,7,8):
 						worksheet.write(row_cnt+shift_row, col, list_val, common_format)
+					if col == 9:
+						match list_val:
+							case 0:
+								worksheet.write(row_cnt+shift_row, col, 'На согласовании', common_format)
+							case 1:
+								worksheet.write(row_cnt+shift_row, col, 'Согласовано', common_format)
+							case 2:
+								worksheet.write(row_cnt+shift_row, col, 'Отказано', common_format)
+							case _:
+								worksheet.write(row_cnt+shift_row, col, f'LIST_VAL: {list_val}', common_format)
 					col += 1
-				cnt_part += 1
-				if cnt_part > 9999:
-					log.info(f'{file_name}. LOADED {row_cnt} records.')
-					cnt_part = 0
 				row_cnt += 1
 			now = datetime.datetime.now().strftime("%d.%m.%Y (%H:%M:%S)")
-			worksheet.write(1, 7, f'Дата формирования: {now}', date_format_it)
+			worksheet.write(1, 8, f'Дата формирования: {now}', date_format_it)
 
 			workbook.close()
 			now = datetime.datetime.now()

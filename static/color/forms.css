@@ -1,29 +1,6 @@
-form {
-    margin: 1px 1px;
-    padding: 24px 15px 0px 24px;
-    text-shadow: none;
-}
-div.field {
-    margin-top: 5px;
-    display: flex;
-    vertical-align: bottom;
-    align-items: center;
-    align-content: center;
-}
-
-div.field label {
-    height: 24px;
-    width: 195px;
-}
 .input_s {
-    margin-left: 12px;
-    padding: 9px;
     color: #444;
-    font-size: 18px;
     background-color: #efefd3e6;
-    align-items: center;
-    border-radius: 5px;
-    width: 260px;
     border: 1px solid rgba(180, 180, 180, 0.3);
     box-shadow: 6px 6px 8px rgba(70, 205, 79, 0.2);
 }
@@ -35,28 +12,16 @@ div.field label {
 }
 /*Сообщение в новостную ленту*/
 textarea {
-    margin-top: 5px;
-    font-family: cursive, sans-serif;
-    outline: 0;
-    background: #deefdf;
     color: #444;
+    background: #deefdf;
     border: 1px solid #ffe4b57a;
-    padding: 5px;
-    border-radius: 5px;
-    width: 540px;
     box-shadow: 2px 2px 5px darkseagreen;
     border: 2px solid rgba(180, 180, 180, 0.3);
 }
 
 select {
-    margin-top: 5px;
-    font-family: cursive, sans-serif;
-    outline: 0;
-    background: #444;
     color: #ccc;
+    background: #444;
     border: 1px solid #ffe4b57a;
-    padding: 5px;
-    border-radius: 5px;
-    width: 540px;
 }
 

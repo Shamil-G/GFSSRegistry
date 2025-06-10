@@ -20,8 +20,8 @@ def get_list_time_off(employee: str):
     list_time_off = []
     
     stmt = """
-        select event_date, time_out, time_in, employee, post, dep_name, cause, head, status, time_fact, id, 
-               sysdate - trunc(time_out,'MM') as cnt_days
+        select event_date, time_out, time_in, employee, post, dep_name, cause, head, status, time_fact,
+               sysdate - trunc(time_out,'MM') as cnt_days, status, id
         from register r
         where r.employee = :employee
         order by event_date desc
@@ -35,8 +35,8 @@ def get_list_time_off(employee: str):
                     res = {'event_date': row[0], 'time_out': row[1], 'time_in': row[2],
                            'employee': row[3], 'post': row[4], 'dep_name': row[5],
                            'cause': row[6], 'head': row[7], 
-                           'status': row[8], 'time_fact': row[9], 'id': row[10], 
-                           'cnt_days': row[11]
+                           'status': row[8], 'time_fact': row[9], 
+                           'cnt_days': row[10], 'sttaus': row[11], 'id': row[12], 
                            }
                     list_time_off.append(res)
             finally:
@@ -47,7 +47,7 @@ def get_list_time_off(employee: str):
 def get_list_absent():
     list_absent = []
     stmt = """
-        select event_date, time_out, time_in, employee, post, dep_name, cause, head, id 
+        select event_date, time_out, time_in, employee, post, dep_name, cause, head, status, id 
         from register r
         where sysdate between time_out and time_in
         order by event_date desc
@@ -60,7 +60,7 @@ def get_list_absent():
                 for row in rows:
                     res = { 'event_date': row[0], 'time_out': row[1], 'time_in': row[2],
                            'employee': row[3], 'post': row[4], 'dep_name': row[5],
-                           'cause': row[6], 'head': row[7], 'id': row[8]
+                           'cause': row[6], 'head': row[7], 'status': row[8], 'id': row[9]
                            }
                     list_absent.append(res)
             finally:
@@ -68,32 +68,67 @@ def get_list_absent():
     return list_absent
 
 
-def get_all_list_time_off(mnth: str):
+def get_all_list_time_off(boss_adm, mnth: str):
     list_time_off = []
-    stmt = """
-        select event_date, time_out, time_in, employee, post, dep_name, cause, head, id 
-        from register r
-        where trunc(event_date,'MM') = trunc(to_date(:mnth,'YYYY-MM-DD'),'MM')
-        order by event_date desc
-    """
+
+    if boss_adm.is_anonymous():
+        log.info(f'GET_LIST_TO_APPROVE: USER is ANONYMOUS')
+        return {}
+
+    admin = 0 # Администратор, служба безопасности
+    boss = 0  # Руководитель департамента
+    subordinate_ou = ""
+    if hasattr(boss_adm, 'subordinate_ou') and boss_adm.subordinate_ou is not None:
+        subordinate_ou = ", ".join( f"'{str(elem)}'" for elem in boss_adm.subordinate_ou)
+
+    if hasattr(boss_adm, 'roles'):
+        if 'admin' in boss_adm.roles:
+            admin=1
+        if 'boss' in boss_adm.roles:
+            boss=1
+
+    if admin==1:
+        stmt = """
+            select event_date, time_out, time_in, employee, post, dep_name, cause, head, status, id  
+            from register r
+            where trunc(event_date,'MM') = trunc(to_date(':mnth','YYYY-MM-DD'),'MM')
+            order by event_date desc
+        """
+    else:
+        stmt = """
+            select event_date, time_out, time_in, employee, post, dep_name, cause, head, status, id
+            from register r
+            where trunc(event_date,'MM') = trunc(to_date(':mnth','YYYY-MM-DD'),'MM')
+            and   dep_name in (:dep_name)
+            order by event_date desc
+        """
+    
+    stmt_1 = stmt.replace(':mnth', mnth);
     with get_connection() as connection:
         with connection.cursor() as cursor:
             try:
-                cursor.execute(stmt, mnth=mnth)
+                stmt_list=stmt_1
+                if subordinate_ou and subordinate_ou is not None:
+                    stmt_list = stmt_1.replace(':dep_name', subordinate_ou);
+                elif boss==1:
+                    stmt_list = stmt_1.replace(':dep_name', f"'{boss_adm.dep_name}'")
+
+                log.info(f'-------\n\tGET ALL LIST TIME_ OFF. STMT:\n\t{stmt_list}-------')
+                cursor.execute(stmt_list)
                 rows = cursor.fetchall()
+
                 for row in rows:
                     res = { 'event_date': row[0], 'time_out': row[1], 'time_in': row[2],
                            'employee': row[3], 'post': row[4], 'dep_name': row[5],
-                           'cause': row[6], 'head': row[7], 'id': row[8]
+                           'cause': row[6], 'head': row[7], 'status': row[8], 'id': row[9]
                            }
                     list_time_off.append(res)
             finally:
-                log.debug(f'LIST HEAD. {list_time_off}')
-    return list_time_off
+                log.debug(f'GET ALL LIST TIME_ OFF. {list_time_off}')
+    return list_time_off, stmt_list
 
 
 def get_list_to_approve(user):
-# def get_list_to_approve(dep_name: str, admin: int):
     if user.is_anonymous():
         log.info(f'GET_LIST_TO_APPROVE: USER is ANONYMOUS')
         return {}
@@ -114,7 +149,7 @@ def get_list_to_approve(user):
 
     if admin==1:
         stmt = """
-            select event_date, time_out, time_in, employee, post, dep_name, cause, head, id, status 
+            select event_date, time_out, time_in, employee, post, dep_name, cause, head, status, id 
             from register r
             where trunc(event_date,'MM') >= trunc(sysdate,'MM')-5
             and   status = 0
@@ -122,7 +157,7 @@ def get_list_to_approve(user):
         """
     else:
         stmt = """
-            select event_date, time_out, time_in, employee, post, dep_name, cause, head, id, status 
+            select event_date, time_out, time_in, employee, post, dep_name, cause, head, status, id 
             from register r
             where trunc(event_date,'MM') >= trunc(sysdate,'MM')-5
             and   dep_name in (:dep_name)
@@ -149,7 +184,7 @@ def get_list_to_approve(user):
                 for row in rows:
                     res = { 'event_date': row[0], 'time_out': row[1], 'time_in': row[2],
                            'employee': row[3], 'post': row[4], 'dep_name': row[5],
-                           'cause': row[6], 'head': row[7], 'id': row[8], 'status': row[9]
+                           'cause': row[6], 'head': row[7], 'status': row[8], 'id': row[9]
                            }
                     list_approve.append(res)
             finally:
@@ -160,7 +195,7 @@ def get_list_to_approve(user):
 def get_secure_list_to_approve():
     list_approve = []
     stmt = """
-        select event_date, time_out, time_in, employee, post, dep_name, cause, head, id, status 
+        select event_date, time_out, time_in, employee, post, dep_name, cause, head, status , id
         from register r
         where trunc(event_date,'MM') = trunc(sysdate,'MM')
         and   status = 3
@@ -174,7 +209,7 @@ def get_secure_list_to_approve():
                 for row in rows:
                     res = { 'event_date': row[0], 'time_out': row[1], 'time_in': row[2],
                            'employee': row[3], 'post': row[4], 'dep_name': row[5],
-                           'cause': row[6], 'head': row[7], 'id': row[8], 'status': row[9]
+                           'cause': row[6], 'head': row[7], 'status': row[8], 'id': row[9]
                            }
                     list_approve.append(res)
             finally:

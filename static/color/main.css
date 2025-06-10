@@ -1,130 +1,34 @@
-﻿@import url('forms.css');
-@import url('table_styles.css');
-@import url('button.css');
-@import url('images.css');
-@import url('elements.css');
-
-
-:root {
-    text-decoration: none;
+﻿:root {
     text-shadow: 1px 2px 3px grey;
 }
 html, body {
-    margin: 0px;
-    padding: 1px;
-    height: 100%;
-    width: 100%;
     color: black;
-    font-family: Calibri;
-    /*background: #f7f9fb;*/
     background: #c9edcd;
 }
-common-container {
-    margin: 1px;
-    min-height: 100%;
-    display: grid;
-    grid-template-columns: 1fr 7fr;
-    grid-template-rows: 44px 44px auto 36px;
-    grid-gap: 2px;
-    grid-template-areas: "header header"
-        "nav article_title"
-        "nav article"
-        "footer footer";
-}
 nav {
-    margin: 0px;
-    padding: 2px;
-    display: grid;
-    border-radius: 5px;
-    /*border: 1px solid rgba(180, 180, 180, 0.3);*/
-    /*text-shadow: 1px 2px 3px grey;*/
-    grid-template-rows: repeat(12,minmax(32px, 64px));
-    /*grid-template-columns: 100%;*/
-    grid-row-gap: 3px;
-    grid-area: nav; /* задаем имя элемента */
-
-    align-content: stretch;
     background-image: url('/static/img/bg.jpg'); /* Update this path */
-    background-size: cover;
-    background-position: center;
 }
 header {
-    display: grid;
-    padding-left: 16px;
-    grid-template-columns: 4fr 4fr 4fr;
-    align-items: center; /* Выравниваем по вертикали*/
-    grid-area: header; /* задаем имя элемента */
     background-image: url('/static/img/bg.jpg'); /* Update this path */
-    background-size: cover;
-    background-position: center;
 }
 article {
-    display: grid;
-    grid-template-columns: auto auto;
-    grid-area: article; /* задаем имя элемента */
-    grid-template-areas: "article_body article_info";
-    border-radius: 5px;
     border: 1px solid rgba(180, 180, 180, 0.3);
 }
 article_title {
-    padding: 2px 24px;
-    font-size: 20px;
-    display: flex; /*Для выравнивания заголовка по центру*/
-    align-items: center; /*Для выравнивания заголовка по центру*/
-    grid-area: article_title; /* задаем имя элемента */
     background-color: #cfefd5;
 }
 article_body {
-    margin: 0;
-    grid-area: article_body; /* задаем имя элемента */
     background-color: #deefdf;
-    min-height: 100%;
-    display: grid;
 }
 article_info {
-    padding: 0px 1px 0px 1px;
-    grid-area: article_info; /* задаем имя элемента */
     background-color: #deefdf;
-    min-height: 100%;
-    /*max-width: 30%;*/
-    display: grid;
 }
 footer {
-    display: grid;
-    padding: 8px 16px;
-    align-items: center; /* Выравниваем по вертикали*/
-    grid-template-columns: 1fr 6fr;
-    grid-area: footer; /* задаем имя элемента */
     background-image: url('/static/img/bg.jpg'); /* Update this path */
-    background-size: cover;
-    background-position: center;
-    text-shadow: 1px 2px 3px grey;
 }
 header, nav, article_title, article_body, article_info, footer {
-    border-radius: 3px;
     border: 1px solid rgba(142, 142, 142, 0.3);
 }
-header, .article_title, footer {
-    padding-left: 8px;
-    align-items: center;
-}
-footer > .footer-l, header > .header-l {
-    margin-left: 10px;
-    /*color: #307080;*/
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-}
-footer > .footer-r, header > .header-r {
-    /*margin-left: 15px;*/
-    margin-right: 10px;
-    text-align: right;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-}
-
 .header-r > a:hover {
     color: #cfefd5;
     background-color: lightseagreen;
