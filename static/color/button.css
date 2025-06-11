@@ -7,6 +7,7 @@ button, .button, .button_red {
 button:hover, .button:hover {
     top: 1px;
     transition: .3s linear;
+
 }
 .button:hover {
     box-shadow: 4px 4px 6px darkseagreen;
@@ -25,7 +26,6 @@ button:hover {
 
 .nav_button {
     color: black;
-    text-shadow: 1px 2px 3px grey;
     background-image: linear-gradient(to right, rgba(255,255,255,.0) 30%, rgba(255,255,255,.8), rgba(255,255,255,.0) 70%), linear-gradient(to right, rgba(255,255,255,0.7), rgba(255,255,255,0) 20%, rgba(255,255,255,0) 85%, rgba(255,255,255,.5)),
                       linear-gradient(to right, rgba(121, 219, 144, 0.3), rgba(121, 219, 144,.5) 45%, rgba(121, 219, 144, 0.5)), linear-gradient(to right, rgba(121, 219, 144, 0.3), rgba(121, 219, 144,.5) 0%, rgba(121, 219, 144, 0.5) );
     background-repeat: no-repeat;

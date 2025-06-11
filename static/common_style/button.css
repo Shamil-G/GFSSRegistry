@@ -1,22 +1,22 @@
 button, .button, .button_red {
-    margin: 9px 0px;
-    padding: 6px 34px 6px 34px;
-    font-size: 16px;
     margin: 2px 0px;
-    padding: 9px 34px 9px 34px;
-    text-decoration: none;
+    padding: 5px 34px 5px 34px;
     align-items: center;
     display: inline-block;
-    border-radius: 5px;
-    font-weight: 500;
     cursor: pointer;
-    line-height: 1.5;
     position: relative;
-    text-decoration: none;
+    font-weight: 500;
+    font-size: 19px;
+    font-family: Calibri;
+    line-height: 1.5;
     border: 1px solid;
+    border-radius: 5px;
+    text-decoration: none;
+    text-decoration: none;
 }
 button:hover, .button:hover {
     top: 1px;
+    text-shadow: 1px 2px 3px grey;
     transition: .3s linear;
 }
 .button:hover {
@@ -42,18 +42,7 @@ button:hover {
     border: inherit;
     border-radius: inherit;
     position: relative;
-    /*display: inline-block;*/
     font-weight: 500;
-    /*text-shadow: rgba(255,255,255,.5) 1px 1px, rgba(100,100,100,.3) 3px 7px 3px;*/
-    text-shadow: 1px 2px 3px grey;
-    /*user-select: none;*/
-    /*padding: 1em 2em;*/
-    /*outline: none;*/
-    /*border-radius: 3px / 100%;*/
-    background-image: linear-gradient(to right, rgba(255,255,255,.0) 30%, rgba(255,255,255,.8), rgba(255,255,255,.0) 70%), linear-gradient(to right, rgba(255,255,255,0.7), rgba(255,255,255,0) 20%, rgba(255,255,255,0) 85%, rgba(255,255,255,.5)),
-    /*linear-gradient(to right, rgba(125,125,125,1), rgba(255,255,255,.9) 45%, rgba(125,125,125,.5)),*/
-    /*linear-gradient(to right, rgba(125,125,125,1), rgba(255,255,255,.9) 45%, rgba(125,125,125,.5)),*/
-    linear-gradient(to right, rgba(121, 219, 144, 0.3), rgba(121, 219, 144,.5) 45%, rgba(121, 219, 144, 0.5)), linear-gradient(to right, rgba(121, 219, 144, 0.3), rgba(121, 219, 144,.5) 0%, rgba(121, 219, 144, 0.5) );
     background-repeat: no-repeat;
     background-size: 200% 100%, auto, 100% 2px, 100% 2px, 100% 1px, 100% 1px;
     background-position: 200% 0, 0 0, 0 0, 0 100%, 0 4px, 0 calc(100% - 4px);
