@@ -5,23 +5,31 @@ html, body {
     background: #222;
 }
 
-nav {
-    border-radius: 5px;
-    border: 1px solid rgba(180, 180, 180, 0.3);
-    text-shadow: 1px 2px 3px grey;
-}
-article {
+nav, article {
     border: 1px solid rgba(180, 180, 180, 0.3);
 }
 article_title {
-    color: #fff;
     background: #333;
 }
 header, footer, article_title {
+    border: 1px solid rgba(180, 180, 180, 0.3);
+}
+header-c > a, header-r > a {
     border: 1px solid rgba(180, 180, 180, 0.3);
 }
 .header-r > a:hover {
     background: #777;
     color: wheat;
     box-shadow: 1px 2px 3px rgba(70, 205, 79, 0.4);
+}
+nav > a {
+    border: inherit;
+    color: #ddd;
+}
+article_title > a:hover, nav > a:hover,
+header-r > a:hover, header-c > a:hover {
+    background: #777;
+    color: wheat;
+    text-decoration: none;
+    border-radius: 3px;
 }

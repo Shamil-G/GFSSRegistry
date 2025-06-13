@@ -113,7 +113,7 @@ def login_page():
         log.debug(f'LOGIN POST. resp_json: {resp_json}/{type(resp_json)}')
         if resp_json['status'] !=200:
             log.info(f'----------------\n\tUSER {session['username']}/{session['password']} not Registred\n----------------')
-            return render_template('login.html')
+            return render_template('login.html', info='Неверна Фамилия (или ИИН) или пароль в Windows')
 
         json_user = resp_json['user']
         # session['username'] = json_user['login_name']

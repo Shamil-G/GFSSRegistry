@@ -11,9 +11,9 @@
 <body>
     <common-container>
         <header>
-            <div class="header-l"><img src="/static/img/logo-g.ico" class="img-logo">&emsp;<a style="font-size: 20px">{{ res_value('APP_NAME') }}</a> </div>
-            <div><a></a></div>
-            <div class="header-r">
+            <header-l><img src="/static/img/logo-g.ico" class="img-logo">&emsp;<a style="font-size: 20px">{{ res_value('APP_NAME') }}</a> </header-l>
+            <header-c></header-c>
+            <header-r>
                 {% if 'style' in session and session['style'] == 'color' %}
                 <div>
                     <a href="/change-style"><img class="img-style" src="/static/img/icons8-black-white-50.png" style="width: 24px; height: 24px" /></a>
@@ -25,16 +25,16 @@
                 {% endif %}
 
                 {% if session['language'] == 'ru' %}
-                <a href="/language/kz">ҚАЗ</a>
+                <a class="nav_button" style="margin-left: 16px; padding: 6px 24px" href="/language/kz">ҚАЗ</a>
                 {% else %}
-                <a href="/language/ru">РУС</a>
+                <a class="nav_button" style="margin-left: 16px; padding: 6px 24px" href="/language/ru">РУС</a>
                 {% endif %}
                 {% if g and g.user and g.user.is_anonymous == True %}
-                <a href="/login">{{ res_value('LOGIN') }}</a>
+                <a class="nav_button" style="margin-left: 16px; padding: 6px 24px" href="/login">{{ res_value('LOGIN') }}</a>
                 {% else %}
-                <a href="/logout">{{ res_value('LOGOUT') }}</a>
+                <a class="nav_button" style="margin-left: 16px; padding: 6px 24px" href="/logout">{{ res_value('LOGOUT') }}</a>
                 {% endif %}
-            </div>
+            </header-r>
         </header>
 
         <nav>
@@ -118,16 +118,16 @@
                 {% endif %}
             </article_info>
         </article>
-        <footer class="footer">
-            <div class="footer-l">
+        <footer>
+            <footer-l>
                 <img src="/static/img/logo-g.ico" style="width: 24px; height: 24px">
                 <small>&emsp;©2024</small>
-            </div>
-            <div class="footer-r">
+            </footer-l>
+            <footer-r>
                 <small style="visibility: hidden">{{ res_value('CREATORS') }}</small>
                 <small style="visibility: hidden">{{ res_value('FOR_DEVELOPERS') }}</small>
                 <a style="font-size:14px">{% if g.user.is_authenticated %} #{{ g.user.username }} : {{g.user.post}} : {{g.user.dep_name}} {% endif %}</a>
-            </div>
+            </footer-r>
         </footer>
     </common-container>
 </body>
