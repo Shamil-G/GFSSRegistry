@@ -63,7 +63,7 @@
                 <td style="text-align: center;"><a style=" color: hotpink; font-weight: 600">{{ res_value('ON_APPROVING') }}</a></td>
             {% endif %}
 
-            {% if el.cnt_days < 35 or el.status!=1 %}
+            {% if el.cnt_days < 2 or el.status!=1 %}
                 <td style="text-align: center;"><a class="button_red" style="margin: 0px; padding: 3px 12px 0px 12px;" href="/del-from-list-time-off/{{ el.id }}">{{ res_value('REMOVE') }}</a></td>
             {% else %}
                 <td style="text-align: center;"><img src="/static/img/flower.png" class="img-logo"></td>
