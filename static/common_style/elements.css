@@ -12,6 +12,7 @@ a[href^='/language'], header a[href^='/log'] {
 
 a {
     font-weight: normal;
+    text-decoration: none;
 }
 
 .title {

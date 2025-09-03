@@ -37,6 +37,7 @@ REG_DATE = Дата регистрации
 BIRTH_DATE = Дата рождения
 NEAR_BIRTH_DATE = Ближайшие дни рождения
 PRINT_MONTH = Месяц
+PRINT_YEAR = ГОД
 PRINT_EXECUTE = Скачать отчет
 FLT_MONTH = Отфильтровать
 EMPLOYEE = Сотрудник
@@ -112,4 +113,4 @@ SUMMARY_REPORT = Сводный отчет
 UPDATING_MODEL = Обновление модели
 UPDATE = Обновить
 USERNAME = Имя
-
+LIST_NPA = НПА

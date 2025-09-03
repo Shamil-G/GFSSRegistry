@@ -319,6 +319,18 @@ def add_message(employee: str, dep_name: str,  mess: str):
                 log.debug(f'ADD MESSAGE. employee: {employee}, dep_name: {dep_name}, message: {mess}')
 
 
+def use_file_statistic(user_name, dep_name, file_name, file_path):
+    stmt = """
+        begin reg.use_file_statistic(:user_name, :dep_name, :file_name, :file_path); end;
+    """
+    with get_connection() as connection:
+        with connection.cursor() as cursor:
+            try:
+                cursor.execute(stmt, user_name=user_name, dep_name=dep_name, file_name=file_name, file_path=file_path)
+            finally:
+                log.debug(f'ADD USE_FILE_STATISTIC. employee: {user_name}, dep_name: {dep_name}, file_name: {file_name}')
+
+
 def get_all_message():
     list_message = []
     stmt = """

@@ -2,22 +2,24 @@ from locale import setlocale, LC_ALL
 from gfss_parameter import platform
 from app_config import REPORT_PATH, styles, sso_server
 from main_app import app, log
-from flask import  session, flash, request, render_template, redirect, url_for, send_from_directory, g
+from flask import  session, flash, request, render_template, redirect, url_for, send_from_directory, send_file, g
 from flask_login import  login_required, login_user
 import os
-from datetime import date
+from datetime import date, datetime
 from util.get_i18n import get_i18n_value
 from model.manage_user import add_head, del_head, get_list_head, get_list_time_off
 from model.manage_user import get_all_list_time_off, get_list_absent, get_list_to_approve, get_secure_list_to_approve
 from model.manage_user import add_time_off, add_secure_time_off, fact_time_off, del_time_off, get_all_message, add_message
-from model.manage_user import approve_time_off, refuse_time_off
+from model.manage_user import approve_time_off, refuse_time_off, use_file_statistic
 from model.rep_all_time_off import do_report
 from model.list_bd import get_list_birthdate
 from model.ldap_function import get_all_employers
+from reports.report_use_npa import report_use_npa
 import requests
 from os import environ
 from sso.sso_login import SSO_User
 from util.ip_addr import ip_addr
+from list_npa import list_npa
 
 
 setlocale(LC_ALL, 'ru_RU.UTF-8')
@@ -175,6 +177,41 @@ def view_list_absent():
     list_absent = get_list_absent()
     all_mess = get_all_message()
     return render_template("list_absent.html", list_absent=list_absent, all_mess=all_mess)
+
+
+@app.route('/list-npa')
+@login_required
+def view_list_npa():
+    my_list = list_npa
+    all_mess = get_all_message()
+    boss = 'boss' in g.user.roles or 'admin' in g.user.roles
+    current_year = datetime.now().year
+    log.info(f'VIEW LIST NPA. username {session['full_name']}, boss: {boss}')
+    return render_template("list_npa.html", list_npa=my_list, all_mess=all_mess, 
+                           user_name=session['full_name'], dep_name=session['dep_name'], boss=boss, current_year=current_year)
+
+
+@app.route('/log-click', methods=["POST"])
+@login_required
+def view_log_click():
+    log.debug(f'VIEW LOG CLICK. username {session['full_name']}, roles: {g.user.roles}')
+
+    data = request.get_json();    
+
+    user_name = data['user_name']
+    dep_name = data['dep_name']
+    file_name = data['name']  
+    file_path = data['path']  
+
+    log.info(f'LOG CLICK USER_NAME: {user_name}\n\tFILE: {file_name}\n\tPATH: {file_path}\n\tDEP_NAME: {dep_name}')
+    use_file_statistic(user_name, dep_name, file_name, file_path)
+    return {'status': 'success'}, 204
+
+
+@app.route('/uploads-use-npa', methods=['POST'])
+def generate_report():
+    year = request.form.get('flt_year') or request.json.get('year')
+    return send_file(report_use_npa(year), as_attachment=True)
 
 
 @app.route('/all-list-time-off', methods=['GET','POST'])

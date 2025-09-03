@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ res_value('LIST_NPA') }}
+{% endblock %}
+
+{% block main_title %}
+{{ res_value('LIST_NPA') }}
+{% endblock %}
+
+{% block navigate %}
+{% endblock %}
+
+{% block body %}
+<form>
+    {% for el in list_npa %}
+    <div>
+        <a class="track-click"
+           data-path="{{ el.path }}"
+           data-num="{{ el.num }}"
+           data-name="{{ el.name }}"
+           style="display: block; text-align: left; font-size: 19px; margin-bottom: 12px"
+           href="{{ el.path }}">{{ el.num }}.&nbsp;{{ el.name }}</a>
+    </div>
+    {% endfor %}
+</form>
+{% if boss %}
+<hr>
+<div style="border-radius: 5px; border-bottom: 1px solid rgba(142, 142, 142, 0.3);">
+    <form action="/uploads-use-npa" method="POST" style="margin: 12px 2px 2px 2px; padding: 0px 16px">
+        <label style="font-size: 19px;" for="flt_year">{{ res_value('PRINT_YEAR') }}:&nbsp;</label>
+        <input class="input_s" style="width: 80px;" 
+               type="number" min="2025" max="{{current_year}}" step="1" maxlength="4"
+               value="{{current_year}}" name="flt_year" id="flt_year" required>
+        <button type="submit" class="button" style="margin-left:12px;">
+            {{ res_value('PRINT_EXECUTE') }}
+        </button>
+    </form>
+</div>
+{% endif %}
+<script>
+    const userId = "{{ user_name }}";  // передайте идентификатор пользователя из backend
+    const depName = "{{ dep_name }}";  // передайте идентификатор пользователя из backend
+
+    document.querySelectorAll('.track-click').forEach(link => {
+        link.addEventListener('click', function (e) {
+            fetch('/log-click', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    user_name: userId,
+                    dep_name: depName,
+                    path: this.dataset.path,
+                    num: this.dataset.num,
+                    name: this.dataset.name,
+                    timestamp: new Date().toISOString()
+                })
+            });
+            // переход по ссылке произойдёт автоматически
+        });
+    });
+</script>
+{% endblock %}
