@@ -6,11 +6,12 @@ import oracledb
 import os.path
 from  app_config import REPORT_PATH
 
-from list_npa import list_npa
+from reports.list_npa import list_npa
 
 
 report_name = 'Сведения о количестве обращений к НПА'
 report_code = 'UNPA'
+
 
 def get_select():
 	pivot_columns = ',\n    '.join(
@@ -31,7 +32,7 @@ def get_select():
 		)
 		order by dep_name, user_name
 	"""
-	log.info(f"SQL: {stmt_report}")
+	log.debug(f"SQL: {stmt_report}")
 
 	return stmt_report
 
@@ -181,7 +182,6 @@ def report_use_npa(year):
 			cursor = connection.cursor()
 			log.info(f'{file_name}. Загружаем данные за период {year}')
 			
-
 			try:
 				cursor.execute(stmt_report, year=year)
 			except oracledb.DatabaseError as e:

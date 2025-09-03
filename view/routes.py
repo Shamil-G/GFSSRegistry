@@ -19,7 +19,7 @@ import requests
 from os import environ
 from sso.sso_login import SSO_User
 from util.ip_addr import ip_addr
-from list_npa import list_npa
+from reports.list_npa import list_npa
 
 
 setlocale(LC_ALL, 'ru_RU.UTF-8')
