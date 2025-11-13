@@ -31,3 +31,7 @@ def get_year(input_date: str):
 	except ValueError:
 		trunc_date = datetime.datetime.strptime(input_date, '%d.%m.%Y').replace(day=1, month=1)
 	return datetime.datetime.strftime(trunc_date, '%Y')
+
+
+def current_year():
+	return datetime.now().year
