@@ -18,9 +18,11 @@ error_log_format = '%({x-forwarded-for}i)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s
 errorlog = "logs/registry-error.log"
 proc_name = f'{app_name}'
 # Перезапуск после N кол-во запросов
-max_requests = 0
+max_requests = 50000
+# случйная добавка к max_requests для предотвращения одновременного перезапуска всех воркеров
+max_requests_jitter = 5000
 # Перезапуск, если ответа не было более 60 сек
-timeout = 180
+timeout = 30
 # umask or -m 007
 umask = 0x007
 # Проверка IP адресов, с которых разрешено обрабатывать набор безопасных заголовков
