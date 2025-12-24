@@ -20,7 +20,7 @@ def init_logger():
     fh.setFormatter(formatter)
 
     logger.addHandler(fh)
-    logger.info('GFSS-REGISTRY Logging started')
+    logger.info(f'GFSS-REGISTRY Logging started with debug={debug}')
     return logger
 
 

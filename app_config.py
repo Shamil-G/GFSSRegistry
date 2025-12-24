@@ -19,6 +19,7 @@ approve_admins = ['Алибаева Мадина Жасулановна', 'Ма�
 
 ldap_server = 'ldap://192.168.1.3:3268'
 sso_server = 'http://192.168.1.34:8825'
+#sso_server = 'http://localhost:5025'
 ldap_user = 'cn=ldp,ou=admins,dc=gfss,dc=kz'
 ldap_password = 'hu89_fart7'
 ldap_ignore_ou = ['UVOLEN','OLD','Domain Controllers','Admins','WinUpdate','TMP','pfsense','UpOK',

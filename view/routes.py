@@ -29,8 +29,8 @@ setlocale(LC_ALL, 'ru_RU.UTF-8')
 def utility_processor():
     if 'style' not in session:
         session['style']=styles[0]    
-        log.info(f'------- CP\n\tSET SESSION STYLE: {session['style']}\n------')
-    log.debug(f"CP. {get_i18n_value('APP_NAME')}")
+        log.info(f'------- Context Processor\n\tSET SESSION STYLE: {session['style']}\n------')
+    log.debug(f"Context Processor. {get_i18n_value('APP_NAME')}")
     return dict(res_value=get_i18n_value)
 
 
@@ -40,10 +40,10 @@ def try_auto_login():
     log.debug(f'LOGIN CHECK. \n\taddr: {sso_server}/check\n\tresp: {resp}')
     if resp.status_code == 200:
         resp_json=resp.json()
-        log.debug(f'LOGIN GET. resp_json: {resp_json}')
+        log.debug(f'--->\n\tLOGIN GET. resp_json: {resp_json}\n<---')
         if 'status' in resp_json and resp_json['status'] == 200:
             json_user = resp_json['user']
-            log.info(f'LOGIN GET. json_user: {json_user}')
+            log.info(f'--->\n\tLOGIN GET\n\tjson_user: {json_user}<---')
             session['username'] = json_user['login_name']
             user = SSO_User().get_user_by_name(json_user)
             login_user(user)
@@ -57,10 +57,14 @@ def try_auto_login():
 def view_root():
     if g and g.user.is_anonymous:
         # LOGIN with session variable
-        log.info(f'Use session variable for login ...')
+        log.info(f'*** Use session variable for login ...')
     # If session variable empty then try_auto_login
     if 'username' not in session:
+        log.debug(f'VIEW ROOT. WILL BE TRY_AUTO_LOGIN ...')
         try_auto_login()
+    if 'username' in session:
+        log.debug(f'VIEW ROOT. USERNAME: {session['username']}')
+
     if 'list_bd' not in session or type(session['list_bd']) is not list or len(session['list_bd'])<4:
         session['list_bd'] = get_list_birthdate()    
         log.info(f'----------\nVIEW ROOT. RELOAD LIST BIRTHDATES: TYPE: {type(session['list_bd'])}. '
