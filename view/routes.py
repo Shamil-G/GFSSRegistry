@@ -6,7 +6,7 @@ from flask import  session, flash, request, render_template, redirect, url_for, 
 from flask_login import  login_required, login_user
 import os
 from datetime import date, datetime
-from util.get_i18n import get_i18n_value
+from util.i18n import get_i18n_value
 from model.manage_user import add_head, del_head, get_list_head, get_list_time_off
 from model.manage_user import get_all_list_time_off, get_list_absent, get_list_to_approve, get_secure_list_to_approve
 from model.manage_user import add_time_off, add_secure_time_off, fact_time_off, del_time_off, get_all_message, add_message
