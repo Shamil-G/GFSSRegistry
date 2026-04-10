@@ -3,7 +3,7 @@ from gfss_parameter import platform
 from app_config import REPORT_PATH, styles, sso_server
 from main_app import app, log
 from flask import  session, flash, request, render_template, redirect, url_for, send_from_directory, send_file, g
-from flask_login import  login_required, login_user
+from flask_login import  login_required, login_user, current_user
 import os
 from datetime import date, datetime
 from util.i18n import get_i18n_value
@@ -24,6 +24,10 @@ from reports.list_npa import list_npa
 
 setlocale(LC_ALL, 'ru_RU.UTF-8')
 
+# @app.before_request
+# def attach_user():
+#     log.info(f'\n\tcurrent_user:{current_user.is_active}\n\tg.user: {g.user.is_active}')
+#     g.user = current_user
 
 @app.context_processor
 def utility_processor():
@@ -34,45 +38,13 @@ def utility_processor():
     return dict(res_value=get_i18n_value)
 
 
-def try_auto_login():
-    req_json = {'ip_addr': f'{ip_addr()}'}
-    resp = requests.post(url=f'{sso_server}/check', json=req_json)
-    log.debug(f'LOGIN CHECK. \n\taddr: {sso_server}/check\n\tresp: {resp}')
-    if resp.status_code == 200:
-        resp_json=resp.json()
-        log.debug(f'--->\n\tLOGIN GET. resp_json: {resp_json}\n<---')
-        if 'status' in resp_json and resp_json['status'] == 200:
-            json_user = resp_json['user']
-            log.info(f'--->\n\tLOGIN GET\n\tjson_user: {json_user}<---')
-            session['username'] = json_user['login_name']
-            user = SSO_User().get_user_by_name(json_user)
-            login_user(user)
-        else:
-            log.info(f'----------------\n\tUSER {ip_addr()} not Registred\n----------------')
-            return render_template('login.html')
-
-
-
-@app.route('/')
+@app.get('/')
 def view_root():
-    if g and g.user.is_anonymous:
-        # LOGIN with session variable
-        log.info(f'*** Use session variable for login ...')
-    # If session variable empty then try_auto_login
-    if 'username' not in session:
-        log.debug(f'VIEW ROOT. WILL BE TRY_AUTO_LOGIN ...')
-        try_auto_login()
-    if 'username' in session:
-        log.debug(f'VIEW ROOT. USERNAME: {session['username']}')
-
     if 'list_bd' not in session or type(session['list_bd']) is not list or len(session['list_bd'])<4:
         session['list_bd'] = get_list_birthdate()    
         log.info(f'----------\nVIEW ROOT. RELOAD LIST BIRTHDATES: TYPE: {type(session['list_bd'])}. '
                   f'LEN: {len(session['list_bd'])}. FIRST VALUE: {session['list_bd']}\n----------')
-    else:
-        log.info(f'----------\nVIEW ROOT. LIST BIRTHDATES EXIST\n\tType: {type(session['list_bd'])} / {len(session['list_bd'])} строк\n\t{session['list_bd'][0]}\n----------')
     all_mess = get_all_message()
-    # return render_template("index.html", list_bd=[], all_mess=all_mess)
     return render_template("index.html", list_bd=session['list_bd'], all_mess=all_mess)
 
 

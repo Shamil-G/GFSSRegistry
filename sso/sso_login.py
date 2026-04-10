@@ -33,7 +33,7 @@ class SSO_User:
             if 'login_name' in src_user:
                 self.username = src_user['login_name']
             else:
-                self.username = 'unknown'
+                self.username = None
             session['username'] = self.username 
 
             if 'post' in src_user:
@@ -60,32 +60,25 @@ class SSO_User:
                 self.roles.append('boss')
                 
             self.ip_addr = ip
-            log.info(f"SSO USER. SUCCESS. USERNAME: {self.username}, ip_addr: {self.ip_addr}\n\tFIO: {self.full_name}/{self.roles}")
+            log.debug(f"SSO USER. SUCCESS. USERNAME: {self.username}, ip_addr: {self.ip_addr}\n\tFIO: {self.full_name}/{self.roles}")
             return self
-        log.debug(f"SSO USER. FAIL. USERNAME: {src_user}, ip_addr: {ip}")
+        log.info(f"SSO USER. FAIL. USERNAME: {src_user}, ip_addr: {ip}")
         return None
 
     def have_role(self, role_name):
-        if hasattr(self, 'username'):
-            return role_name in self.roles
+        return hasattr(self, 'roles') and role_name in self.roles
 
+    @property
     def is_authenticated(self):
-        if hasattr(self, 'username'):
-            return True
-        else:
-            return False
+        return self.username is not None
 
+    @property
     def is_active(self):
-        if hasattr(self, 'username'):
-            return True
-        else:
-            return False
+        return self.username is not None
 
+    @property
     def is_anonymous(self):
-        if hasattr(self, 'username'):
-            return False
-        else:
-            return True
+        return self.username is None
 
     def get_id(self):
         if hasattr(self, 'principalName'):
