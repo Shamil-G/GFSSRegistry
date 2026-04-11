@@ -71,7 +71,7 @@ def get_list_absent():
 def get_all_list_time_off(boss_adm, mnth: str):
     list_time_off = []
 
-    if boss_adm.is_anonymous():
+    if boss_adm.is_anonymous:
         log.info(f'GET_LIST_TO_APPROVE: USER is ANONYMOUS')
         return {}
 
@@ -129,7 +129,7 @@ def get_all_list_time_off(boss_adm, mnth: str):
 
 
 def get_list_to_approve(user):
-    if user.is_anonymous():
+    if user.is_anonymous:
         log.info(f'GET_LIST_TO_APPROVE: USER is ANONYMOUS')
         return {}
 

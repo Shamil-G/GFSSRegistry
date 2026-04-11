@@ -15,10 +15,37 @@ login_manager.login_message_category = "warning"
 
 log.info("user_login_sso стартовал...")
 
+# 11.04.2026
+# @login_manager.user_loader
+# def loader_user(id_user):
+#     # return User().get_user_by_name(id_user)
+#     return SSO_User().get_user_by_name(id_user)
+
+def fetch_user_from_sso(endpoint: str, req_json: dict) -> SSO_User | None:
+    resp = requests.post(url=f'{sso_server}/{endpoint}', json=req_json)
+    if resp.status_code == 200:
+        resp_json = resp.json()
+        if resp_json.get('status') == 200 and 'user' in resp_json:
+            return SSO_User().get_user_by_name(resp_json['user'])
+    return None
+
 @login_manager.user_loader
 def loader_user(id_user):
-    # return User().get_user_by_name(id_user)
-    return SSO_User().get_user_by_name(id_user)
+    return fetch_user_from_sso("check", {"ip_addr": ip_addr(), "login_name": id_user})
+
+
+def try_auto_login():
+    ip = ip_addr()
+    req_json = {"ip_addr": ip}
+    if ip == "127.0.0.1" and "username" in session:
+        req_json["login_name"] = session["username"]
+    user = fetch_user_from_sso("check", req_json)
+    if user:
+        login_user(user)
+        log.info(f"TRY AUTO LOGIN. USER {ip} SUCCESS Registered")
+        return True
+    log.info(f"TRY AUTO LOGIN. USER {ip} FAIL Registered")
+    return False
 
 
 @app.after_request
@@ -68,28 +95,6 @@ def logout():
     return redirect(url_for('view_root'))
 
 
-def try_auto_login():
-    ip = ip_addr()
-    req_json = {'ip_addr': ip}
-    if '127.0.0.1' == ip and 'username' in session:
-        req_json['login_name'] = session['username']
-    resp = requests.post(url=f'{sso_server}/check', json=req_json)
-    log.info(f'*** try_auto_login\n\taddr: {sso_server}/check\n\tresp: {resp}')
-    if resp.status_code == 200:
-        resp_json=resp.json()
-        log.info(f'--->\n\tLOGIN GET. resp_json: {resp_json}\n<---')
-        if resp_json.get('status') == 200:
-            json_user = resp_json.get('user')
-            log.info(f'--->\n\tLOGIN GET\n\tjson_user: {json_user}<---')
-            session['username'] = json_user['login_name']
-            user = SSO_User().get_user_by_name(json_user)
-            if user:
-                login_user(user)
-                log.info(f'---\n\tUSER {ip_addr()} SUCCESS Registred\n\tg.user.username: {g.user.username}\n---')
-                return True
-    return False
-
-
 @app.get('/login')
 def login_page_get():
 
@@ -114,42 +119,15 @@ def login_page_get():
 
 @app.post('/login')
 def login_page_post():
-    session['username'] = request.form.get('username')
-    session['password'] = request.form.get('password')
+    req_json = {
+        "login_name": request.form.get("username"),
+        "password": request.form.get("password"),
+        "ip_addr": ip_addr(),
+    }
+    user = fetch_user_from_sso("login", req_json)
 
-    req_json = {'login_name': session['username'], 'password': session['password'], 'ip_addr': ip_addr() }
-    log.debug(f'LOGIN POST. REQUEST JSON: {req_json}')
-
-    resp = requests.post(url=f'{sso_server}/login', json=req_json)
-    if resp.status_code != 200:
-        log.info(f'----------------\n\tОшибка {resp.status_code} соединения с сервером SSO\n----------------')
-        return redirect(url_for('login_page_get', info='Ошибка соединения с сервером SSO'))
-
-    resp_json=resp.json()
-    log.debug(f'LOGIN POST. resp_json: {resp_json}/{type(resp_json)}')
-    if resp_json['status'] !=200:
-        log.info(f'----------------\n\tUSER {session['username']}/{session['password']} not Registred\n----------------')
-        return redirect(url_for('login_page_get', info='Неверна Фамилия (или ИИН) или пароль в Windows'))
-
-    json_user = resp_json['user']
-
-    log.debug(f'LOGIN POST. json_user: {json_user}')
-
-    # Если такой username существует и объект user создался, надо проверить пароль и вытащить атрибуты
-    if json_user:
-        log.info(f'LOGIN_PAGE_POST. json_user: {json_user}')
-        user = SSO_User().get_user_by_name(json_user)
-        if not user:
-            log.info(f"LOGIN_PAGE. ERROR LOGIN. New object user is empty. MAY BE USER'S DEP_NAME in LDAP not in list permit_deps in APP_CONFIG.PY")
-            return redirect(url_for('login_page_get', info='Нет доступа, обратитесь к администратору'))
-
-        login_user(user)
-        next_page = request.args.get('next')
-        if next_page is not None:
-            log.info(f'LOGIN_PAGE. SUCCESS AUTHORITY. GOTO NEXT PAGE: {next_page}')
-            return redirect(next_page)
-        else:
-            return redirect(url_for('view_root'))
-    
-    return redirect(url_for('login_page_get', info=''))
-
+    if not user:
+        log.info(f'---\nLOGIN PAGE POST. FAIL: {req_json}\n---')
+        return redirect(url_for("login_page_get", info="Ошибка авторизации"))
+    login_user(user)
+    return redirect(url_for("view_root"))

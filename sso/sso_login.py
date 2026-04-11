@@ -82,7 +82,8 @@ class SSO_User:
 
     def get_id(self):
         if hasattr(self, 'principalName'):
-            return self.src_user
+            return self.username
+            #return self.src_user
         else: 
             return None
 

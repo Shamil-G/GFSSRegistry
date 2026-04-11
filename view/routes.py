@@ -39,10 +39,12 @@ def utility_processor():
 
 
 @app.get('/')
+@login_required
 def view_root():
+    log.info(f'---\n\tVIEW ROOT. LOGIN_NAME: {g.user.username}\n---')
     if 'list_bd' not in session or type(session['list_bd']) is not list or len(session['list_bd'])<4:
         session['list_bd'] = get_list_birthdate()    
-        log.info(f'----------\nVIEW ROOT. RELOAD LIST BIRTHDATES: TYPE: {type(session['list_bd'])}. '
+        log.debug(f'----------\nVIEW ROOT. RELOAD LIST BIRTHDATES: TYPE: {type(session['list_bd'])}. '
                   f'LEN: {len(session['list_bd'])}. FIRST VALUE: {session['list_bd']}\n----------')
     all_mess = get_all_message()
     return render_template("index.html", list_bd=session['list_bd'], all_mess=all_mess)
